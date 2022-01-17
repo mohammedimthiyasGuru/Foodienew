@@ -1,0 +1,22 @@
+.users-wrapper ul.users-footer li .add-btn {
+    transition: all 0.3s ease-in-out;
+    float: right;
+    border-radius: 30px;
+    background: #353C48;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: block;
+}
+
+
+.active_user_list * {
+    text-shadow: none !important;
+    color: #ffffff;
+    padding-top: 4px;
+}
+
+
+.users-wrapper ul.users-footer li .add-btn.added {
+    background: #A9BD7A;
+}

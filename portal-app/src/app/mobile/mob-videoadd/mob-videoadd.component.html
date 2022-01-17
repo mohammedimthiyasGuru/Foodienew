@@ -1,0 +1,70 @@
+<div class="h-100 d-flex flex-column yellow_bg" *ngIf="video_add_text">
+  <div class="flx_0 pr-3" style="padding-left: 15px;padding-top: 12px;">
+    <a (click)="action()">
+    <i class="fa fa-chevron-circle-left back_arrow_2"></i>
+  </a>
+  </div>
+  <div class="flx_0">
+    <h4 class="p-3">Video Agreement</h4>
+  </div>
+<div class="flx_1 scroll_hide bg-white br_lr p-3">
+<div class="d-flex flex-column h-100">
+<div class="flx_1 scroll_hide">
+
+    <h4>Sample Title</h4>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+    </p>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+    </p>
+
+
+</div>
+<div class="flx_0" style="padding-bottom: 50px;">
+   <a  (click)="move_to_video_upload()"  class="btn_1 mt-4 d-block text-center box-shadow p-2 w-100">I agree</a>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="yellow_bg pt-4" *ngIf="!video_add_text">
+  <div class="flx_0 pr-3" style="padding-left: 15px;padding-top: 12px;">
+    <a (click)="move_to_video_upload_back()">
+    <i class="fa fa-chevron-circle-left back_arrow_2"></i>
+  </a>
+  </div>
+  <h4 class="p-3">Video Upload</h4>
+  <div class="p-3 bg-white br_lr">
+    <div class="login_form">
+          <div class="form_group">
+            <label class="label_1 mb-0 pb-1 d-block">File Upload</label>
+            <input type="file" (change)="selectImg($event)" class="n_input_1 bg-transparent w-100">
+          </div>
+          <div class="warning" *ngIf="video_error" >
+            Select Video
+       </div>
+       <div class="warning" *ngIf="video_error1" >
+        Please upload the video below 20 mb
+       </div>
+          <div class="form_group pt-3">
+            <label class="label_1 mb-0 pb-1 d-block">Description</label>
+      <textarea class="n_input_1 bg-transparent w-100" (keyup)="searchInterest()" [(ngModel)]="video_comments" name="video_comments"></textarea>
+          </div>
+          <div class="warning" *ngIf="comments_error" >
+            Comments should not be empty
+       </div>
+          <button (click)="uploadImg()" class="btn_1 mt-4 d-block text-center box-shadow p-2 w-100">
+            Upload
+          </button>
+        </div>
+
+  </div>
+

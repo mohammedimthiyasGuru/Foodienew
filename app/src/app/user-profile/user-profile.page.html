@@ -1,0 +1,138 @@
+<ion-content>
+  <div class="UserProfile" *ngIf="page_visible">
+      <div class="wrapper" style="margin-bottom: 75px;">
+          <div class="top_arrow pb-3 pt-2">
+              <div class="d-flex">
+                  <div class="flx_0 pr-2">
+                      <!-- <i class="fa fa-arrow-left back_arrow color-2"></i> -->
+                  </div>
+                  <div class="flx_1 text-center">
+                      <h5 class="txt_semi color_3"> User Profile</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="mo_row_1 pt-3 pb-3">
+              <div class="d-flex wrapper align-items-center">
+                  <div class="flx_0 pr-2">
+                      <div class="user_prof position-relative">
+                          <img class="w-100 h-100 rounded" src="{{user_details.profile_img}}" onerror="this.src='../../assets/profile_user.jpg'" alt="">
+                      </div>
+                  </div>
+                  <div class="flx_1 pl-2">
+                      <div class="prod_info">
+                          <h5 class="color_3 mb-0 txt_semi">{{user_details.user_name}}</h5>
+                          <p>{{user_details.user_email}}</p>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="p-3 pt-4 up_list">
+              <a href="/edit_profile" class="d-flex up_active">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-user-circle-o color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Edit Profile</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a  href="/sell_by_product" class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-credit-card-alt color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <!-- <h6 class="color_1 txt_normal">Payment Method</h6> -->
+                      <h6 class="color_1 txt_normal">Sell my product</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <div  class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a  class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-cutlery color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Order history</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <!-- <div class="bs_row w-100 d-block mt-2 mb-3"></div> -->
+              <!-- <a href="/videolist" class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-map-marker color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Video</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a> -->
+              <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a  href="/edit_profile" class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-percent color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">My Promocode</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a href="/edit_profile"  class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-cog color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Settings</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a href="/edit_profile"  class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-users color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Invite Friends</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+              <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              <a href="/chatlist"  class="d-flex">
+                  <div class="flx_0 up_let pl-2">
+                      <i class="fa fa-headphones color_1"></i>
+                  </div>
+                  <div class="flx_1">
+                      <h6 class="color_1 txt_normal">Support Center</h6>
+                  </div>
+                  <div class="flx_0 pl-2 pr-2">
+                      <i class="fa fa-angle-right"></i>
+                  </div>
+              </a>
+
+
+          </div>
+
+
+          <div class="p-2 pt-5 pb-4">
+              <a  href="/home" (click)="clear()" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Logout</a>
+          </div>
+      </div>
+  </div>
+</ion-content>

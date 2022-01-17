@@ -1,0 +1,7 @@
+{
+  "name": "foodie-portal-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

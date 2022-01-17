@@ -1,0 +1,581 @@
+<!-- Top Bar Starts -->
+<div class="top-bar clearfix">
+  <div class="row gutter">
+    <div class="col-lg-12">
+      <div class="page-title">
+        <h3>{{menu}} USER LIST</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Top Bar Ends -->
+<!-- Row starts -->
+<div class="d-sm-flex align-items-center justify-content-between flex-row custom_list">
+  <div class="panel yellow_panel text_black mr-2 h-100 flx_1 " (click)="loadUsers(3)" [ngClass]="{ 'active_user_list': menu == 'VENDORS' }">
+    <div class="text-center pr-3 pl-3">
+      <a href="admin/Vendor_form" > 
+        <span class="cart_icon d-inline-flex align-items-center justify-content-center">
+          <i class="icon-user"></i>
+        </span>
+        <h5 class="mb-0 pb-0">VENDORS</h5>
+      </a>
+    </div>
+    
+   <!-- <button style="background: black;" >+</button> -->
+  </div>
+  <div class="panel yellow_panel text_black mr-2 h-100 flx_1" (click)="loadUsers(2)" [ngClass]="{ 'active_user_list': menu == 'MERCHANTS' }">
+    <div class="text-center pr-3 pl-3">
+      <a href="admin/merchant_form">
+        <span class="cart_icon d-inline-flex align-items-center justify-content-center">
+          <i class="icon-user"></i>
+        </span>
+        <h5 class="mb-0 pb-0">MERCHANTS</h5>
+      </a>
+    </div>
+  
+  </div>
+  <div class="panel yellow_panel text_black mr-2 h-100 flx_1" (click)="loadUsers(4)" [ngClass]="{ 'active_user_list': menu == 'RIDERS' }">
+    <div class="text-center pr-3 pl-3">
+      <a>
+        <span class="cart_icon d-inline-flex align-items-center justify-content-center">
+          <i class="icon-bike"></i>
+        </span>
+        <h5 class="mb-0 pb-0">RIDERS</h5>
+      </a>
+    </div>
+  </div>
+  <div class="panel yellow_panel text_black mr-2 h-100 flx_1" (click)="loadUsers(5)" [ngClass]="{ 'active_user_list': menu == 'CUSTOMERS' }">
+    <div class="text-center pr-3 pl-3">
+      <a>
+        <span class="cart_icon d-inline-flex align-items-center justify-content-center">
+          <i class="icon-users"></i>
+        </span>
+        <h5 class="mb-0 pb-0">CUSTOMERS</h5>
+      </a>
+    </div>
+  </div>
+
+</div>
+<!-- Row ends -->
+
+
+
+
+<div class="row gutter">
+
+  <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let user of users">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="{{user.profile_img || '../../../assets/images/thumbs/user6.png'}}" class="img-fluid" alt="User">
+        </div>
+        <div class="users-detail">
+          <h5>{{user.profile_first_name}} {{user.profile_last_name}}</h5>
+          <p>{{user.profile_biz_name}}</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>{{user.profile_location}}</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>{{user.profile_contact}}</p>
+        </li>
+        <li>
+          <a href="admin/users/{{user.profile_id}}" class="add-btn added">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper yellow">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user5.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Fraser Davidson</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>France</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>8723236672</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper blue">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user4.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Kabio Basile</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Germany</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>3891236678</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper green">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user2.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Sean Mcabe</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Italy</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>9801236678</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user1.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Tim Boelaars</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Thailand</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>0091236678</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper yellow">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user13.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>David Lanham</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Japan</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>8888236678</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+
+<!-- <div class="pt-4 pb-2">
+  <h3 class="text-white shadow_none">
+    Sub Vendors
+  </h3>
+</div> -->
+<!-- <div class="row gutter">
+
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper yellow">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user12.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Jeremiah Shaw</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Ireland</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>5551236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user11.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Jackie Tran</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>India</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>9991236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper blue">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user10.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Ionut Zamfir</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>South Africa</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>2221236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user9.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Matthew Smith</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Austria</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>1321236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper green">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user8.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Dana Tanamachi</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Brazil</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>7751236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper yellow">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user7.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Louie Mantia</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>India</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>8851236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper blue">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user6.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Shaun Moynihan</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Denmark</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>7311236678</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper green">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user5.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Dustin Wallace</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Kenya</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>2366734511</p>
+        </li>
+        <li>
+          <a href="Subadmin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user4.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Veerle Pieters</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Holland</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>1451236773</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper yellow">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user3.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Charlie Waite</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>Russia</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>0051236699</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper blue">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user2.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Mason Yarnell</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>England</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>4451236670</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="panel yellow_panel text_black users-wrapper red">
+      <div class="users-info clearfix">
+        <div class="users-avatar">
+          <img src="../../../assets/images/thumbs/user1.png" class="img-fluid" alt="Arise Admin">
+        </div>
+        <div class="users-detail">
+          <h5>Justin Pervorse</h5>
+          <p>UX Designer</p>
+        </div>
+      </div>
+      <ul class="users-footer clearfix">
+        <li>
+          <p class="light">Location</p>
+          <p>USA</p>
+        </li>
+        <li>
+          <p class="light">Contact</p>
+          <p>1451236675</p>
+        </li>
+        <li>
+          <a href="admin/users" class="add-btn">
+            <i class="icon-plus3"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+<!-- Row ends -->

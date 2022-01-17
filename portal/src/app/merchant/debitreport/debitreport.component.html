@@ -1,0 +1,147 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>report-download</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h3>Report</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Top Bar Ends -->
+
+
+
+
+
+
+
+<div class="report_info pt-3">
+    <div class="panel mb-3">
+        <div class="panel-body">
+            <div class="form-group">
+                <label>Debit Report Type</label>
+                <select name="" class="form-control" id="" [(ngModel)]="format" name="format">
+                    <option value="">Select</option>
+                    <option value="Excel">Excel</option>
+                </select>
+                 <div class="warning" *ngIf="type_error.length !== 0">
+                    {{type_error}}
+                  </div>
+            </div>
+            <br>
+            <div class="form-group">  
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Select Start date</label> 
+                    <input type="date" [(ngModel)]="start_date" class="form-control" placeholder="Start Date">
+                    <div class="warning" *ngIf="start_date_error.length !== 0">
+                        {{start_date_error}}
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Select End date</label> 
+                    <input type="date" [(ngModel)]="end_date" class="form-control" placeholder="Start Date">
+                    <div class="warning" *ngIf="end_date_error.length !== 0">
+                        {{end_date_error}}
+                      </div>
+                </div>
+            </div>           
+            <div class="form-group pt-3">
+
+              <input type="checkbox"  class="largerCheckbox"  id="vehicle1" name="vehicle1" value="Bike" (change)="toggleEditable($event)"> Agree Terms &amp; Conditions
+              <div class="warning" *ngIf="agreement_error.length !== 0">
+                {{agreement_error}}
+              </div>
+
+                <!-- <input type="checkbox"> Agree Terms & Conditions -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success" (click)="fetch_date()">Download</button>
+    </div>
+</div>
+
+<div class="pt-2">
+  <div class="panel panel-red">
+      <div class="panel-heading mb-0 pb-0">
+          <h4 class="text-left">Report Detail</h4>
+      </div>
+      <div class="panel-body table-responsive pb-0">
+          <table class="table no-margin text-center">
+              <thead>
+                  <tr>
+                      <th>S.No</th>
+                      <th>Date & Time</th>
+                      <th>Order Id</th>
+                      <th>User Id</th>
+                      <th>Product Details</th>
+                      <th>Note</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <ng-container  *ngFor="let order of corderslist; let i = index">
+                      <tr *ngIf="corderslist.length !== 0">
+                          <td>
+                              {{i+1}}
+                          </td>
+                          <td>
+  
+                              {{order.order_detail.order_mst.order_date}}
+                          </td>
+                          <td>
+                              {{order.order_detail.order_id}}
+                          </td>
+                          <td>
+                              {{order.order_detail.order_mst.customer_info.profile_id}} 
+                              <!-- {{order.order_detail.order_mst.customer_info.profile_first_name}} -->
+                          </td>
+                          <td>
+                              <ng-container  *ngFor="let item of order.product_details">
+                                  <p>{{item.product.prod_id}} & {{item.product.prod_name}} x {{item.prod_qty}}</p>
+                              </ng-container>
+                              <!-- {{order.order_detail.order_mst.order_no}} -->
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                              {{order.order_qty}}
+                              <!-- {{order.product_details.length}} -->
+                          </td>
+                          <td>
+                              {{order.order_value}}
+                          </td>
+                          <!-- <td>
+                              <p *ngIf="order.order_detail.order_dtl_status == 'B'">Booked</p>
+                              <p *ngIf="order.order_detail.order_dtl_status == 'A'">Accepted</p>
+                              <p *ngIf="order.order_detail.order_dtl_status == 'C'">Cancelled</p>
+                              <p *ngIf="order.order_detail.order_dtl_status == 'P'">Pickedup</p>
+                              <p *ngIf="order.order_detail.order_dtl_status == 'D'">Delivered</p>
+                          </td> -->
+                          <td>Debited</td>
+                       </tr>	              
+                      </ng-container>
+                      <tr *ngIf="corderslist.length == 0">
+                          <td colspan="10">No Record Found</td>
+                       </tr>                   
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+

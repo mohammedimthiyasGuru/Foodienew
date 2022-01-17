@@ -1,0 +1,100 @@
+
+<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+		<div class="chat_wrapper w-100 h-100 position-relative yellow_bg overflow_auto">
+        <div class="d-flex flex-column h-100">
+            <div class="flx_0">
+					<div class="d-flex align-items-center">
+					<div class="flx_1">
+						<h3 class="p-3 txt_semi">Support Message</h3>
+					</div>
+					<div class="flx_0 pr-3">
+						<!-- <i class="fa new_msg_icon fa-pencil-square-o txt_black_2"></i> -->
+					</div>
+				</div>
+        </div>
+			<div class="flx_1 bg-white overflow_auto scroll_hide br_rad_1">
+			<div class="m-3">
+							<div class="search_panel bg_s_1">
+								<input type="text" placeholder="Search" >
+								<i class="fa fa-search d-flex align-items-center justify-content-center"></i>
+							</div>
+						</div>
+				<div class="chat_pro flx_1 ripple_effect">
+                <ul>
+                  <ng-container *ngFor="let item of final_data">
+                    <li class="unread_msg">
+				              	<a (click)="move_to_chat_detail(item.title_text)">
+                        <div class="d-flex">
+                            <div class="flx_1 ellips_txt">
+                                <div class="d-flex align-items-center">
+                                    <div class="flx_0 pr-2">
+                                        <div class="chat_user_prof">
+                                            <img src="../../assets/profile_user.jpg" class="c_img" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="flx_1 ellips_txt line_n">
+                                        <b class="d-block c_name txt_black2 pb-0 ellips_txt">Tic - {{item.title_text}}</b>
+                                        <span class="chat_org_title d-block"> {{item.profile_type}} </span>
+                                        <span class="c_msg pr-1 ellips_txt">  {{item.last_text}} </span>
+
+                                        <span class="tick_img pl-2">
+
+                                        <img src="../../assets/tick.png" class="tick_unread" alt=""/>
+                                        <img src="../../assets/tick-read.png" class="tick_read" alt=""/>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flx_0 text-center">
+                                <span class="c_time d-block">{{item.last_date | timeAgo}}</span>
+                                <span class="unread_cnt" *ngIf="item.unread_count !== 0">{{item.unread_count}}</span>
+                            </div>
+                        </div>
+
+
+          </a>
+
+                    </li>
+                  </ng-container>
+                    <!-- <li class="read_msg">
+				            	<a href="chat_view_2.html">
+                        <div class="d-flex">
+                            <div class="flx_1 ellips_txt">
+                                <div class="d-flex align-items-center">
+                                    <div class="flx_0 pr-2">
+                                        <div class="chat_user_prof">
+                                            <img src="../../assets/profile_user.jpg" class="c_img" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="flx_1 line_n ellips_txt">
+                                        <b class="d-block c_name txt_black2 pb-0 ellips_txt">sample username</b>
+                                        <span class="chat_org_title d-block"> Admin Support </span>
+                                        <span class="c_msg pr-1 ellips_txt"> sample msg</span>
+                                        <span class="tick_img pl-2">
+                                        <img src="../../assets/tick.png" class="tick_unread" alt=""/>
+                                        <img src="../../assets/tick-read.png" class="tick_read" alt=""/>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flx_0 text-center">
+                                <span class="c_time d-block">1 day ago</span>
+
+
+                            </div>
+                        </div>
+                       </a>
+                    </li> -->
+                </ul>
+            </div>
+			</div>
+
+
+        </div>
+
+
+    </div>
+	</div>
+</div>

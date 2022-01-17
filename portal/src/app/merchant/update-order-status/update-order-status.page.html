@@ -1,0 +1,700 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>update-order-status</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<!-- Top Bar Starts -->
+<div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h3>Update Order Status</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Top Bar Ends -->
+<!-- New Order start-->
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-6 text-center pb-4"   (click)="filter_status('B','A')">
+        <img src="../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img">
+        <div class="info_product text-center bg_color_1">
+            <h6 class="txt_normal">Order <br/> Confirmation</h6>
+            <div class="row pt-2">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi">{{confirm_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+                    <span class="go_btn">
+                        Go   <i class="fa fa-chevron-right" *ngIf="title !== 'Received'"></i>
+                        <i class="fa fa-chevron-down" *ngIf="title == 'Received'"></i>
+                     </span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-6 text-center pb-4" (click)="filter_status('A','P')">
+        <img src="../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img">
+        <div class="info_product text-center bg_color_4">
+            <h6 class="txt_normal">Order <br/>Preparing</h6>
+            <div class="row pt-2">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi">{{prepare_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+                    <span class="go_btn">
+                        Go   <i class="fa fa-chevron-right" *ngIf="title !== 'Approved'"></i>
+                        <i class="fa fa-chevron-down" *ngIf="title == 'Approved'"></i>
+                     </span>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-6 text-center pb-4" (click)="filter_status('P','D')">
+        <img src="../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img">
+        <div class="info_product text-center bg_color_2">
+            <h6 class="txt_normal">Rider <br/>Picked</h6>
+            <div class="row pt-2">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi">{{picked_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+
+                    <span class="go_btn">
+                        Go   <i class="fa fa-chevron-right" *ngIf="title !== 'Picked'"></i>
+                        <i class="fa fa-chevron-down" *ngIf="title == 'Picked'"></i>
+                     </span>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-6 text-center pb-4" (click)="filter_status('D','C')">
+        <img src="../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img">
+        <div class="info_product text-center bg_color_3">
+            <h6 class="txt_normal">Delivered & <br/> Cancelled</h6>
+            <div class="row pt-2">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi">{{deliver_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+                    <span class="go_btn">
+                        Go   <i class="fa fa-chevron-right" *ngIf="title !== 'Delivered'"></i>
+                        <i class="fa fa-chevron-down" *ngIf="title == 'Delivered'"></i>
+                     </span>
+                    <!-- <i class="fa fa-chevron-right"></i> -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- New Order start-->
+
+
+<div class="" *ngIf="corderslist.length !== 0">
+<!-- Receipt HTML Start  -->
+<div class="panel-heading mb-0 pb-0">
+<h3 class="text-left txt_bold">{{title}}</h3>
+</div>
+<div class="receipt_row">
+    <div class="row w-100">
+        <ng-container *ngFor="let order of corderslist | paginate: { itemsPerPage: 3, currentPage: p1, id: 'first' },let i = index">
+        <div class="col-lg-4 col-md-6 pb-3 recp_main recp_main_approved text-center pr-4">
+            <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+            <div class="ro_col text-center">
+                <div class="ro_col_1">
+                    <div class="row align-items-center">
+                        <div class="col-auto re_left_w text-center">
+                            <!-- <span (click)="updatestatus('Cancel',order)">
+                                <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                <span class="d-block">Rejected</span>
+                            </span> -->
+
+                            <div *ngIf="title == 'Received'">
+                                <span (click)="updatestatus('Cancel',order)" >
+                                    <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Reject</span>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Approved'">
+                                <span (click)="updatestatus('Cancel',order)" >
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancel</span>
+                                    <span class="d-block">00:30</span>
+                                </span>
+
+                            </div>
+
+                            <div *ngIf="title == 'Picked'">
+                                <span >
+                                    <span class="d-block">5678</span>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Delivered'">
+                                <span>
+                                    <div *ngIf="order.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div>
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span class="d-block">5678</span>
+                                    </div>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col text-center p-0">
+                            <div class="rc2_main">
+                            <div class="ro_col1_2">
+                            <div class="rc1_1 pb-1">
+                                <b class="text_yellow d-block"> {{business_name}}</b>
+                                <span class="cus_white">ID:{{busineess_id}}</span>
+                            </div>
+                            <div class="rc1_2 pt-1 pb-1">
+                                ORDER ID: {{order.order_id}}
+                            </div>
+                            <div class="row no-gutters pt-1">
+                                <div class="col text-left">
+                                    <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.prod_qty}}</span>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.prod_total_price}}</span>
+                                </div>
+                            </div>
+                              </div>
+                        </div>
+                        <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.customer}} </span>
+                        </div>
+                        <div class="col-auto re_left_w text-center">
+                           
+                        
+                            <div *ngIf="title == 'Received'">
+                                <span (click)="updatestatus('Accept',order)" >
+                                    <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Accept</span>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Approved'">
+                                <span>
+                                    <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Accepted</span>
+                                </span>
+
+                            </div>
+
+                            <div *ngIf="title == 'Picked'">
+                                <span >
+                                    <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Out for <br/> Delivery</span>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Delivered'">
+                                <span>
+                                    <!-- <div *ngIf="order.order_detail.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div> -->
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span >
+                                        <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                        <span class="d-block">Delivered</span>
+                                    </span>
+                                    </div>
+                                </span>
+                            </div>
+
+
+
+                           
+                           
+                           
+                           
+                           
+                            <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)" *ngIf="select_value == 'Order Confirmation'">
+                                <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                <span class="d-block">Accept</span>
+                            </span> -->
+
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ro_col_2 pt-2">
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                               s.no
+                                            </th>
+                                            <th>
+                                                Order Details
+                                            </th>
+                                            <th>
+                                                QTY
+                                            </th>
+                                            <th>
+                                                U.PRICE
+                                            </th>
+                                            <th>
+                                                PRICE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container  *ngFor="let item of order.order_prods; let i = index;">
+                                            <tr>
+                                                <td>
+                                                    {{i+1}}
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                   <b>Product id:</b> {{i + 1}} 
+                                                </div>
+                                                <p class="mb-0">
+                                                    {{item.prod_name}}
+                                                </p>
+                                                </td>
+                                                <td>
+                                                    {{item.prod_qty}}
+                                                </td>
+                                                <td>
+                                                    {{item.prod_price}}
+                                                </td>
+                                                <td>
+                                                    {{item.prod_total_price}}
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="ro_col_3 pt-2">
+                   
+                        
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                            Note If any
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                               some text
+                                            </td>
+                                          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="ro_col_4 pt-2">
+                   
+                        
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                           Date and time
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                {{order.order_date | date:'medium'}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                  
+                </div>
+                <div class="ro_col_5 pt-2 pl-3">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                            <b class="d-block">John </b>
+                            <b class="d-block">Approved</b>
+                        </div>
+                        <div class="col-lg-4 col-12 text-center text-md-right">
+                            <a href='#'><b>Enquiry</b></a>
+                           
+                        </div>
+                    </div>
+
+
+                </div>
+               
+            </div>
+
+
+            <div class="recp_approved recp_main_seal" *ngIf="order.order_status == 'A'">
+            </div>
+            <div class="recp_cancel recp_main_seal" *ngIf="order.order_status == 'C'">
+            </div>
+            <div class="recp_riderpick recp_main_seal" *ngIf="order.order_status == 'P'">
+            </div>
+            <div class="recp_deliever recp_main_seal" *ngIf="order.order_status == 'D'">
+            </div>
+
+
+        </div>
+        </ng-container>
+
+        <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+            <h4 class="text-left txt_bold">No Record found</h4>
+        </div> -->
+     
+    </div>
+    <div class="pt-5 pb-3 text-center">
+        <nav aria-label="Page navigation">
+            <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p1 = $event" id="first"></pagination-controls>
+        </nav>
+    </div>
+</div>
+<!-- Receipt HTML End  -->
+</div>
+
+
+<div class="" *ngIf="history_list.length !== 0">
+<!-- Receipt HTML Start  -->
+<div class="panel-heading mb-0 pb-0">
+    <h3 class="text-left txt_bold">{{title}} History</h3>
+</div>
+<div class="receipt_row">
+    <div class="row w-100">
+        <ng-container *ngFor="let order of history_list | paginate: { itemsPerPage: 3, currentPage:  p2, id: 'second' },let i = index">
+        <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+            <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+            <div class="ro_col text-center">
+                <div class="ro_col_1">
+                    <div class="row align-items-center">
+                        <div class="col-auto text-center">
+
+
+
+
+                            <div *ngIf="title == 'Received'">
+                                    <span (click)="updatestatus('Cancel',order)" >
+                                        <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                        <span class="d-block">Cancel</span>
+                                        <span class="d-block">00:30</span>
+                                    </span>
+                            </div>
+
+                            <div *ngIf="Approved == 'Approved'">
+                                <span >
+                                    <span class="d-block">5678</span>
+                                </span>
+
+                            </div>
+
+                            <div *ngIf="title == 'Picked'">
+                                <span>
+                                    <div *ngIf="order.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div>
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span class="d-block">5678</span>
+                                    </div>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Delivered'">
+                                <span>
+                                    <div *ngIf="order.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div>
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span class="d-block">5678</span>
+                                    </div>
+                                </span>
+                            </div>
+
+
+
+
+                           
+                            <!-- <span *ngIf="order.order_detail.order_dtl_status == 'C'">
+                                <img src="../../../../../assets/images/r_icon_5.png" (click)="updatestatus('Cancel',order)" alt="" class="r_close_icon"/>
+                                <span class="d-block">Cancel</span>
+                            </span>
+                            <span *ngIf="order.order_detail.order_dtl_status !== 'C'">
+                                <img src="../../../../../assets/images/r_icon_4.png" (click)="updatestatus('Cancel',order)" alt="" class="r_close_icon"/>
+                                <span class="d-block">Cancel</span>
+                            </span> -->
+                        </div>
+                        <div class="col text-center p-0">
+                            <div class="rc2_main">
+                            <div class="ro_col1_2">
+                            <div class="rc1_1 pb-1">
+                                <b class="text_yellow d-block"> {{business_name}}</b>
+                                <span class="cus_white">ID:{{busineess_id}}</span>
+                            </div>
+                            <div class="rc1_2 pt-1 pb-1">
+                                ORDER ID: {{order.order_id}}
+                            </div>
+                            <div class="row no-gutters pt-1">
+                                <div class="col text-left">
+                                    <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.prod_qty}}</span>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.prod_total_price}}</span>
+                                </div>
+                            </div>
+                              </div>
+                        </div>
+                        <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.customer}} </span>
+                        </div>
+                        <div class="col-auto text-center">
+
+
+                            <div *ngIf="title == 'Received'">
+                                <span>
+                                    <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Accepted</span>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Approved'">
+                                <span >
+                                    <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Out for <br/> Delivery</span>
+                                </span>
+
+                            </div>
+
+                            <div *ngIf="title == 'Picked'">
+                                <span>
+                                    <!-- <div *ngIf="order.order_detail.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div> -->
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span >
+                                        <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                        <span class="d-block">Delivered</span>
+                                    </span>
+                                    </div>
+                                </span>
+                            </div>
+
+                            <div *ngIf="title == 'Delivered'">
+                                <span>
+                                    <!-- <div *ngIf="order.order_detail.order_dtl_status == 'C'">
+                                    <img src="../../../../../assets/images/r_icon_6.png" alt="" class="r_close_icon"/>
+                                    <span class="d-block">Cancelled</span>
+                                   </div> -->
+                                   <div *ngIf="order.order_dtl_status == 'D'">
+                                    <span >
+                                        <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                        <span class="d-block">Delivered</span>
+                                    </span>
+                                    </div>
+                                </span>
+                            </div>
+
+
+
+
+
+                            
+                            <!-- <span class="pl-1 d-block" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                                <img src="../../../../../assets/images/r_icon_5.png" alt="" class="r_close_icon"/>
+                                <span class="d-block">Accepted</span>
+                            </span>
+
+                            <span class="pl-1 d-block" *ngIf="order.order_detail.order_dtl_status !== 'A'">
+                                <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                <span class="d-block">Accepted</span>
+                            </span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ro_col_2 pt-2">
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                               s.no
+                                            </th>
+                                            <th>
+                                                Order Details
+                                            </th>
+                                            <th>
+                                                QTY
+                                            </th>
+                                            <th>
+                                                U.PRICE
+                                            </th>
+                                            <th>
+                                                PRICE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container  *ngFor="let item of order.order_prods; let i = index">
+                                            <tr>
+                                                <td>
+                                                    {{i+1}}
+                                                </td>
+                                                <td>
+                                                <div>
+                                                   <b>Product is:</b> {{i+1}}
+                                                </div>
+                                                <p class="mb-0">
+                                                    {{item.prod_name}}
+                                                </p>
+                                                </td>
+                                                <td>
+                                                    {{item.prod_qty}}
+                                                </td>
+                                                <td>
+                                                    {{item.prod_price}}
+                                                </td>
+                                                <td>
+                                                    {{item.prod_total_price}}
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="ro_col_3 pt-2">
+                   
+                        
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                            Note If any
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                               some text
+                                            </td>
+                                          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="ro_col_4 pt-2">
+                   
+                        
+                        <div class="text-left position-relative">
+                        <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                            <div class="ro_tble">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                           Date and time
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                {{order.order_date | date:'medium'}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                  
+                </div>
+                <div class="ro_col_5 pt-2 pl-3">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                            <b class="d-block">John </b>
+                            <b class="d-block">Approved</b>
+                        </div>
+                        <div class="col-lg-4 col-12 text-center text-md-right">
+                            <a href='#'><b>Enquiry</b></a>
+
+                            
+                           
+                        </div>
+                    </div>
+
+
+                </div>
+               
+            </div>
+            
+                 <div class="recp_approved recp_main_seal" *ngIf="order.order_status == 'A'">
+                </div>
+                <div class="recp_cancel recp_main_seal" *ngIf="order.order_status == 'C'">
+                </div>
+                <div class="recp_riderpick recp_main_seal" *ngIf="order.order_status == 'P'">
+                </div>
+                <div class="recp_deliever recp_main_seal" *ngIf="order.order_status == 'D'">
+                </div>
+                
+            
+        </div>
+        </ng-container>
+        <!-- <div class="panel-heading mb-0 pb-0" *ngIf="history_list.length == 0">
+            <h4 class="text-left txt_bold">No Record found</h4>
+        </div> -->
+    </div>
+    <div class="pt-5 pb-3 text-center">
+        <nav aria-label="Page navigation">
+            <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p2 = $event" id="second"></pagination-controls>
+        </nav>
+    </div>
+</div>
+</div>
+<!-- Receipt HTML End  -->
+
+
+
+
+

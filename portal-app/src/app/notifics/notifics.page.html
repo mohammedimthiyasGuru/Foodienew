@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="yellow_bg pt-5 h-100">
+    <h3 class="txt_semi pb-2 pl-3">Notification</h3>
+    <button (click)="send_notification()" >send notification</button>
+  <div class="chat_pro h-100 chat_pro flx_1 bg-white overflow_auto scroll_hide">
+    <ul>
+        <li class="pb-3" routerLink="/chat-message/{{user.profile_id}}" *ngFor="let user of users; index as line">
+            <div class="row no-gutters align-items-center">
+                <div class="col-9 pr-2">
+                    <div class="row no-gutters align-items-start">
+                        <div class="col-3 pr-2 text-center">
+                            <img src="../../assets/notification-2.png" class="c_img" alt=""/>
+                        </div>
+                        <div class="col-9 line_n">
+                            <b class="d-block c_name txt_semi pb-0" style="font-size: 15px;">{{user.chat_title}}</b>
+                            <span class="c_msg  pr-1 txt_single_line w-100 d-block" style="font-size: 12px;">{{user.chat_content}}</span>
+                            <!-- <span class="tick_img pl-2">
+                            <img src="../../assets/tick.png" class="tick_unread" alt=""/>
+                            <img src="../../assets/tick-read.png" class="tick_read" alt=""/>
+                        </span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 pt-2 text-center">
+                    <span class="c_time d-block pt-2">{{user.createdAt | timeAgo}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>
+</ion-content>

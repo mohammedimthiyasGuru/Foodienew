@@ -1,0 +1,398 @@
+<ion-content>
+
+  <!-- <app-loader *ngIf="loader"></app-loader> -->
+
+  <div class="d-flex w-100 h-100 flex-column" *ngIf="show_dashboard">
+    <div class="flx_1 overflow_auto">
+
+    <div class="box_shadow mb-2">
+    <div class="wrapper pt-3 pb-2">
+          <div class="ch_row_1">
+                          <div class="row">
+                              <div class="col-9 d-flex align-items-start" (click)="change_location()">
+                                  <div class="flx_0 pr-3">
+                                      <i class="fa fa-map-marker icon_1 color_3" aria-hidden="true"></i>
+                                  </div>
+                                  <div>
+                                      <h6 class="color_3 mb-0">Office</h6>
+                                      <p class="color_1 ts_1 mb-0">{{location_text}}</p>
+                                  </div>
+                              </div>
+                              <div class="col-3 d-flex align-items-center flex-row justify-content-end">
+                                  <div class="noti_icon position-relative" (click)="move_notification()">
+                                      <i class="fa fa-bell-o icon_1 color_3" ></i>
+                                      <span class="noti_count" *ngIf="notification_status">{{notification_count}}</span>
+                                  </div>
+
+                  <div class="pl-3 shop_cart_icon" (click)="move_cart()">
+                    <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
+                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
+      </div>
+    </div>
+
+      <div class="wrapper pb-3">
+
+      <div class="pt-1 pb-2">
+              <div class="d-flex align-items-center pb-2">
+                <div class="pr-2 d-flex flex-row align-items-center">
+                   <h4 style="font-size: 1.5rem;font-weight: 500;" class="txt_semi pr-2 mb-0"> Hi</h4>
+                   <h6 class="mb-0" style="padding-top:3px;">{{user_name}}</h6>
+                </div>
+              </div>
+            </div>
+
+          <div class="position-relative">
+        <div class="top_search">
+              <i class="fa fa-search"></i>
+              <input type="text" [(ngModel)]="search_text" (ngModelChange)="searchInterest()" placeholder="Search for shops & restaurants" class="w-100">
+        </div>
+        <div class="search_result" *ngIf="search_visible">
+          <ul class="list-group">
+          <ng-container *ngFor="let rest of search_list">
+           <li class="list-group-item list-group-item-action" (click)="shop_detail(rest)" >{{rest.profile_biz_type}} -> {{rest.profile_biz_name}}</li>
+           </ng-container>
+  </ul>
+        </div>
+
+          </div>
+      </div>
+    <div class="pd4_wrapper position-relative p-2">
+                  <div class="pd4_col_1 p-3 text_black pdf4_bs pd4_box bg_color_6">
+                      <div class="row align-items-end">
+                          <div class="col-5 pl-4">
+                              <img src="../../assets/product_img_2.jpg" class="pdf4_img pdf4_img_pb img-fluid" alt="">
+                          </div>
+                          <div class="col-7">
+                              <article>
+                                  <h4 class="txt_semi mb-0 pb-1">Restaurant</h4>
+                                  <p class="pd_para pb-1">
+                                      Lorem Ipsum is simply dummy text of the.
+                                  </p>
+                                  <a (click)="move_next_page('Restaurant')" class="go_btn_2 mb-2"> Go <i class="fa fa-arrow-right pl-2"></i>
+                                  </a>
+                              </article>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row no-gutters pb_cus_1">
+                      <div class="col-6 pr-2">
+                          <div class="pd4_col_2 text_black pd4_box pd4_bg_2 h-100">
+                              <div>
+                                  <article class="pb-3">
+                                      <h4 class="txt_semi">Home Kitchen <br>Family</h4>
+                                      <p class="pd_para pb-1">
+                                          Lorem Ipsum is simply dummy text of the.
+                                      </p>
+                                      <a (click)="move_next_page('Home Kitchen')" class="go_btn_2"> Go <i class="fa fa-arrow-right pl-2"></i>
+                                      </a>
+                                  </article>
+                              </div>
+                              <div class="pb-2 text-center">
+                                  <img src="../../assets/product_img_2.jpg" class="pdf4_img pdf4_img_pb img-fluid" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-6 pl-2">
+                          <div class="pd4_col_2 text_black pd4_box pd4_bg_2 h-100">
+                              <div class="pb-2 text-center">
+                                  <img src="../../assets/product_img_2.jpg" class="pdf4_img pdf4_img_pt img-fluid" alt="">
+                              </div>
+                              <div>
+                                  <article class="pb-3">
+                                      <h5 class="txt_semi">Caterers <br>Family</h5>
+                                      <p class="pd_para pb-1">
+                                          Lorem Ipsum is simply dummy text of the.
+                                      </p>
+                                      <a (click)="move_next_page('Caterers')" class="go_btn_2"> Go <i class="fa fa-arrow-right pl-2"></i>
+                                      </a>
+                                  </article>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="pd4_col_1 p-3 text_black  pdf4_bs pd4_box bg_color_1">
+                      <div class="row">
+                          <div class="col-7">
+                              <article>
+                                  <h5 class="txt_semi">Shop</h5>
+                                  <p class="pd_para pb-1">
+                                      Lorem Ipsum is simply dummy text of the.
+                                  </p>
+                                  <a (click)="move_next_page('Shop')"  class="go_btn_2 mb-2"> Go <i class="fa fa-arrow-right pl-2"></i>
+                                  </a>
+                              </article>
+                          </div>
+                          <div class="col-5 pr-3">
+                              <img src="../../assets/product_img_2.jpg" class="pdf4_img pdf4_img_pt img-fluid" alt="">
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+    </div>
+
+  </div>
+
+
+<!-- ////////Rider Rating/////// -->
+  <div class="chat_wrapper w-100 h-100 position-relative overflow_auto" *ngIf="show_merchant_rating" >
+
+    <div class="map_overlay map_overlay_2  panel_mo d-flex flex-column p-3">
+        <div class="po_head pb-2">
+            <div class="d-flex align-items-center">
+                <div class="flx_1 pr-2" style="text-align: center;">
+                    <!-- <i class="fa fa-arrow-left txt_yellow"></i> -->
+                    <h3>Merchant Rating</h3>
+                </div>
+            </div>
+        </div>
+        <div class="mo_info">
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="prof_img_2">
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                    </div>
+                    <div class="pt-2">
+                        <h4 class="mo_txt_1 d-block ellips_txt">{{merchant_rating_detail.merchant_info.profile_biz_name}}</h4>
+                        <span class="sml_txt d-block">{{merchant_rating_detail.merchant_location.mer_address}}</span>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <span class="sml_txt d-block">Order Price</span>
+                    <h3 class="txt_normal txt_yellow pb-4">RM {{merchant_rating_detail.order_amount}}</h3>
+                    <span class="sml_txt d-block">Payment via</span>
+                    <div class="pt-2">
+                        <i class="fa fa-credit-card-alt txt_yellow pr-1"></i>
+                        <span>{{merchant_rating_detail.order_trans_type}}</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mo_i_1 pt-5 bd_1 mb-2 pb-2">
+                <div class="d-flex pb-2">
+                    <div class="flx_1 pr-2">
+                        <span class="sml_txt d-block">Address Info</span>
+                    </div>
+                    <div class="flx_0 text-right">
+                        <b class="sml_txt_2 d-block">{{merchant_rating_detail.distance}} KM</b>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <div class="d-flex">
+                        <i class="fa fa-map-marker flx_0 txt_yellow icon_3x pr-4"></i>
+                        <p class="mb-0 flx_1 txt_white">{{merchant_rating_detail.merchant_location.mer_address}}</p>
+                    </div>
+                    <div class="mt-2 mb-2 ml-1 dot_line">
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa fa-location-arrow flx_0 txt_yellow icon_3x pr-4"></i>
+                        <p class="mb-0 flx_1 txt_white">{{merchant_rating_detail.order_location.address_text}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="rate_star pt-3 pb-3">
+                <div class="text-center">
+                    <span class="sml_txt d-block pb-3">Rate your Merchant</span>
+                       <div  *ngIf="merchant_selected_start_count == 0" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                        <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(1)"></i>
+                        <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(2)"></i>
+                        <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(3)"></i>
+                        <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(4)"></i>
+                        <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(5)"></i>
+                      </div>
+                        <div  *ngIf="merchant_selected_start_count == 1" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(1)" ></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(2)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(3)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(4)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(5)"></i>
+                        </div>
+                        <div *ngIf="merchant_selected_start_count == 2" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(1)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(2)" ></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(3)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(4)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(5)"></i>
+                        </div>
+                        <div *ngIf="merchant_selected_start_count == 3" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(1)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(2)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(3)" ></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(4)"></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(5)"></i>
+                        </div>
+                        <div *ngIf="merchant_selected_start_count == 4" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(1)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(2)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(3)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(4)" ></i>
+                          <i class="fa fa-star-o txt_white" (click)="merchant_selected_start_counts(5)"></i>
+                        </div>
+                        <div *ngIf="merchant_selected_start_count == 5" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(1)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(2)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(3)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(4)" ></i>
+                          <i class="fa fa-star txt_yellow" (click)="merchant_selected_start_counts(5)" ></i>
+                        </div>
+                </div>
+                <div class="rate_comments pt-2 pb-3">
+                    <textarea style="width: 100%;height: 75px;color: #272727;" [(ngModel)]="merchant_comments" name="merchant_comments" type="text" placeholder="Add comment (Optional)"></textarea>
+                </div>
+            </div>
+
+            <div class="text-center pb-3">
+                <button class="w-100 btn btn_1" (click)="merchant_rating_submit()"> <b class="txt_semi txt_black2">Submit</b></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ///////////Merchant Rating///////// -->
+<div class="chat_wrapper w-100 h-100 position-relative overflow_auto" *ngIf="show_rider_rating">
+  <div class="googlemap w-100 h-100 position-relative">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16300690.430084962!2d100.57057402696853!3d4.089292544186079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3034d3975f6730af%3A0x745969328211cd8!2sMalaysia!5e0!3m2!1sen!2sin!4v1633917770680!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <div class="map_overlay map_overlay_2  panel_mo d-flex flex-column p-3">
+      <div class="po_head pb-2">
+          <div class="d-flex align-items-center">
+            <div class="flx_1 pr-2" style="text-align: center;">
+              <!-- <i class="fa fa-arrow-left txt_yellow"></i> -->
+              <h3>Rider Rating</h3>
+          </div>
+          </div>
+      </div>
+      <div class="mo_info">
+          <div class="row">
+              <div class="col-6">
+                  <div class="prof_img_2">
+                      <img src="../../assets/profile_user.jpg" alt=""/>
+                  </div>
+                  <div class="pt-2">
+                      <h4 class="mo_txt_1 d-block ellips_txt">{{rider_rating_detail.driver_info.profile_first_name}} {{rider_rating_detail.driver_info.profile_last_name}}</h4>
+                      <span class="sml_txt d-block">{{rider_rating_detail.merchant_location.mer_address}}</span>
+                  </div>
+
+              </div>
+              <div class="col-6">
+                <span class="sml_txt d-block">Order Price</span>
+                <h3 class="txt_normal txt_yellow pb-4">RM {{rider_rating_detail.order_amount}}</h3>
+                <span class="sml_txt d-block">Payment via</span>
+                <div class="pt-2">
+                    <i class="fa fa-credit-card-alt txt_yellow pr-1"></i>
+                    <span>{{rider_rating_detail.order_trans_type}}</span>
+                </div>
+            </div>
+          </div>
+
+
+          <div class="mo_i_1 pt-5 bd_1 mb-2 pb-2">
+            <div class="d-flex pb-2">
+                <div class="flx_1 pr-2">
+                    <span class="sml_txt d-block">Address Info</span>
+                </div>
+                <div class="flx_0 text-right">
+                    <b class="sml_txt_2 d-block">{{rider_rating_detail.distance}} KM</b>
+                </div>
+            </div>
+
+            <div class="pt-2">
+                <div class="d-flex">
+                    <i class="fa fa-map-marker flx_0 txt_yellow icon_3x pr-4"></i>
+                    <p class="mb-0 flx_1 txt_white">{{rider_rating_detail.merchant_location.mer_address}}</p>
+                </div>
+                <div class="mt-2 mb-2 ml-1 dot_line">
+                </div>
+                <div class="d-flex">
+                    <i class="fa fa-location-arrow flx_0 txt_yellow icon_3x pr-4"></i>
+                    <p class="mb-0 flx_1 txt_white">{{rider_rating_detail.order_location.address_text}}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="rate_star pt-3 pb-3">
+            <div class="text-center">
+                <span class="sml_txt d-block pb-3">Rate your Rider</span>
+                   <div  *ngIf="rider_selected_start_count == 0" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                    <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(1)"></i>
+                    <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(2)"></i>
+                    <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(3)"></i>
+                    <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(4)"></i>
+                    <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(5)"></i>
+                  </div>
+                    <div  *ngIf="rider_selected_start_count == 1" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(1)" ></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(2)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(3)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(4)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(5)"></i>
+                    </div>
+                    <div *ngIf="rider_selected_start_count == 2" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(1)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(2)" ></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(3)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(4)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(5)"></i>
+                    </div>
+                    <div *ngIf="rider_selected_start_count == 3" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(1)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(2)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(3)" ></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(4)"></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(5)"></i>
+                    </div>
+                    <div *ngIf="rider_selected_start_count == 4" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(1)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(2)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(3)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(4)" ></i>
+                      <i class="fa fa-star-o txt_white" (click)="rider_selected_start_counts(5)"></i>
+                    </div>
+                    <div *ngIf="rider_selected_start_count == 5" class="text-center pl-5 pr-5 rate_star_li d-flex flex-row justify-content-between align-items-center">
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(1)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(2)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(3)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(4)" ></i>
+                      <i class="fa fa-star txt_yellow" (click)="rider_selected_start_counts(5)" ></i>
+                    </div>
+            </div>
+            <div class="rate_comments pt-2 pb-3">
+                <textarea style="width: 100%;height: 75px;color: #272727;" [(ngModel)]="rider_comments" name="rider_comments" type="text" placeholder="Add comment (Optional)"></textarea>
+            </div>
+        </div>
+
+
+
+
+          <div class="text-center pb-3">
+              <button class="w-100 btn btn_1" (click)="rider_rating_submit()" > <b class="txt_semi txt_black2">Submit
+                   </b></button>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+
+
+
+</ion-content>
+

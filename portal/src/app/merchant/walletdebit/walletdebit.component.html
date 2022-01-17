@@ -1,0 +1,138 @@
+
+ <!--<ion-header>
+  <ion-toolbar>
+    <ion-title>wallet-point</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h3>Debit Wallet Point</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Top Bar Ends -->
+
+<h3 class="text-left text-red">Overview</h3>
+
+<div class="row">
+    <div class="col-lg-6 col md-6">
+        <div class="panel">
+            <div class="sessions">
+                <h2 class="left">{{today_value}} <i class="icon-direction up"></i></h2>
+                <div  class="graph w-100 invoice" style="width: 100%;"></div>
+            </div>
+            <h5 class="info pt-3">Today Debit</h5>
+        </div>
+    </div>
+    <div class="col-lg-6 col md-6">
+        <div class="panel">
+            <div class="sessions">
+                <h2 class="left">{{total_value}} <i class="icon-direction up"></i></h2>
+                <div  class="graph w-100 invoice" style="width: 100%;"></div>
+            </div>
+            <h5 class="info pt-3">Total Debit</h5>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- <div class="col-md-12">
+        <div class="panel">
+            <h4 class="text-left text-red">Debit Report</h4>
+
+          
+        </div>
+    </div> -->
+
+</div>   
+
+
+<div class="pt-3">
+    <h4 class="text-left text-red">Debit Report</h4>
+
+    <div class="panel panel-yellow pt-0">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover no-margin">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Date & Time</th>
+                            <th>Order Id</th>
+                            <th>Product Id</th>
+                            <th>User Id</th>
+                            <th>Product Details</th>
+                            <th>Note</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container  *ngFor="let order of corderslist; let i = index">
+                           <tr *ngIf="corderslist.length !== 0">
+                               <td>
+                                   {{i+1}}
+                               </td>
+                               <td>
+       
+                                   {{order.order_detail.order_mst.order_date}}
+                               </td>
+                               <td>
+                                   {{order.order_detail.order_id}}
+                               </td>
+                               <td>
+                                   {{order.order_detail.order_mst.customer_info.profile_id}} 
+                                   <!-- {{order.order_detail.order_mst.customer_info.profile_first_name}} -->
+                               </td>
+                               <td>
+                                   <ng-container  *ngFor="let item of order.product_details">
+                                       <p>{{item.product.prod_id}} & {{item.product.prod_name}} x {{item.prod_qty}}</p>
+                                   </ng-container>
+                                   <!-- {{order.order_detail.order_mst.order_no}} -->
+                               </td>
+                               <td>
+                               </td>
+                               <td>
+                                   {{order.order_qty}}
+                                   <!-- {{order.product_details.length}} -->
+                               </td>
+                               <td>
+                                   {{order.order_value}}
+                               </td>
+                               <!-- <td>
+                                   <p *ngIf="order.order_detail.order_dtl_status == 'B'">Booked</p>
+                                   <p *ngIf="order.order_detail.order_dtl_status == 'A'">Accepted</p>
+                                   <p *ngIf="order.order_detail.order_dtl_status == 'C'">Cancelled</p>
+                                   <p *ngIf="order.order_detail.order_dtl_status == 'P'">Pickedup</p>
+                                   <p *ngIf="order.order_detail.order_dtl_status == 'D'">Delivered</p>
+                               </td> -->
+
+                               <td>Debited</td>
+                              
+                               <td>
+                                <!-- <button class="btn btn-success" (click)="history_view(i)">View</button> -->
+                               </td>
+                            </tr>	              
+                           </ng-container>
+                           <tr *ngIf="corderslist.length == 0">
+                               <td colspan="10">No Record Found</td>
+                            </tr>
+                                                  
+                       </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

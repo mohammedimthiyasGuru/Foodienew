@@ -1,0 +1,185 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>otp</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+  <!-- Header starts -->
+
+  <div class="">
+  <div class="video_home">
+    <span class="video_left_corner"></span>
+    <span class="video_right_corner"></span>
+    <video autoplay [muted]="'muted'" loop id="myVideo">
+      <source src="../../../assets/video/home_video.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+  <div class="home_main">
+
+    <section class="home_wrapper">
+      <div class="container">
+        <div class="text-right pt-3">
+          <a href="merchant/login" class="pr-3 text-white">Login</a> |
+          <a class="pl-3 text-white" href="home">Join now</a>
+        </div>
+      </div>
+      <div class="home_form_row pt-5 pb-4">
+        <div class="container pt-4">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="logo_home pt-3">
+                <img style="height:180px;" src="../../../assets/images/logo_new.png" />
+              </div>
+              <div class="hf_left pt-5">
+                <h2 class="text-white shadow_none"><b> PARTNER WITH US</b></h2>
+                <p class="text-white">
+                  We're hungry for the best things in life: delicious food, exploring the city and
+                  bringing
+                  the first bite of food to our customers.
+                  foodie is multi-national, fast-growing business that maintains its appeal as
+                  localised
+                  service with community ambition.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hr_right home_form_list cus_pt_1">
+                  <h4 class="text-white shadow_none pb-2">
+                      OTP 
+                  </h4>
+                  <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label class="control-label text-white">Enter Your OTP</label>
+                    <div class="loading_input">
+                      <input type="text" class="form-control input_2" maxlength="4" (keyup)="bussiness_name_tag_action()" formControlName="otp" [ngClass]="{ 'is-invalid': submitted && f.otp.errors }" placeholder="Enter Your OTP">
+                      <div class="load_input spinner-border-sm spinner-border" *ngIf="otp_load"></div>
+                      </div>
+                      <div class="warning" *ngIf="otp_error">
+                        {{otp_error_msg}}
+                       </div>
+                      <div *ngIf="submitted && f.otp.errors" class="warning">
+                        <div *ngIf="f.otp.errors.required">OTP is required</div>
+                        <div *ngIf="f.otp.errors.minlength">OTP must be 4 characters</div>
+                        </div>
+                  </div>
+                  <div class="">
+                    <!-- <span style="color: white;text-align: right;" class="d-block color_1 pb-1">Didn't you received any code?</span> -->
+                    <span style="color: white;text-align: right;" class="d-block color_2 cursor-pointer default"><a (click)="resend_otp()">Resend</a></span>
+                  </div>
+                  <div style="margin-top: 10px;">
+                      <button type="submit" class="btn btn-info w-100">Submit</button>
+                  </div>
+                  
+                </form>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step_activation pt-5 pb-5">
+        <div class="container">
+          <h2 class="text-white shadow_none text-center pb-4"><b> Steps to Activation</b></h2>
+          <div class="row text-center text-white">
+            <div class="col-lg-3 col md-6">
+              <i class="icon-pencil icon-3x"></i>
+              <h4 class="mb-2 pt-3"> Step 1:</h4>
+              <p>Sign up online</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <i class="icon-folder5 icon-3x"></i>
+              <h4 class="mb-2 pt-3"> Step 2:</h4>
+              <p>Upload Your Menu</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <i class="icon-checkmark icon-3x"></i>
+              <h4 class="mb-2 pt-3"> Step 3:</h4>
+              <p>Approval</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <i class="icon-food icon-3x"></i>
+              <h4 class="mb-2 pt-3"> Step 4:</h4>
+              <p>GO LIVE on Foodie</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step_activation pt-5">
+
+
+        <div class="container">
+          <h2 class="text-white shadow_none pb-2 text-center"><b> Advantage of Joining Us</b></h2>
+          <ul class="text-white text-center">
+            <li>
+              <div class="d-inline-flex align-items-center pr-3">
+                <div class="flx_0 pr-2">
+                  <i class="icon-checkmark icon-2x"></i>
+                </div>
+                <div class="flx_1">
+                  More Sales and ROI
+                </div>
+
+              </div>
+
+              <div class="d-inline-flex align-items-center pr-3">
+                <div class="flx_0 pr-2">
+                  <i class="icon-checkmark icon-2x"></i>
+                </div>
+                <div class="flx_1">
+                  Unwavering Support
+                </div>
+
+              </div>
+              <div class="d-inline-flex align-items-center pr-3">
+                <div class="flx_0 pr-2">
+                  <i class="icon-checkmark icon-2x"></i>
+                </div>
+                <div class="flx_1">
+                  Extensibility
+                </div>
+
+              </div>
+
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="how_work pt-5 pb-5">
+        <div class="container pt-5">
+          <h2 class="text-white shadow_none text-center pb-4"><b> How it Works</b></h2>
+          <div class="row text-center text-white">
+            <div class="col-lg-3 col md-6">
+              <h2 class="text_number_1 text-success shadow_none">01</h2>
+              <p>Customer Choose Home cooking’sorRestaurant based on their nearby location through App.</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <h2 class="text_number_1 text-danger shadow_none">02</h2>
+
+              <p>Food Makers accept Orders through our Merchant App and start prepare food on time.</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <h2 class="text_number_1 text-info shadow_none">03</h2>
+
+              <p>Our Riders reach your place within few mins from order placed.</p>
+            </div>
+            <div class="col-lg-3 col md-6">
+              <h2 class="text_number_1 text-warning shadow_none">04</h2>
+
+              <p>Your Food has been Deliveredto customers from Foodie.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center pt-5">
+          <a href="#" class="btn btn-info pl-5 pr-5">Get Started</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</ion-content>

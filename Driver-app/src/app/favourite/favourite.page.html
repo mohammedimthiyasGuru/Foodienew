@@ -1,0 +1,87 @@
+<ion-content>
+  <app-loader *ngIf="loader"></app-loader>
+  <div class="favourite h-100">
+    <div class="d-flex h-100 flex-column">
+      <div class="flx_0">
+        <header class="wrapper pt-2">
+          <div class="top_arrow pb-3 pt-2">
+            <div class="d-flex">
+                <div class="flx_0 pr-2">
+                    <i class="fa fa-arrow-left back_arrow color-2" (click)="back_action()"></i>
+                </div>
+                <div class="flx_1 text-center">
+                  <h5 class="txt_semi color_3"> Favourite</h5>
+                </div>
+            </div>
+        </div>
+        </header>
+      </div>
+      <div class="flx_1 overflow_auto scroll_hide">
+        <div class="product_list wrapper pt-3">
+
+          <article class="product_row pb-2" *ngFor="let product of products; let i = index">
+            <div class="prod_img">
+              <a (click)="selectShop(product.merchant_info)">
+              <img class="img-fluid w-100" src="{{product.merchant_info.profile_img}}" onerror="this.src='../../assets/product_img_2.jpg'" alt="">
+              <figcaption class="prod_offer_cap text-white">
+                50% OFF - use code Oeat50
+              </figcaption>
+            </a>
+            </div>
+            <div class="pb-3 pt-2 prod_info">
+              <div class="d-flex flex-row pt-12">
+                <a  class=" p-10 w-100 mr-10"><h6 class="color_3 mb-0">{{product.merchant_info.profile_biz_name}}</h6></a>
+                <a style="text-align: right;"  class=" p-10 w-100 mr-2">
+                  <img style="width:11%;"  (click)="remove_to_fav(i,product)" src="../../assets/fav0.png">
+               </a>
+              </div>
+              <a (click)="selectShop(product.merchant_info)">
+              <div class="pi_2 pt-1 d-flex align-items-center">
+                <div class="rate_prod">
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <div class="pl-2">
+                  <span class="color_3">4.0</span>
+                  <span class="color_1">(2452 Delivery Reviews)</span>
+                </div>
+              </div>
+              <div class="prod_keywords color_1 text_5 pt-1 cut-text">
+                {{product.merchant_info.profile_summary}}
+              </div>
+              <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                  <li>$50 per person</li>
+                  <li>52 mins</li>
+                </ul>
+              </div>
+              </a>
+            </div>
+          </article>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" *ngIf="popup">
+    <div class="popup">
+      <h2>Favorite</h2>
+      <a class="close" (click)="popup = false">&times;</a>
+      <div class="content">
+      Are you sure you want to remove?
+      </div>
+      <div class="row">
+        <button style="margin: 10px;" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white"  (click)="confirm_to_fav()" >Ok</button>
+        <button style="margin: 10px;" class="btn_2 d-block text-center box-shadow p-2 w-100 text-white" (click)="cancel_to_fav()" >Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

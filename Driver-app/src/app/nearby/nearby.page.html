@@ -1,0 +1,92 @@
+<ion-content>
+  <app-loader *ngIf="loader"></app-loader>
+  <div class="nearby">
+    <div class="map_near" style="height:410px; padding : 10px">
+      <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+      [zoomControl]="false">
+      <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)">
+        <agm-info-window>
+          <strong>{{ address }}</strong>
+        </agm-info-window>
+      </agm-marker>
+     </agm-map>
+    </div>
+    <div class="wrapper">
+        <div class="prod_list_2 pt-3">
+
+            <div class="prod_list_row pb-3" *ngFor="let merchant of merchants">
+                <div class="d-flex" (click)="selectShop(merchant.profile_id)">
+                    <div class="flx_0 pr-2">
+                        <div class="pl_img_2 position-relative">
+                            <img class="w-100 h-100 rounded" src="{{merchant.profile_img}}" onerror="this.src='../../assets/product_img_2.jpg'" alt="">
+                        </div>
+                    </div>
+                    <div class="flx_1">
+                        <div class="d-flex">
+                            <div class="flx_1 pr-2">
+                                <h5 class="color_3 text_size_3 tw_none txt_semi mb-0">{{merchant.profile_biz_name}}</h5>
+                                <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                                    <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                                        <li>Sandwich </li>
+                                        <li>Fast Food</li>
+                                        <li>Beverages</li>
+                                    </ul>
+                                </div>
+                                <div class="pi_2 d-flex align-items-center">
+                                    <div>
+                                        <i class="fa fa-star text_5 color_2"></i>
+                                    </div>
+                                    <div class="pl-2">
+                                        <span class="color_3 text_5">4.0</span>
+                                        <span class="color_1 text_5">(250 ratings)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flx_0">
+                                <i class="fa fa-location-arrow color_2 pr-2"></i> <span class="color_3 text_5 txt_semi">{{merchant.distance}} kms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="prod_list_row pb-3">
+                <div class="d-flex">
+                    <div class="flx_0 pr-2">
+                        <div class="pl_img_2 position-relative">
+                            <img class="w-100 h-100 rounded" src="../../assets//product_img_2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="flx_1">
+                        <div class="d-flex">
+                            <div class="flx_1 pr-2">
+                                <h5 class="color_3 text_size_3 tw_none txt_semi mb-0">Harvestro</h5>
+                                <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                                    <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                                        <li>Sandwich </li>
+                                        <li>Fast Food</li>
+                                        <li>Beverages</li>
+                                    </ul>
+                                </div>
+                                <div class="pi_2 d-flex align-items-center">
+                                    <div>
+                                        <i class="fa fa-star text_5 color_2"></i>
+                                    </div>
+                                    <div class="pl-2">
+                                        <span class="color_3 text_5">4.0</span>
+                                        <span class="color_1 text_5">(250 ratings)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flx_0">
+                                <i class="fa fa-location-arrow color_2 pr-2"></i> <span class="color_3 text_5 txt_semi">200m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+</ion-content>

@@ -1,0 +1,240 @@
+<!-- <ion-content> -->
+  <div class="main_wrapper" >
+    <app-merch-header></app-merch-header>
+    <app-merch-sidemenu></app-merch-sidemenu>
+    <div class="dashboard-wrapper h-100">
+      <div class="container-fluid h-100">
+<!-- <ion-content> -->
+<!-- ********************************************************************************************** -->
+  <!-- Top Bar Starts -->
+  <!-- Container fluid Starts -->
+    <div class="add_new_category">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="panel-heading mb-0 pb-0">
+                    <h3 class="text-left text-blue">{{lable_text.add_category}}</h3>
+                </div>
+
+                <div class="panel mb-3">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>{{lable_text.choose_cat}}</label>
+                            <div class="d-flex align-items-center">
+                                <div class="flx_1 pr-2">
+                                    <select name="cat_id" [(ngModel)]="cat_id" class="form-control">
+                                        <option value="" disabled>{{lable_text.select_cat}}</option>
+                                        <ng-container *ngFor="let cat of categories">
+                                            <option value="{{cat.cat_id}}">{{cat.cat_name}}</option>
+                                        </ng-container>
+                                    </select>
+                                </div>
+                                <div class="flx_0">
+                                    <button class="btn btn-success btn-ripple" data-toggle="modal"
+                                        data-target="#CategoryMaster" type="button"> <i
+                                            class="icon-plus d-block"></i> </button>
+                                </div>
+                            </div>
+                            <p *ngIf="error_cat_id" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{lable_text.product_name}}</label>
+                            <input type="text" [(ngModel)]="prod_name" name="prod_name" class="form-control">
+                            <p *ngIf="error_prod_name" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{lable_text.product_img}}</label>
+                            <div class="flx_1 pr-2">
+                            <input type="file" class="form-control input_2"  accept="image/*" (change)="selectImgidprofileone($event)">
+                            <p *ngIf="error_prod_img" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+                            <span *ngIf="img_url !== ''">
+                                <img src="{{img_url}}" alt="" style="width: 8%;" />
+                                <i class="fa fa-times-circle" (click)="clear_image()"></i>
+                            </span>
+                        </div>
+                            <div class="flx_0">
+                                <button class="btn btn-success btn-ripple" (click)="add_img()"  type="button"> <i
+                                        class="icon-plus d-block"></i> </button>
+                            </div>
+                        </div>
+                        <div class="prod_upload_img pb-4">
+                            <ng-container *ngFor="let img of image_array; let i = index">
+                                <span>
+                                    <img src="{{img.image_path}}" alt="" />
+                                    <i class="fa fa-times-circle" (click)="img_remove(i)"></i>
+                                </span>
+                            </ng-container>
+                            
+                            
+                         
+                          
+                        </div>
+                        <div class="form-group">
+                            <label>{{lable_text.preorder}}</label>
+
+                            <select name="pre_order_time" [(ngModel)]="pre_order_time" class="form-control" id="">
+                                <option value="" disabled>Select time</option>
+                                <ng-container *ngFor="let time of time_list">
+                                    <option value="{{time}}">{{time}}</option>
+                                </ng-container>
+                            </select>
+                              <!-- <input type="time" [(ngModel)]="pre_order_time" name="pre_order_time" class="form-control"> -->
+                              <p *ngIf="error_pre_order_time" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+                            </div>
+                        
+                        <div class="form-group">
+                            <label>{{lable_text.item_name}}</label>
+                            <input type="text" [(ngModel)]="item_name" name="item_name"  class="form-control">
+                            <p *ngIf="error_item_name" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+                        </div>
+                        <div class="form-group">
+                            <label>{{lable_text.item_code}}</label>
+                            <input type="text" [(ngModel)]="item_code" name="item_code" class="form-control" readonly>
+                            <p *ngIf="error_item_code" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+                        </div>
+                        <div class="form-group">
+                            <label>{{lable_text.choose_menu_available_time}}</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6">
+                                                <div class="d-flex align-items-center">
+                                        <div class="flx_0 pr-2">
+                                            {{lable_text.from_time}}
+                                        </div>
+                                        <div class="flx_1">
+                                             <input type="time" [(ngModel)]="item_start_time" name="item_start_time" class="form-control">
+                                             <p  *ngIf="error_item_start_time" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+                                        </div>
+                                    </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="d-flex align-items-center">
+                                        <div class="flx_0 pr-2">
+                                            {{lable_text.to_time}}
+                                        </div>
+                                        <div class="flx_1">
+                                             <input type="time" [(ngModel)]="item_end_time" name="item_end_time" class="form-control">
+                                             <p *ngIf="error_item_end_time" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>{{lable_text.product_pricing}}</label>
+                            <div class="d-flex align-items-center">
+                                <div class="flx_1">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">RM</span>
+                                        <input type="text" [(ngModel)]="prod_price" name="prod_price" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <p *ngIf="error_prod_price" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+                        </div>
+                        <div class="pt-3">
+
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h3>{{lable_text.description}}</h3>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="button" class="btn btn-success btn-ripple AddDescrip" (click)="add_desc()" > <i class="icon-plus"></i>
+                                        {{lable_text.add_button}}</button>
+                                </div>
+                            </div>
+
+                            <ng-container *ngFor="let desc of desc_array; let i = index">
+                                <div class="" *ngIf="i !== 0">
+                                    <button (click)="desc_remove(i)">Remove</button>
+                                </div>
+                                <div class="pb-2 descrip">
+                                <div class="form-group">
+                                    <label>{{lable_text.description_title}}</label>
+                                    <input type="text" [(ngModel)]="desc.title" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label> {{lable_text.product_description}}</label>
+                                    <textarea [(ngModel)]="desc.desc" class="form-control text_area_auto"></textarea>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <p *ngIf="error_prod_desc" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p>
+
+
+                        <div class="AppendData">
+                            
+                        </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="text-center">
+                    <a (click)="Check_validation()" class="btn btn-success btn-ripple">{{lable_text.save_button}}</a>
+                     <a (click)="clear_product_data()" class="btn btn-success btn-ripple">{{lable_text.cancel_button}}</a>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+
+
+<!-- Container fluid ends -->
+
+
+<div class="modal fade" id="CategoryMaster" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> {{lable_text.add_category}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>{{lable_text.enter_category_name}}</label>
+                        <input type="text" [(ngModel)]="cat_name" name="cat_name" (keyup)="bussiness_name_tag_action()" class="form-control">
+                        <p *ngIf="error_cat_empty" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p> 
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-ripple" data-dismiss="modal" data-dismiss="modal" aria-label="Close"  (click)="clear_cat()">{{lable_text.close_button}}</button>
+                    <button type="button" class="btn btn-primary btn-ripple" data-dismiss="modal" aria-label="Close" *ngIf="!error_cat_empty" (click)="cat_creaate()">{{lable_text.save_changes}}</button>
+                    <button type="button" class="btn btn-primary btn-ripple"  *ngIf="error_cat_empty">{{lable_text.save_changes}} false</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- ********************************************************************************************** -->
+<!-- <ion-content> -->   
+      </div>
+    </div>
+  </div>
+<!-- </ion-content> -->

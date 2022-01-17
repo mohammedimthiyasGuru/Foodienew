@@ -1,0 +1,93 @@
+<ion-content>
+<!-- <div class="popup_box_1 d-flex align-items-end" > -->
+    <div class="search_location w-100 bg-white p-2">
+      <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+      [zoomControl]="false">
+      <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)">
+        <agm-info-window>
+          <strong>{{ address }}</strong>
+        </agm-info-window>
+      </agm-marker>
+     </agm-map>
+        <header class="d-flex w-100">
+            <div class="flx_1 pr-2">
+                <h5 class="color_3 txt_semi mb-0">Search Location</h5>
+            </div>
+            <div class="flx_0">
+                <span class="cursor-pointer color_3 txt_semi">X</span>
+            </div>
+        </header>
+        <div class="sl_row_1 pt-2">
+            <div class="top_search pb-3 position-relative">
+                <i class="fa fa-search"></i>
+               <input  style="width: 100%;" [(ngModel)]="address" ngx-google-places-autocomplete  #placesRef="ngx-places"
+                (onAddressChange)="handleAddressChange($event)" />
+            </div>
+            <div class="color_2" (click)="get()" style="float: right;">
+              <i class="fa fa-dot-circle-o"></i> Use Current Location
+          </div>
+          <select name="cars" [(ngModel)]="location_type" name ="location_type" id="cars" style="width: 99%;margin: 2px;height: 30px;">
+           <option value="" disabled>Select type</option>
+           <option value="Home">Home</option>
+           <option value="Office">Office</option>
+           <option value="Others">Others</option>
+         </select>
+
+            <button  style="margin-top: 20px;" (click)="addlocation()" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Add Location</button>
+            <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+        </div>
+        <div class="saved_address pt-2">
+            <h5 class="color_3 txt_semi mb-0 pb-3">Saved Address</h5>
+            <div *ngIf="Location_list.length == 0" style="text-align: center;">
+               <h5>No Address Found</h5>
+            </div>
+            <div *ngIf="Location_list.length !== 0">
+            <ng-container *ngFor="let item1 of Location_list; let j = index;">
+            <div class="d-flex">
+                <div class="flx_0 pr-3">
+                    <i class="fa fa-briefcase icon_1 color_3"></i>
+                    <span class="d-block color_1 text_5">0 KM</span>
+                </div>
+                <div class="flx_1">
+                    <a style="float: right;" (click)="delete_address(item1)" ><i style="font-size: 20px;
+                      margin-right: 18px;" class="fa fa-trash icon_1 color_3"></i></a>
+                    <h6 class="color_3 txt_semi">{{item1.location_type}}</h6>
+                    <!-- <h6 *ngIf="item1.location_default == 'D'"  class="color_3 txt_semi">{{item1.location_type}} - (Current Default location)</h6> -->
+                    <p class="color_1">
+                      {{item1.location_text}}
+                    </p>
+                </div>
+            </div>
+            <button (click)="make_default(item1)" class="btn_1  text-center box-shadow p-2 text-white">Make Default</button>
+            <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="pt-3">
+            <h5 class="color_3 txt_semi mb-0">Recent locations</h5>
+            <div class="rl_row_1">
+                <div class="pt-3 d-flex cursor-pointer">
+                    <div class="flx_0 pr-2">
+                        <i class="fa fa-clock-o color_3"></i>
+                    </div>
+                    <div class="flx_1 color_1">
+                        Virat Nagar, Odhav
+                    </div>
+                </div>
+                <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+                <div class="pt-2 d-flex cursor-pointer">
+                    <div class="flx_0 pr-2">
+                        <i class="fa fa-clock-o color_3"></i>
+                    </div>
+                    <div class="flx_1 color_1">
+                        Virat Nagar, Odhav
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
+
+</ion-content>

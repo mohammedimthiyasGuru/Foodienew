@@ -1,0 +1,490 @@
+<!-- <ion-content> -->
+  <div class="main_wrapper" >
+    <app-merch-header></app-merch-header>
+    <app-merch-sidemenu></app-merch-sidemenu>
+    <div class="dashboard-wrapper h-100">
+      <div class="container-fluid h-100">
+<!-- <ion-content> -->
+<!-- ********************************************************************************************** -->
+
+<!-- Container fluid Starts -->
+        <div class="container-fluid">
+            <!-- Top Bar Starts -->
+            <div class="top-bar clearfix">
+                <div class="row gutter">
+                    <div class="col-lg-6">
+                        <div class="page-title">
+                            <h3 class="txt_black_2">{{lable_text.product_list}}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right d-md-flex flex-row justify-content-end">
+                        <div class="pr-3">
+                            <a (click)="move_to_add_cat()" class="btn btn-sm btn-ripple" type="button"> <i
+                                    class="fa fa-plus"></i> {{lable_text.add_category}}</a>
+                        </div>
+                        <div class="d-inline-flex align-items-center">
+                            <label class="pr-2 mb-0">Select</label>
+                            <select class="form-control" [(ngModel)]="lang_setting" (change)="onChange($event)">
+                                <option value="eng" >English</option>
+                                <option value="tam">TAMIL</option>
+                                <option value="hin">HINDI</option>
+                                <option value="mal">MALAY</option>
+                                <option value="chi">CHINESE</option>
+                                <option value="sin">SINHALA</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Top Bar Ends -->
+
+           <div class="add_new_category">
+                                    <div class="pt-1">
+                                        <div class="panel panel-red">
+                                            <div class="panel-body pb-0 table-responsive category_tble">
+                                                <table class="table no-margin">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center" width="50">{{lable_text.s_no}}</th>
+                                                            <th class="text-center" width="50">{{lable_text.more}}</th>
+                                                            <th>{{lable_text.category_id}}</th>
+                                                            <th>{{lable_text.category_name}}</th>
+                                                            <th>{{lable_text.total_items}}</th>
+                                                            <th width="130" class="text-center">{{lable_text.add_product}}</th>
+                                                            <th class="text-center" width="130">{{lable_text.view_product}}</th>                    
+                                                            <th class="text-center" width="100">{{lable_text.revome_category}}</th>
+                                                            <th class="text-center" width="100">{{lable_text.edit_category}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngIf="categories.length == 0" >
+                                                            <td colspan="9"> No Record found</td>
+                                                        </tr>
+                                                        <ng-container *ngFor="let cat of categories; let i = index">
+                                                        
+                                                        <tr>
+                                                            <td class='text-center'>
+                                                               {{i+1}}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <span *ngIf="!cat.show_status" (click)="show_table(i)"
+                                                                    class="cart_icon sub_grid_btn d-inline-flex align-items-center btn-ripple justify-content-center">
+                                                                    <i class="fa fa-arrow-right icon_3x txt_black_2"></i>
+                                                                </span>
+                                                                <span *ngIf="cat.show_status" (click)="hide_table(i)"
+                                                                class="cart_icon sub_grid_btn d-inline-flex align-items-center btn-ripple justify-content-center">
+                                                                <i class="fa fa-arrow-down icon_3x txt_black_2"></i>
+                                                            </span>
+                                                            </td>
+                                                            <td>{{cat.cat_id}}</td>
+                                                            <td>
+                                                                {{cat.cat_name}}
+                                                            </td>
+                                                            <td>
+                                                                200
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a (click)="move_to_add_product(cat.cat_id)"
+                                                                    class="cart_icon d-inline-flex btn-ripple align-items-center justify-content-center">
+                                                                    <i class="fa fa-plus icon_3x txt_black_2"></i>
+                                                                </a>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <button (click)="show_product_visible(cat)"
+                                                                    class="cart_icon b_0 d-inline-flex align-items-center justify-content-center ProductMobileView">
+                                                                    <i class="fa fa-external-link-square icon_3x txt_black_2"></i>
+                                                                </button>
+                                                            </td>
+                                                            
+                                                            <td class="text-center">
+                                                                <button (click)="show_cat_delete_visible(cat)"
+                                                                    class="cart_icon b_0 removeMainRow d-inline-flex align-items-center justify-content-center">
+                                                                    <i class="fa fa-trash-o icon_3x txt_black_2"></i>
+                                                                </button>
+                                                            </td>
+
+                                                            <td class="text-center">
+                                                                <a data-toggle="modal"
+                                                                data-target="#CategoryMaster"
+                                                                (click)="edit_data(cat)"
+                                                                    class="cart_icon d-inline-flex btn-ripple align-items-center justify-content-center">
+                                                                    <i class="fa fa-pencil icon_3x txt_black_2"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="sub_grid_info" *ngIf="cat.show_status">
+                                                            <td colspan="9">
+                                                                <table class="table no-margin">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th width="50" class="text-center">{{lable_text.s_no}}</th>
+                                                                            <th width="50" class="text-center">{{lable_text.edit_product}}</th>
+                                                                            <th>{{lable_text.product_name}}</th>
+                                                                            <th width="150">{{lable_text.product_img}}</th>
+                                                                            <th>{{lable_text.yummy_rate}}</th>
+                                                                            <th>{{lable_text.item_name}}</th>
+                                                                            <th>{{lable_text.item_code}}</th>
+                                                                            <th>{{lable_text.preorder}}</th>
+                                                                            <th>{{lable_text.choose_menu_available_time}}</th>
+                                                                            <th>{{lable_text.product_pricing}}</th>
+                                                                            <th>{{lable_text.product_description}}</th>
+                                                                            <th width="100" class="text-center">{{lable_text.remove_product}}</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <ng-container *ngFor="let prod of cat.product_data; let j = index">
+                                                                        <tr>
+                                                                            <td class='text-center'>
+                                                                                {{j+1}}
+                                                                            </td>
+                                                                            <td class="text-center">
+                                                                                <a (click)="edit_product(prod)"
+                                                                                    class="cart_icon d-inline-flex btn-ripple align-items-center justify-content-center">
+                                                                                    <i class="fa fa-pencil icon_3x txt_black_2"></i>
+                                                                                </a>
+                                                                            </td>
+                                                                            <td>{{prod.prod_name}}</td>
+                                                                            <td>
+                                                                                <div class="pb-4">
+                                                                                    
+                                                                                    <div class="prod_upload_img_2 row no-gutters pt-1">
+                                                                                        <ng-container *ngFor="let img of prod.prod_img">
+                                                                                        <span class="col-4">
+                                                                                            <img class="img_open" src="{{img.image_path}}" alt="" (click)="show_product_img_visible(img.image_path)">
+                                                                                        </span>
+                                                                                        </ng-container>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="rate_star CommentsView">
+                                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>{{prod.item_name}}</td>
+                                                                            <td>{{prod.item_code}}</td>
+                                                                            <td>{{prod.pre_order_time}}</td>
+                                                                            <td>{{prod.item_start_time}} - {{prod.item_end_time}}</td>
+                                                                            <td>{{prod.prod_price}}</td>
+                                                                            <td>
+                                                                                <div>
+                                                                                    <ng-container *ngFor="let des of prod.prod_desc">
+                                                                                        <article class="pb-2">
+                                                                                            <h5 class="mb-0 pb-1">{{des.title}}</h5>
+                                                                                            <p>
+                                                                                                {{des.desc}}
+                                                                                            </p>
+                                                                                        </article>
+                                                                                    </ng-container>
+
+                                                                                    <button (click)="show_product_desc_visible(prod)"
+                                                                                    class="cart_icon b_0 d-inline-flex align-items-center justify-content-center ProductMobileView">
+                                                                                    <i class="fa fa-external-link-square icon_3x txt_black_2"></i>
+                                                                                   </button>
+                                                                                  
+                                                                    
+                                                                                </div>
+
+                                                                                
+                                                                            </td>
+                                                                            <td align="center">
+                    
+                                                                                <button (click)="show_prod_delete_visible(prod)"
+                                                                                    class="cart_icon b_0 d-inline-flex removeSubRow align-items-center justify-content-center">
+                                                                                    <i class="fa fa-trash-o icon_3x txt_black_2"></i>
+                                                                                </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </ng-container>
+                    
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        </ng-container>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                    
+                    
+                    
+                                    </div>
+                                </div>
+
+
+        </div>
+        <!-- Container fluid ends -->
+
+
+    <!-- Dashboard Wrapper End -->
+
+
+
+
+
+
+
+
+        <!-- Mobile View Product Start -->
+
+        <section class="m_outline ViewProductPopup" *ngIf="view_product_visible">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="m_out_2 d-inline-flex">
+    
+                    <div class="m_out_3 position-relative">
+                        <span class="m_out_close ViewProductClose" (click)="hide_product_visible()">X</span>
+                        <div class="p-2 m_out_4">
+                            <div class="m_out_head">
+                                <div class="d-block">
+                                    <span class="badge bg_yellow txt_black_2 txt_600">Id:{{view_product_detail.cat_id}}</span>
+                                </div>
+                                <h5 class="modal-title" id="exampleModalLabel">{{view_product_detail.cat_name}}</h5>
+                            </div>
+                            <div class="mobile_view">
+                                <div class="product_list wrapper pt-1">
+                                    <div class="pb-3">
+                                        <h3 class="txt_semi pb-1 mb-0">Popular</h3>
+                                        <p>Most ordered right now.</p>
+                                    </div>
+    
+                                    <div class="pb-5">
+                                        <ng-container *ngFor="let prod of view_product_detail.product_data">
+
+                                        <div class="prod_list_2 bb_1 pt-1 mb-4">
+                                            <div class="prod_list_row pb-3">
+                                                <div class="d-flex">
+
+                                                    <div class="flx_1">
+                                                        <div class="d-flex">
+                                                            <div class="flx_1 pr-2">
+                                                                <h5 class="color_3 text_size_3 tw_none txt_semi two_lines_elips">
+                                                                    {{prod.prod_name}}</h5>
+                                                                <p class="color_1 two_lines_elips">{{prod.item_name}}</p>
+                                                                <h5 class="color_2 txt_semi">RM{{prod.prod_price}}</h5>
+                                                            </div>
+                                                        </div>
+    
+                                                    </div>
+                                                    <div class="flx_0 pr-2">
+                                                        <div class="pl_img_4 position-relative">
+                                                            <img class="w-100 h-100 rounded" src="{{prod.prod_img[0].image_path}}"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </ng-container>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Mobile View Product   End-->
+    
+    
+        <!-- Mobile View Product Description Start -->
+    
+        <section class="m_outline ProductPopupDesc" *ngIf="view_product_desc_visible">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="m_out_2 d-inline-flex">
+    
+                    <div class="m_out_3 position-relative">
+                        <span class="m_out_close ProductPopupDescClose" (click)="hide_product_desc_visible()">X</span>
+                        <div class="p-2 m_out_4">
+                            <div class="m_out_head">
+                                <div class="d-block">
+                                    <span class="badge bg_yellow txt_black_2 txt_600">Id:{{view_product_desc_detail.prod_id}}</span>
+                                </div>
+                                <h5 class="modal-title pb-3" id="exampleModalLabel">Product Description</h5>
+                            </div>
+                            <div class="mobile_view">
+
+                                <ng-container *ngFor="let desc of view_product_desc_detail.prod_desc">
+                                <article class="pb-3 bb_1 mb-3">
+                                    <h4 class="mb-0 pb-1">{{desc.title}}</h4>
+                                    <p>
+                                        {{desc.desc}}
+                                    </p>
+                                </article>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Mobile View Product Description End-->
+    
+    
+    
+        <!-- Mobile View Comments  Start -->
+    
+        <section class="m_outline CommentsPopup hide_popup">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="m_out_2 d-inline-flex">
+    
+                    <div class="m_out_3 position-relative">
+                        <span class="m_out_close CommentsClosePop">X</span>
+                        <div class="p-2 m_out_4">
+                            <div class="m_out_head">
+                                <h5 class="modal-title pb-3" id="exampleModalLabel">Comments</h5>
+                            </div>
+                            <div class="mobile_view comments_scroll">
+                                <div class="pb-2 mb-2 bb_1">
+                                    <div class="d-flex">
+                                        <div class="flx_0 pr-2">
+                                            <div class="prof_img">
+                                                <img src="images/profile_user.jpg" class="c_img" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flx_1 line_n ellips_txt">
+                                            <b class="d-block pb-0  txt_600 ellips_txt">sample username</b>
+                                            <span class="c_msg pr-1 ellips_txt"> 12 jun 2021</span>
+                                            <p class="pt-2 ellips_off">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                Lorem
+                                                Ipsum has been the industry's standard dummy text ever since the 1500
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="pb-2 mb-2 bb_1">
+                                    <div class="d-flex">
+                                        <div class="flx_0 pr-2">
+                                            <div class="prof_img">
+                                                <img src="images/profile_user.jpg" class="c_img" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="flx_1 line_n ellips_txt">
+                                            <b class="d-block pb-0  txt_600 ellips_txt">sample username</b>
+                                            <span class="c_msg pr-1 ellips_txt"> 12 jun 2021</span>
+                                            <p class="pt-2 ellips_off">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                                Lorem
+                                                Ipsum has been the industry's standard dummy text ever since the 1500
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Mobile View Comments End-->
+    
+    
+    
+    
+        <!--  message popup  Details Start -->
+    
+
+        <section class="popup_box img_popup_panel" *ngIf="view_product_img_visible">
+            <div class="popup_info d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="pop_wrapper w-50 position-relative">
+                    <span class='popup_close cls_img_pop' (click)="hide_product_img_visible()">x</span>
+                    <div class="mb-0 pt-3 pb-1">
+                        <h4 class="text-left">Image View</h4>
+                    </div>
+                    <div class="img_popup text-center pb-3">
+                        <img src="{{view_product_img_detail}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--  message popup  Details End  -->
+
+
+        <section class="popup_box ProductRemoveReason" *ngIf="view_prod_delete_visible">
+            <div class="popup_info d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="pop_wrapper w-50 position-relative">
+                    <span class='popup_close closeReason' (click)="hide_prod_delete_visible()">x</span>
+                    <div class="form-group">
+                        <label for="">Product Delete Reason</label>
+                        <textarea name="prod_reason" [(ngModel)]="prod_reason" style="height:150px" class="form-control" (keyup)="bussiness_name_tag_action2()"></textarea>
+                        <p *ngIf="error_prod_reason_empty" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p> 
+
+                    </div>
+                    <div class="text-center pt-3">
+                        <button type="button" (click)="delect_prod_action()" class="btn btn-success btn-ripple ReasonBtnSubmit">Proceed</button>
+                        <button type="button" (click)="hide_prod_delete_visible()" class="btn btn-success btn-ripple">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="popup_box ProductRemoveReason" *ngIf="view_cat_delete_visible">
+            <div class="popup_info d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="pop_wrapper w-50 position-relative">
+                    <span class='popup_close closeReason' (click)="hide_cat_delete_visible()">x</span>
+                    <div class="form-group">
+                        <label for="">Category Delete Reason</label>
+                        <textarea name="cat_reason" [(ngModel)]="cat_reason" style="height:150px" class="form-control" (keyup)="bussiness_name_tag_action1()"></textarea>
+                        <p *ngIf="error_cat_reason_empty" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p> 
+
+                    </div>
+                    <div class="text-center pt-3">
+                        <button type="button" (click)="delect_cat_action()" class="btn btn-success btn-ripple ReasonBtnSubmit">Proceed</button>
+                        <button type="button"  (click)="hide_cat_delete_visible()" class="btn btn-success btn-ripple">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+        <div class="modal fade" id="CategoryMaster" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> {{lable_text.edit_category}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>{{lable_text.enter_category_name}}</label>
+                        <input type="text" [(ngModel)]="cat_name" name="cat_name" (keyup)="bussiness_name_tag_action()" class="form-control">
+                        <p *ngIf="error_cat_empty" style="color: red;font-size: 15px;font-weight: 800;">* Please Select Cat</p> 
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-ripple" data-dismiss="modal" data-dismiss="modal" aria-label="Close"  (click)="clear_cat()">{{lable_text.close_button}}</button>
+                    <button type="button" class="btn btn-primary btn-ripple" data-dismiss="modal" aria-label="Close" *ngIf="!error_cat_empty" (click)="cat_creaate()">{{lable_text.save_changes}} false</button>
+                    <button type="button" class="btn btn-primary btn-ripple"  *ngIf="error_cat_empty">{{lable_text.save_changes}} true</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!-- ********************************************************************************************** -->
+<!-- <ion-content> -->   
+      </div>
+    </div>
+  </div>
+<!-- </ion-content> -->

@@ -1,0 +1,133 @@
+<ion-content>
+  <div class="checkout">
+    <div class="checkout_1 pt-3 pb-2">
+        <div class="wrapper">
+          <div class="top_arrow pb-3 pt-2">
+            <div class="d-flex">
+                <div class="flx_0 pr-2">
+                    <i class="fa fa-arrow-left back_arrow color-2"></i>
+                </div>
+                <div class="flx_1 text-center">
+                  <h5 class="txt_semi color_3">Checkbout</h5>
+                </div>
+            </div>
+        </div>
+            <h6 class="text_5 color_1 txt_semi">Delivery Address</h6>
+            <div class="ch_row_1 pb-2">
+                <div class="d-flex align-items-start">
+                    <div class="flx_1 pr-3">
+                        <div class="d-flex">
+                        <div class="flx_0 pr-3">
+                            <i class="fa fa-briefcase icon_1 color_2" aria-hidden="true"></i>
+                        </div>
+                        <div class="flx_1">
+                            <h6 class="color_2 txt_semi mb-0">Work</h6>
+                        </div>
+                    </div>
+                        <p class="pt-1 color_3 text_5 mb-0">
+                            B/402, Shopper Plaza, Mithakhali, Navrangpura, Ahmedabad
+                        </p>
+                    </div>
+                    <div class="flx_0 text-right">
+                        <a href="" class="color_2 text_5 text-underline"> <u> Change</u></a>
+                    </div></div>
+               
+
+            </div>
+        </div>
+    </div>
+
+    <div class="coupon_row pt-3 pb-3">
+            
+            <div class="wrapper d-flex align-items-center jusity-content-center">
+                <div class="flx_1 pr-2">
+                    <input type="text" placeholder="Enter Coupon" class="input_1 w-100 pl-0 p-2">
+                </div>
+                <div class="flx_0">
+                    <b class="color_2 text_5">OEAT50</b>
+                </div>
+
+            </div>
+
+    </div>
+
+
+    <div class="order_info pt-4">
+        <div class="wrapper">
+            <h6 class="color_3 pb-3 txt_semi">Summary</h6>
+
+            <div class="row pb-2 align-itens-start">
+                <div class="col-8 color_1">                        
+                    Subtotal 
+                </div>
+                <div class="col-4 text-right">
+                    <span class="color_3 txt_semi">$500.00</span>
+                </div>
+            </div>
+            <div class="row pb-2 align-itens-start">
+                <div class="col-8 color_1">                        
+                     Tax &amp; Fees 
+                </div>
+                <div class="col-4 text-right">
+                    <span class="color_3 txt_semi">$500.00</span>
+                </div>
+            </div>
+            <div class="row pb-2 align-itens-start">
+                <div class="col-8 color_1">                        
+                    Delivery
+                </div>
+                <div class="col-4 text-right">
+                    <span class="color_3 txt_semi">$500.00</span>
+                </div>
+            </div>
+            <div class="row pb-2 align-itens-start">
+                <div class="col-8 color_1">                        
+                    Discount
+                </div>
+                <div class="col-4 text-right">
+                    <span class="color_3 txt_semi">$500.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white  bs_2 mt-2 pt-2 pb-2">
+            <div class="wrapper">
+            <div class="row align-itens-start">
+                <div class="col-8 color_1">                        
+                    Total
+                </div>
+                <div class="col-4 text-right">
+                    <h5 class="color_2 txt_semi">$800.00</h5>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="bg_2 pt-5 pb-5">
+        <div class="wrapper">
+        <a href="" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Pay Now</a>
+    </div>
+    </div>
+</div>
+
+<div class="popup_box_1 d-flex align-items-center jusitify-content-center" *ngIf="OrderSuccessMessage">
+    <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+        <img width="160" src="images/thank-you.jpg" class="img-fluid" alt="">
+        <h3 class="text_2 txt_semi pt-3 pb-3">Thank you for<br> your order</h3>
+        <p>You can track the delivery in <br> the "Orders" section.</p>
+        <a href="" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Track my order</a>
+        <a href="" class="d-block text-center pt-4 color_3 text_semi"> Order something else! </a>   
+    </div>
+</div>
+
+<div class="popup_box_1 d-flex align-items-center jusitify-content-center" *ngIf="OrderFailureMessage">
+    <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+        <img width="160" src="images/order-failure.jpg" class="img-fluid" alt="">
+        <h3 class="text_2 txt_semi pt-3 pb-3">Sorry, Your Order<br> has failed</h3>
+        <p>Sorry, somethings went wrong. Please try again to continue your order.</p>
+        <a href="" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Try Again</a>
+       
+    </div>
+</div>
+
+</ion-content>

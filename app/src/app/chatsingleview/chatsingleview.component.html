@@ -1,0 +1,167 @@
+
+
+
+
+
+    <div class="chat_wrapper w-100 h-100 position-relative bg_red overflow_auto" *ngIf="!loader">
+      <div class="chat_view bg-white w-100 h-100 d-flex flex-column">
+        <header class="flx_0 bb_1 w-100 p-3">
+          <div class="flx_0 pr-2">
+            <a class="txt_black2" (click)="back_action()"><i class="fa fa-arrow-left back_arrow"></i></a>
+           </div>
+              <div class="d-flex align-items-center">
+                  <div class="flx_1 pr-2">
+                      <div class="d-flex align-items-center">
+                          <div class="flx_0 pr-2">
+                              <img src="../../assets/profile_user.jpg" class="c_img" alt="" />
+                          </div>
+                          <div class="flx_1 ms_view line_n">
+                              <b class="d-block c_name txt_semi pb-0">Admin</b>
+                               <span class="chat_org_title d-block"> Admin Support</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div *ngIf="chat_history.length !== 0">
+                  <div class="flx_0" *ngIf="chat_history[last_count - 1].chat_head !== 'end'" (click)="end_Send_msg()">
+                     <span class="brad_1 text_black btn_yellow mr-2">End</span>
+                  </div>
+                </div>
+              </div>
+          </header>
+          <div class="flx_1  chat_msg_info_2 p-3 d-flex flex-column  overflow_auto" #scrollBottom>
+              <p *ngIf="show_chat_history == false" style="text-align: center;">No Message</p>
+              <div *ngIf="show_chat_history == true">
+             <ng-container  *ngFor="let item of chat_history">
+              <p style="text-align: center;" *ngIf="item.chat_head == 'true'">Header title : {{item.chat_title}} , Date : {{item.chat_start_time | date : 'medium'}}, Tic - ({{chat_name}})</p>
+              <!-- ////Reciver  text//// -->
+              <div class="d-flex justify-content-start pb-3" *ngIf="item.chat_user_type !== 'Customer'" >
+                  <div class="msg_client msg_col">
+                      <p class="mb-0" *ngIf="item.chat_type == 'Text'" >
+                          {{item.chat_text}}
+                      </p>
+                      <p class="mb-0" *ngIf="item.chat_type == 'Location'">
+                        Address : {{item.chat_location.address_text}}
+                      </p>
+                      <p class="mb-0" *ngIf="item.chat_type == 'Img'" style="text-align: center;">
+                        <img src="{{item.chat_img}}" style="width: 50%;">
+                      </p>
+                      <div class="text-right">
+                          <span class="chat_msg_time ">{{item.createdAt | date:'shortTime'}}</span>
+             <span class="chat_msg_time bl_1 pl-1 ml-1">{{item.createdAt | timeAgo }}</span>
+                          <span class="tick_img pl-3">
+                            <!-- <img src="../../assets/tick.png" class="tick_unread" alt="" *ngIf="item.chat_read_status == 'U'"/>
+                            <img src="../../assets/tick-read.png" class="tick_read" alt="" *ngIf="item.chat_read_status == 'R'" /> -->
+                          </span>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- sender text -->
+              <div class="d-flex justify-content-end pb-3" *ngIf="item.chat_user_type == 'Customer'">
+                  <div class="msg_self msg_col">
+                    <p class="mb-0" *ngIf="item.chat_type == 'Text'" >
+                      {{item.chat_text}}
+                  </p>
+                  <p class="mb-0" *ngIf="item.chat_type == 'Location'">
+                    <agm-map [latitude]="item.chat_location.lat" [longitude]="item.chat_location.lng" [zoom]="17" [disableDefaultUI]="false"
+                    [zoomControl]="false">
+                    <agm-marker [latitude]="item.chat_location.lat" [longitude]="item.chat_location.lng" [markerDraggable]="false">
+                      <agm-info-window>
+                        <strong>{{address}}</strong>
+                      </agm-info-window>
+                    </agm-marker>
+                    </agm-map>
+                    <!-- Address : {{item.chat_location.address_text}} -->
+                  </p>
+                  <p class="mb-0" *ngIf="item.chat_type == 'Img'" style="text-align: center;">
+                    <img src="{{item.chat_img}}" style="width: 50%;">
+                  </p>
+                      <div class="text-right">
+                          <span class="chat_msg_time ">{{item.createdAt | date:'shortTime'}}</span>
+             <span class="chat_msg_time bl_1 pl-1 ml-1">{{item.createdAt | timeAgo }}</span>
+                           <span class="tick_img pl-3">
+                              <img src="../../assets/tick.png" class="tick_unread" alt="" *ngIf="item.chat_read_status == 'U'"/>
+                              <img src="../../assets/tick-read.png" class="tick_read" alt="" *ngIf="item.chat_read_status == 'R'" />
+                          </span>
+                      </div>
+                  </div>
+              </div>
+            </ng-container>
+             </div>
+          </div>
+          <footer class="flx_0 p-2">
+            <div class="chat_msg_box">
+
+                    <div class="d-flex align-items-center">
+                        <div class="flx_0 pr-2 d-flex flex-row">
+                            <i class="fa fa-map-marker chat_file txt_black pr-1 icon_3x" (click)="location_change()"></i>
+                            <div class="cus_btn_upload pl-1">
+                              <i class="fa fa-picture-o txt_black icon_3x">
+                                <input style="width: 20px;" type="file" accept="image/*, .pdf"  (change)="selectImgidprofileone($event)">
+                              </i>
+                            </div>
+                            </div>
+                        <div class="flx_1 pr-1">
+                            <textarea placeholder="Message Here" [(ngModel)]="chat_text" name="chat_text" class="chat_input brad_0 w-100"></textarea>
+                        </div>
+                        <div class="flx_0">
+                                <button class="sendBtn" (click)="Send_msg()"><i class="fa fa-angle-right"></i></button>
+                        </div>
+                    </div>
+        </div>
+        </footer>
+      </div>
+  </div>
+
+
+  <div class="popup_box_1 FootCartInfo align-items-end d-flex flow_hide" *ngIf="show_location_view">
+    <span class="close_foot_pop">
+    </span>
+    <div class="cart_dialog w-100 bg-white p-4" style="height: 90%;">
+      <div>
+          <div class="d-flex  align-items-center">
+                  <div class="search_location w-100 bg-white p-2">
+                    <h3>Select Location</h3>
+                    <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+                    [zoomControl]="false">
+                    <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true"
+                      (dragEnd)="markerDragEnd($event)">
+                      <agm-info-window>
+                        <strong>{{ address }}</strong>
+                      </agm-info-window>
+                    </agm-marker>
+                   </agm-map>
+                      <header class="d-flex w-100">
+                          <div class="flx_1 pr-2">
+                              <h5 class="color_3 txt_semi mb-0">Search Location</h5>
+                          </div>
+                          <div class="flx_0">
+                              <span class="cursor-pointer color_3 txt_semi">X</span>
+                          </div>
+                      </header>
+                      <div class="sl_row_1 pt-2">
+                          <div class="top_search pb-3 position-relative">
+                              <i class="fa fa-search"></i>
+                             <input  style="width: 100%;" [(ngModel)]="address" ngx-google-places-autocomplete  #placesRef="ngx-places"
+                              (onAddressChange)="handleAddressChange($event)" />
+                          </div>
+                          <button class="color_2" (click)="get()" style="float: right;background: none;"><i class="fa fa-dot-circle-o"></i> Use Current Location</button>
+                          <button  style="margin-top: 20px;" (click)="select_location()" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Send Location</button>
+                          <button  style="margin-top: 20px;" (click)="skip_location()" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Cancel</button>
+                          <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+                      </div>
+                  </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+  <section class="new_loading d-flex align-items-center justify-content-center" *ngIf="loader">
+    <div class="loading_img_1">
+      <img src="../../assets/loading-circle-1.svg"/>
+    </div>
+    <div class="loading_img_2">
+      <img src="../../assets/yummy-logo-black.png"/>
+    </div>
+  </section>

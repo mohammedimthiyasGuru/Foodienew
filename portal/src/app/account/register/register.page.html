@@ -1,0 +1,937 @@
+<section class="home_fix_row home_pb_1 login_page bg_shape" style="background-size: 600px;">
+    <div class="wrapper_2 header_top w-100">
+        <div class="row w-100 align-items-center">
+            <div class="col-sm-6 bg-white text-center text-sm-left">
+                <div class="logo_home pt-2">
+                    <img src="../../../assets/images/logo_new.png" />
+                </div>
+            </div>
+            <div class="text-center txt_bold text-sm-right text_black col-sm-6">
+                <a href="/account/home_page" class="pr-3">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="slider_fix wrapper_2 info_pt_1">
+        <div class="row">
+            <div class="col-md-5">
+               <div class="hr_right home_form_list">
+                            <form [formGroup]="registerForm">
+                                <h4 class="text-white shadow_none pb-2">
+                                    Interested? Fill in the form below to become our partner and increase your
+                                    revenue!
+                                </h4>
+                                <div class="form-group">
+                                    <label class="control-label text-white">Business Name</label>
+                                    <div class="loading_input">
+                                    <input type="text" class="form-control input_2" formControlName="business_name" (keyup)="bussiness_name_tag_action()"
+                                        [ngClass]="{ 'is-invalid': submitted && f.business_name.errors }"
+                                        placeholder="Business Name">
+                                        <div class="loading_input load_input" *ngIf="bussiness_name_tag !== ''"></div>
+                                        </div>
+                                    <div *ngIf="submitted && f.business_name.errors" class="warning">
+                                        <div *ngIf="f.business_name.errors.required">Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="bussiness_name_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{bussiness_name_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="delete_buss_name()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="control-label text-white">Business Proof</label>
+                                  
+                                    <div class="loading_input">
+                                    <select formControlName="business_proof_type" class="form-control input_2" [(ngModel)]="proof_type" (ngModelChange)="proofchange()" >
+                                        <option disabled value="">SELECT</option>
+                                        <option value="Business Registration Certificate">Business Registration Certificate</option>
+                                        <option value="MSME Registration">MSME Registration</option>
+                                        <option value="SSM">SSM</option>
+                                        <option value="None (Activate Account, once done verification call from us)">None (Activate Account, once done verification call from us)</option>
+                                    </select>
+                                    <div class="loading_input load_input" *ngIf="proof_type_tag !== ''"></div>
+                                </div>
+                                    <div *ngIf="submitted && f.business_proof_type.errors" class="warning">
+                                        <div *ngIf="f.business_proof_type.errors.required">Business Proof is required</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" *ngIf="proof_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{proof_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="proof_type_tags()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+                               
+
+
+
+                                <div class="form-group" >
+                                    <div *ngIf="proof_attach">
+                                    <label class="control-label text-white">Attach Business Proof</label>
+                                    <div class="loading_input">
+                                    <input type="file" class="form-control input_2" formControlName="idprofileone" accept="image/*, .pdf" (change)="selectImgidprofileone($event)">
+                                    <div class="loading_input load_input" *ngIf="attached_tag !== ''"></div>
+                                    </div>
+                                    <div *ngIf="submitted && f.idprofileone.errors" class="warning">
+                                        <div *ngIf="f.idprofileone.errors.required">Attach Business Proof  is required</div>
+                                    </div>
+                                    <div class="warning" *ngIf="doc_error_1">
+                                        Please Attach Business Proof
+                                       </div>
+                                </div> 
+                                </div>
+                                <div class="form-group" *ngIf="attached_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{attached_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="delete_attached()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+                                <div class="form-group">
+                                    <div *ngIf="doc_attach">
+
+                                        <div class="row">
+                                            <div class="col-8">
+                                               
+                                                <label class="control-label text-white">Attach Identity Proof</label>
+                                            </div>
+                                            <div class="col-4 text-right" *ngIf="proof_type_tag !== ''">
+                                                <a class="cursor-pointer" (click)="terms_con()">More Info</a>
+                                            </div>
+                                        </div>
+                                    <div class="loading_input">
+                                    <input type="file" class="form-control input_2" formControlName="idprofiletwo" accept="image/*, .pdf" (change)="selectImgidprofiletwo($event)">
+                                    <div class="loading_input load_input" *ngIf="proof2_type_tag !== ''"></div>
+                                      </div>
+                                    <div *ngIf="submitted && f.idprofiletwo.errors" class="warning">
+                                        <div *ngIf="f.idprofiletwo.errors.required">Attach Identity Proof is required</div>
+                                    </div>
+                                    <div class="warning" *ngIf="doc_error_2">
+                                        Please Attach Identity Proof
+                                       </div>
+                                   </div>
+                                </div>
+                                <div class="form-group" *ngIf="proof2_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{proof2_type_tag}} 
+                                        </div>
+                                        <div class="" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="proof2_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+                                
+                                
+
+
+
+
+                                <div class="form-group">
+                                    <label class="control-label text-white">Business Type</label>
+                                    <div class="loading_input">
+                                    <select formControlName="business_type" class="form-control input_2" [(ngModel)]="selected" (ngModelChange)="selectedChanged()">
+                                        <option disabled value="">SELECT</option>
+                                        <option value="Restaurant">Restaurant</option>
+                                        <option value="Home Kitchen">Home Kitchen</option>
+                                        <option value="Caterers">Caterers</option>
+                                        <option value="Shop">Shop</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <div class="loading_input load_input" *ngIf="business_type_tag !== ''"></div>
+                                 </div>
+                                    <div *ngIf="submitted && f.business_type.errors" class="warning">
+                                        <div *ngIf="f.business_type.errors.required">Business type is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="business_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{business_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="business_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+                                <div class="ng-autocomplete form-group" *ngIf="selected == 'Restaurant' || selected == 'Home Kitchen' || selected == 'Caterers'">
+                                    <label class="control-label text-white">Cuisines</label>
+                                    <div class="loading_input">
+                                    <ng-autocomplete 
+                                      [data]="cuisine_cat"
+                                      [searchKeyword]="keyword"
+                                      (selected)='selectEvent($event)'
+                                      (inputChanged)='onChangeSearch($event)'
+                                      (inputFocused)='onFocused($event)'
+                                      [itemTemplate]="itemTemplate"
+                                      [notFoundTemplate]="notFoundTemplate"
+                                      formControlName="cuisine"
+                                      placeholder = "Select Cuisines"
+                                      >                                 
+                                    </ng-autocomplete>
+                                    <ng-template #itemTemplate let-item>
+                                    <a [innerHTML]="item.name"></a>
+                                    </ng-template>
+                                    <ng-template #notFoundTemplate let-notFound>
+                                    <div [innerHTML]="notFound"></div>
+                                    </ng-template>
+                                    <div class="loading_input load_input" *ngIf="cuisine_cat_text !== ''"></div>
+                                    </div>
+                                    </div>
+                                    <div *ngIf="submitted && f.cuisine.errors" class="warning">
+                                        <div *ngIf="f.cuisine.errors.required">Cuisines is
+                                            required</div>
+                                    </div>
+                                    <div class="form-group" *ngIf="cuisine_cat_text !== ''" style="margin-top: -16px;">
+                                        <div class="row col-md-12">
+                                            <div class="cursor-pointer" style="padding: 5px 10px;
+                                            background: #f8c333;
+                                            color: black;">
+                                                {{cuisine_cat_text}} 
+                                            </div>
+                                            <div class="cursor-pointer" style="padding: 5px;
+                                            background: #f8c333;
+                                            color: black;" (click)="delete_cus()">
+                                                x
+                                            </div>
+                                        </div>                                                
+                                    </div>
+                                    <div class="ng-autocomplete form-group" *ngIf="selected == 'Shop' || selected == 'Others'">
+                                        <label class="control-label text-white">Category</label>
+                                        <div class="loading_input">
+                                        <ng-autocomplete 
+                                          [data]="category"
+                                          [searchKeyword]="keyword"
+                                          (selected)='selectEvent1($event)'
+                                          (inputChanged)='onChangeSearch($event)'
+                                          (inputFocused)='onFocused($event)'
+                                          [itemTemplate]="itemTemplate"
+                                          [notFoundTemplate]="notFoundTemplate"
+                                          formControlName="categorys"
+                                          placeholder = "Select Category"
+                                          >                                 
+                                        </ng-autocomplete>
+                                        
+                                        <ng-template #itemTemplate let-item>
+                                        <a [innerHTML]="item.name"></a>
+                                        </ng-template>
+                                        <ng-template #notFoundTemplate let-notFound>
+                                        <div [innerHTML]="notFound"></div>
+                                        </ng-template>
+                                        <div class="loading_input load_input" *ngIf="category_text !== ''"></div>
+                                        </div>
+                                        </div>
+                                        <div *ngIf="submitted && f.categorys.errors" class="warning">
+                                            <div *ngIf="f.categorys.errors.required">category is
+                                                required</div>
+                                        </div>
+                                        <div class="form-group" *ngIf="category_text !== ''" style="margin-top: -16px;">
+                                            <div class="row col-md-12">
+                                                <div class="cursor-pointer" style="padding: 5px 10px;
+                                                background: #f8c333;
+                                                color: black;">
+                                                    {{category_text}} 
+                                                </div>
+                                                <div class="cursor-pointer" style="padding: 5px;
+                                                background: #f8c333;
+                                                color: black;" (click)="delete_cat()">
+                                                    x
+                                                </div>
+                                            </div>                                                
+                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label text-white">{{lable_text}}</label>
+                                    <div class="loading_input">
+                                    <select formControlName="avg_meal_cost" class="form-control input_2" (ngModelChange)="selectedChanged12()">
+                                        <option disabled value="">SELECT</option>
+                                        <ng-container *ngFor="let item of drop_down_value">
+                                        <option value="{{item}}">{{item}}</option>
+                                    </ng-container>
+                                    </select>
+                                    <div class="loading_input load_input" *ngIf="average_type_tag !== ''"></div>
+                                </div>
+                                    <div *ngIf="submitted && f.avg_meal_cost.errors" class="warning">
+                                        <div *ngIf="f.avg_meal_cost.errors.required">Average cost of meal is
+                                            required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="average_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{average_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="average_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+                                <div class="form-group" > 
+                                    <div class="row"> 
+                                        <div class="col-8">
+                                            <label class="control-label text-white">Business Address</label>
+                                        </div>
+                                        <div class="col-4 text-right position-relative">
+                                            <span class="cursor-pointer MapPopupOpen" (click)="view_map()">Pin your location</span>
+                                            <div>
+                                                <section class="position-absolute popup_inner" *ngIf="map_view">
+                                                    <div class="popup_map_info">
+                                                        <div class="pm_head d-flex">
+                                                            <div class="flx_1 text-center"><h4>Pick the location</h4></div>
+                                                            <div class="flx_0"><span class="close_pm cursor-pointer" (click)="close_map_view()">X</span></div>
+                                                           
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="padding: 16px;">
+                                                            <input type="text" class="form-control input_2" formControlName="temp_location"  [(ngModel)]="Search_text" placeholder="Type the location"  ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)">
+                                                        </div>
+                                                        </div>
+                                                        <div class="map_info_panel">
+                                                   <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+                                                    [zoomControl]="false">
+                                                    <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)">
+                                                      <agm-info-window>
+                                                        <strong>{{ address }}</strong>
+                                                      </agm-info-window>
+                                                    </agm-marker>
+                                                   </agm-map>
+                                                        </div>
+                                            
+                                                        <div class="row" style="text-align: center;">
+                                                            <div class="col-md-12" style="padding: 16px;">
+                                                                <button class="btn btn_8" (click)="close_map_view()">Select location</button> 
+                                                            </div>
+                                                            </div>
+                                                    </div>
+                                        
+                                            </section>
+
+
+<section class="position-absolute popup_inner text-left" *ngIf="address_view">
+    <div class="popup_map_info">
+        
+        <div class="pm_head d-flex">
+            <div class="flx_1 text-center"><h4>Something is not accurate !. <br> Please choose</h4></div>
+            <div class="flx_0">  <span class="close_pm cursor-pointer" (click)="close_address_view()">X</span></div>
+           
+        </div>
+        <div class="row">
+           
+            <div class="col-md-12" style="padding: 16px;">
+            <label class="control-label text-white">Country</label>
+            <input type="text" class="form-control input_2" disabled [(ngModel)]="p_country_name" formControlName="temp_country" placeholder="Country Name">
+        </div>
+        <div class="col-md-12" style="padding: 16px;">
+            <label class="control-label text-white">State</label>
+            <ng-autocomplete 
+            formControlName="temp_state"
+            [data]="state_name_list"
+            [(ngModel)]="p_state_name"
+            [searchKeyword]="keyword"
+            (selected)='selectEvent4($event)'
+            (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)'
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            placeholder = "Select state"
+            >                                 
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+          </ng-template>
+          <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+        <div class="col-md-12" style="padding: 16px;">
+            <label class="control-label text-white">City</label>
+            <ng-autocomplete 
+            formControlName="temp_city"
+            [data]="city_name_list"
+            [(ngModel)]="p_city_name"
+            [searchKeyword]="keyword"
+            (selected)='selectEvent5($event)'
+            (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)'
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            placeholder = "Select city"
+            >                                 
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+          </ng-template>
+          <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+        </div>
+    
+        <div class="row" style="text-align: center;">
+            <div class="col-md-12" style="padding: 16px;">
+                <button class="btn btn_8" (click)="save_address_view()">Save Location</button> 
+            </div>
+            </div>
+    </div>
+
+
+
+</section>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="loading_input">
+                                    <input formControlName="address"  class="form-control" [(ngModel)]="address" name="address" (ngModelChange)="bussiness_name_tag_actions1()"
+                                    [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+                                    placeholder="Address"  style="width: 100%;" [(ngModel)]="address" ngx-google-places-autocomplete  #placesRef="ngx-places"
+                                    (onAddressChange)="handleAddressChange($event)" />
+                                    <div class="loading_input load_input" *ngIf="address_type_tag !== ''"></div>
+                                     </div>
+                                     <div class="warning" *ngIf="address_error">
+                                        The Address you selected is not matched with your Registration
+                                       </div>
+                                     <!-- <div class="warning" *ngIf="address_error">
+                                        Invalid Address, Enter into {{country}} addres
+                                       </div> -->
+                                     <div *ngIf="submitted && f.address.errors" class="warning">
+                                         <div *ngIf="f.address.errors.required">Address is required</div>
+                                         <div *ngIf="f.address.errors.minlength">Address Should not be Incomplete</div>
+                                     </div>
+                                </div>
+
+                                
+                                <div class="form-group" *ngIf="address_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{address_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="address_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+
+                                <div class="loading_input">
+                                <div class="form-group">
+                                <label class="control-label text-white">Permanent address</label>
+                                <div class="perm_address" style="border: 1px solid black;padding: 10px;">
+                                    <!-- Address Form Start -->
+                                    <div class="panel pb-0 mb-0">
+                                        <div class="panel-heading mb-0 pb-0">
+                                            <div class="d-flex"  data-toggle="collapse" (click)="fetch_state_list()" data-target="#Address">
+                                                <div class="flx_1 pr-2">
+                                                    <h4 style="font-weight: normal;" class="panel-title text-left">Permanent address</h4>
+                                                </div>
+                                                <div class="flx_0 pr-2">
+                                                    <i class="fa fa-angle-down arrow_icon cursor-pointer"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="collapse" id="Address">
+                                            <div class="panel-body">
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <label class="control-label text-white">Address Line</label>  
+                                        <div class="loading_input"> 
+                                        <input type="text" class="form-control input_2" formControlName="address_postal" (keyup)="check_address()"
+                                            [ngClass]="{ 'is-invalid': submitted && f.address_postal.errors }"
+                                            placeholder="Address Line 1">
+                                            <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                        </div>
+                                        <div *ngIf="submitted && f.address_postal.errors" class="warning">
+                                            <div *ngIf="f.address_postal.errors.required">Address code is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <label class="control-label text-white">Country</label>  
+                                        <div class="loading_input">
+                                            <input type="text" style="background-color: #f8c333!important;" class="form-control" formControlName="country"  disabled [(ngModel)]="country" (keyup)="check_address()"
+                                            [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+                                            placeholder="country">
+
+                                            <!-- <ng-autocomplete 
+                                                [data]="p_country_name_list"
+                                                (keyup)="check_address()"
+                                                formControlName="country"
+                                                [searchKeyword]="keyword"
+                                                (selected)='selectEvent6($event)'
+                                                (inputChanged)='onChangeSearch($event)'
+                                                (inputFocused)='onFocused($event)'
+                                                [itemTemplate]="itemTemplate"
+                                                [notFoundTemplate]="notFoundTemplate"
+                                                placeholder = "Select country"
+                                                >                                 
+                                            </ng-autocomplete>
+                                            <ng-template #itemTemplate let-item>
+                                            <a [innerHTML]="item.name"></a>
+                                            </ng-template>
+                                            <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                            </ng-template> -->
+
+
+                                              <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                            </div>
+                                        <div *ngIf="submitted && f.country.errors" class="warning">
+                                            <div *ngIf="f.country.errors.required">country is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <label class="control-label text-white">State</label>  
+                                        <div class="loading_input">
+                                        <!-- <input type="text" class="form-control input_2" formControlName="state" 
+                                            [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+                                            placeholder="State"> -->
+                                            <ng-autocomplete 
+                                            [data]="p_state_name_list"                                          
+                                            formControlName="state"
+                                            [searchKeyword]="keyword"
+                                            (selected)='selectEvent7($event)'
+                                            (inputChanged)='onChangeSearch($event)'
+                                            (inputFocused)='onFocused($event)'
+                                            [itemTemplate]="itemTemplate"
+                                            [notFoundTemplate]="notFoundTemplate"
+                                            placeholder = "Select state"
+                                            >                                 
+                                          </ng-autocomplete>
+                                          <ng-template #itemTemplate let-item>
+                                          <a [innerHTML]="item.name"></a>
+                                          </ng-template>
+                                          <ng-template #notFoundTemplate let-notFound>
+                                          <div [innerHTML]="notFound"></div>
+                                          </ng-template>
+
+
+                                            <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                        </div>
+
+
+
+                                        <div *ngIf="submitted && f.state.errors" class="warning">
+                                            <div *ngIf="f.state.errors.required">State is required</div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6" style="padding: 15px;">
+                                        <label class="control-label text-white">City</label>  
+                                        <div class="loading_input">
+                                        <!-- <input type="text" class="form-control input_2" formControlName="city" 
+                                            [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+                                            placeholder="City"> -->
+                                            <ng-autocomplete 
+                                                [data]="p_city_name_list"                                              
+                                                formControlName="city"
+                                                [searchKeyword]="keyword"
+                                                (selected)='selectEvent8($event)'
+                                                (inputChanged)='onChangeSearch($event)'
+                                                (inputFocused)='onFocused($event)'
+                                                [itemTemplate]="itemTemplate"
+                                                [notFoundTemplate]="notFoundTemplate"
+                                                placeholder = "Select city"
+                                                >                                 
+                                            </ng-autocomplete>
+                                            <ng-template #itemTemplate let-item>
+                                            <a [innerHTML]="item.name"></a>
+                                            </ng-template>
+                                            <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                            </ng-template>
+                                            <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                        </div>
+                                        <div *ngIf="submitted && f.city.errors" class="warning">
+                                            <div *ngIf="f.city.errors.required">City is required</div>
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <label class="control-label text-white">Postal code</label>  
+                                        <div class="loading_input">
+                                        <input type="text" maxlength="6"  class="form-control input_2" formControlName="postal" (keyup)="check_address()"
+                                            [ngClass]="{ 'is-invalid': submitted && f.postal.errors }"
+                                            placeholder="Postal Code">
+                                            <div class="warning" *ngIf="postal_code_error">
+                                                Invalid Postal code
+                                            </div>
+                                            <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                        </div>
+
+                                        <div *ngIf="submitted && f.postal.errors" class="warning">
+                                            <div *ngIf="f.postal.errors.required">postal code is required</div>
+                                             <div *ngIf="f.postal.errors.maxlenth">postal code max 5 characters</div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                                                <div class="text-right">
+                                                    <a class="btn" style="background-color: gray;" *ngIf="!done_button">Done</a>
+                                                    <a class="btn" style="background-color: green;color: white;" data-toggle="collapse" data-target="#Address" (click)="postal_address_check()"  *ngIf="done_button">Done</a>
+
+                                                    <!-- <input type="button"  value="Done"> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Address Form End -->
+                    
+                    
+                                    <!-- Address View Start -->
+                        
+                                </div>
+
+
+
+
+                                </div>
+                                <div class="loading_input load_input" *ngIf="postal_address !== ''"></div>
+                                </div>
+                                
+
+                                <div class="form-group" *ngIf="postal_address !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                        <div class="col-md-12" style="font-size: 15px;
+                                        font-weight: 700;
+                                        color: black;
+                                        padding: 10px;">Permanent Address<span class="cursor-pointer" style="
+                                        background: #f8c333;
+                                        float: right;
+                                        color: black;" (click)="postal_address_delete()">x</span></div>
+                                        <div class="col-md-12" style=" font-size: 18px;color: black;">{{postal_address}}</div>
+                                        </div>
+                                        
+                                    </div>                                                
+                                </div>
+                                <!-- Address View End -->
+
+
+                                <!-- <div class="row" >
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control input_2" formControlName="address_postal"
+                                            [ngClass]="{ 'is-invalid': submitted && f.address_postal.errors }"
+                                            placeholder="Address Line 1">
+                                        <div *ngIf="submitted && f.address_postal.errors" class="warning">
+                                            <div *ngIf="f.address_postal.errors.required">Address with postal code is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding: 15px;">
+                                        <input type="text" class="form-control input_2" formControlName="city"
+                                            [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+                                            placeholder="City">
+                                        <div *ngIf="submitted && f.city.errors" class="warning">
+                                            <div *ngIf="f.city.errors.required">City is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <input type="text" class="form-control input_2" formControlName="state"
+                                            [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+                                            placeholder="State">
+                                        <div *ngIf="submitted && f.state.errors" class="warning">
+                                            <div *ngIf="f.state.errors.required">state is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <input type="text" class="form-control input_2" formControlName="postal"
+                                            [ngClass]="{ 'is-invalid': submitted && f.postal.errors }"
+                                            placeholder="Postal Code">
+                                        <div *ngIf="submitted && f.postal.errors" class="warning">
+                                            <div *ngIf="f.postal.errors.required">postal code is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"  style="padding: 15px;">
+                                        <input type="text" class="form-control input_2" formControlName="country"
+                                            [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+                                            placeholder="Country">
+                                        <div *ngIf="submitted && f.country.errors" class="warning">
+                                            <div *ngIf="f.country.errors.required">country is required</div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                                <div class="form-group">
+                                    <label class="control-label text-white">Landmark</label>
+                                    <div class="loading_input">
+
+                                    <input type="text" class="form-control input_2" formControlName="address_landmark" (keyup)="bussiness_name_tag_actionss()"
+                                        [ngClass]="{ 'is-invalid': submitted && f.address_landmark.errors }"
+                                        placeholder="Landmark">
+                                        <div class="loading_input load_input" *ngIf="landmark_type_tag !== ''"></div>
+                                    </div>
+                                    <div *ngIf="submitted && f.address_landmark.errors" class="warning">
+                                        <div *ngIf="f.address_landmark.errors.required">Landmark is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="landmark_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{landmark_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="landmark_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+
+            
+                                <div class="form-group">
+                                    <label class="control-label text-white">Do you have any existing service with us?</label>
+                                    <div class="loading_input">
+                                    <select formControlName="existing_user" class="form-control input_2" [(ngModel)]="refer_value" (ngModelChange)="selectedChanged1()">
+                                        <option disabled value="">SELECT</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                    <div class="loading_input1 load_input1" *ngIf="existing_type_tag !== ''"></div>
+                                    <div class="loading_input load_input" *ngIf="existing_type_tag !== ''"></div>
+                                    </div>
+                                    <div *ngIf="submitted && f.existing_user.errors" class="warning">
+                                        <div *ngIf="f.existing_user.errors.required">Existing required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="existing_type_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{existing_type_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="existing_type()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+                                <div class="form-group" *ngIf="refer_show">
+                                    <label class="control-label text-white">Ref Eamil</label>
+                                    <div class="loading_input">
+                                    <input type="text" class="form-control input_2" (keyup)="searchInterest()" formControlName="ref_email"
+                                        [ngClass]="{ 'is-invalid': submitted && f.ref_email.errors }"
+                                        placeholder="Ref Eamil">
+                                        <div class="loading_input load_input" *ngIf="ref_email_tag !== ''"></div>
+                                  </div>
+                                        <div class="warning" *ngIf="email_error">
+                                            This email id not exist
+                                           </div>
+
+                                           <div class="warning" *ngIf="email_empyt_error">
+                                            Email should not be empty
+                                           </div>
+
+                                    <div *ngIf="submitted && f.ref_email.errors" class="warning">
+                                        <div *ngIf="f.ref_email.errors.required">Ref Eamil is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" *ngIf="ref_email_tag !== ''" style="margin-top: -16px;" >
+                                    <div class="row col-md-12">
+                                        <div class="cursor-pointer" style="padding: 5px 10px;
+                                        background: #f8c333;
+                                        color: black;">
+                                            {{ref_email_tag}} 
+                                        </div>
+                                        <div class="cursor-pointer" style="padding: 5px;
+                                        background: #f8c333;
+                                        color: black;" (click)="ref_email()" >
+                                            x
+                                        </div>
+                                    </div>                                                
+                                </div>
+
+
+
+                                <div *ngIf="button_visible">
+                                    <button type="submit" (click)="onSubmit()" class="btn btn-info w-100">Submit</button>
+                                </div>
+                                <div *ngIf="!button_visible">
+                                    <button type="submit" class="hide">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+            </div>
+            <div class="col-md-6 offset-md-1 pt-5 d-flex justify-content-center">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner slide_column d-flex align-items-center justify-content-center">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_1.png" alt="First slide">
+                            <h4 class="text-center slider_info">HOME KITCHEN</h4>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_2.png" alt="First slide">
+                            <h4 class="text-center slider_info">PASTRY</h4>
+                        </div>
+                        
+                        
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_4.png" alt="First slide">
+                            <h4 class="text-center slider_info">RESTAURANTS</h4>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_5.png" alt="First slide">
+                            <h4 class="text-center slider_info">SERVICE</h4>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_3.png" alt="First slide">
+                            <h4 class="text-center slider_info">PASTRY</h4>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_6.png" alt="First slide">
+                            <h4 class="text-center slider_info">HOME KITCHEN</h4>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_7.png" alt="First slide">
+                            <h4 class="text-center slider_info">RESTAURANTS</h4>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="../../../assets/images/home_slider_8.png" alt="First slide">
+                            <h4 class="text-center slider_info">SHOPS</h4>
+                        </div>
+                       
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+<div class="footer_bg">
+    <div class="wrapper_2">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="pt-4 pb-4">
+                    <img src="../../../assets/images/logo_new_2.png" class="footer_img" alt=""/>
+                    <p class="pt-2">2021 @ All Rights Reserved </p>             
+                </div>                           
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="pt-4 pb-4">
+                    <h4>Support</h4>   
+                    <ul>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms & Conditions</a>
+                        </li>
+                        <li>
+                            <a href="#">Customer Support</a>
+                        </li>
+                        <li>
+                            <a href="#">Online Support</a>
+                        </li>
+                    </ul>
+                </div>                           
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="pt-4 pb-4">
+                    <h4>Contact</h4>   
+                    <ul>
+                        <li>
+                            +93 1541578
+                        </li>
+                        <li>
+                            sample@gmail.com
+                        </li>
+                        <li>
+                            sample addres heree
+                        </li>
+                       
+                    </ul>
+                </div>                           
+            </div>
+            <div class="col-lg-3 col-sm-6 footer_social">
+                <div class="pt-4 pb-4">
+                    <h4>Follow us</h4>   
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-youtube-play"></i>
+                            </a>   
+                        </li>
+                       
+                       
+                    </ul>
+                </div>                           
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Popup HTML Start  -->
+
+
+
+<!-- Popup HTML End  -->
+

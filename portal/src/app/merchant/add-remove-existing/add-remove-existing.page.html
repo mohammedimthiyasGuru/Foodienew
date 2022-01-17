@@ -1,0 +1,36 @@
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+      <div class="row gutter">
+          <div class="col-lg-12">
+              <div class="page-title">
+                  <h3>Add Remove Existing</h3>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Top Bar Ends -->
+
+  <div class="row gutter">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let product of products">
+          <div class="card-wrapper">
+              <div class="card clearfix bg-dark2">
+                  <img *ngIf="product.prod_img" src="{{product.prod_img}}" class="img-responsive rounded card-avatar mb-0" alt="Product Image">
+                  <img *ngIf="!product.prod_img" src="../../../assets/images/thumbs/user12.png" class="img-responsive rounded card-avatar mb-0" alt="Product Image">
+                  
+                  <h4 class="shadow_none pt-2 mb-0 pb-0">{{product.prod_name}}</h4>
+                  <div class="row pt-3 d-flex align-items-center">
+                      <div class="col-6 text-left d-flex align-items-center">
+                         <h4 class="mb-0 pb-0 pr-1">{{product.prod_avail_time}}</h4>
+                      </div>
+                      <div class="col-6 text-right">
+                          {{product.createdAt | date}}
+                      </div>
+                  </div>
+              </div>
+              <div class="card-actions clearfix pt-2 pb-2 text-center">
+                  <a href="merchant/products/{{product.prod_id}}" class="btn btn-info btn-rounded btn-sm pl-4 pr-4">View Details</a>                         
+              </div>
+          </div>
+      </div>
+  </div>
+

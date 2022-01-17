@@ -1,0 +1,35 @@
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-12">
+            <div class="page-title">
+                <h3>Update Category</h3>
+                <button style="float: right;" (cliclk)="back()" class="btn btn-info">Back</button>
+            </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="panel mb-3">
+              <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+              <div class="panel-body">
+                  <div class="form-group">
+                      <label class="control-label text-white">Enter Your Category</label>
+                      <input type="text" class="form-control input_2" maxlength="25" [(ngModel)]="cat_data.cat_name" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" placeholder="Enter Your Category">
+                      <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                        <div *ngIf="f.category.errors.required">Category is required</div>
+                        </div>
+                  </div>
+                  <div class="pb-3">
+                      <button type="submit" class="btn btn-info">Update</button>
+                  </div>
+              </div>
+              </form>
+          </div>
+      </div>
+
+    </div>
+</div>
+<!-- Top Bar Ends -->
+
+
+
+

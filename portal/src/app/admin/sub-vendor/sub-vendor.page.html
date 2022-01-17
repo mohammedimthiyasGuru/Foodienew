@@ -1,0 +1,289 @@
+<!-- Top Bar Starts -->
+<div class="top-bar clearfix">
+  <div class="row gutter">
+      <div class="col-12">
+          <div class="page-title">
+              <h3>Create New Sub Vendor Form</h3>
+          </div>
+      </div>
+
+  </div>
+</div>
+<!-- Top Bar Ends -->
+
+<div class="announc_form">
+  <div class="row">
+      <div class="col-lg-12">
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">First Name</label>
+                                  <input type="text" formControlName="firstName" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                      placeholder="Name" />
+                                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Last Name</label>
+                                  <input type="text" formControlName="lastName" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                                      placeholder="Name" />
+                                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Business Name</label>
+                                  <input type="text" formControlName="businessName" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.businessName.errors }"
+                                      placeholder="Name" />
+                                  <div *ngIf="submitted && f.businessName.errors" class="invalid-feedback">
+                                      <div *ngIf="f.businessName.errors.required">Business Name is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Mobile No</label>
+                                  <input type="text" formControlName="mobile" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                                      placeholder="Mobile" />
+                                  <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                      <div *ngIf="f.mobile.errors.required">Mobile No is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Email</label>
+                                  <input type="text" formControlName="email" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" />
+                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                      <div *ngIf="f.email.errors.required">Email is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Address</label>
+                                  <textarea formControlName="address" style="height: 100px;" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+                                      placeholder="Address"></textarea>
+                                  <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                      <div *ngIf="f.address.errors.required">Address is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Location</label>
+                                  <textarea formControlName="location" style="height: 70px;" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.location.errors }"
+                                      placeholder="Location"></textarea>
+                                  <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                      <div *ngIf="f.location.errors.required">Location is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">D.O.B</label>
+                                  <input type="text" formControlName="dob" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.dob.errors }"
+                                      placeholder="Date of birth" />
+                                  <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                      <div *ngIf="f.dob.errors.required">D.O.B is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="summary">Summary</label>
+                                  <input type="text" formControlName="summary" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.summary.errors }"
+                                      placeholder="Summary" />
+                                  <div *ngIf="submitted && f.summary.errors" class="invalid-feedback">
+                                      <div *ngIf="f.summary.errors.required">Summary is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Facebook</label>
+                                  <input type="text" formControlName="facebook" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.facebook.errors }"
+                                      placeholder="Facebook" />
+                                  <div *ngIf="submitted && f.facebook.errors" class="invalid-feedback">
+                                      <div *ngIf="f.facebook.errors.required">Facebook is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Twitter</label>
+                                  <input type="text" formControlName="twitter" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.twitter.errors }"
+                                      placeholder="Twitter" />
+                                  <div *ngIf="submitted && f.twitter.errors" class="invalid-feedback">
+                                      <div *ngIf="f.twitter.errors.required">Twitter is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Instagram</label>
+                                  <input type="text" formControlName="instagram" class="form-control"
+                                      [ngClass]="{ 'is-invalid': submitted && f.instagram.errors }"
+                                      placeholder="Instagram" />
+                                  <div *ngIf="submitted && f.instagram.errors" class="invalid-feedback">
+                                      <div *ngIf="f.instagram.errors.required">Instagram is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                              <div class="form-group">
+                                  <label for="userName">Upload Profile Image</label>
+                                  <input type="file" class="form-control" accept="image/*" (change)="selectImg($event)"/>
+                              </div>
+                              <div class="flx_0">
+                                  <button title="Choose Default Image" class="btn btn-success" type="button" (click)="uploadImg()"> <i class="icon-plus d-block"></i> </button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="text-center pb-2">
+                  <button type="submit" class="btn btn-success mr-2">Save</button>
+                  <button type="reset" class="btn btn-danger">Clear</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

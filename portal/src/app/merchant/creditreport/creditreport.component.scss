@@ -1,0 +1,33 @@
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.9em 0 !important;
+}
+
+
+.mat-form-field-type-mat-date-range-input .mat-form-field-infix {
+    padding-top: 15px !important;
+}
+
+
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 15px 0px 0px 0px !important;
+    /* top: 15px; */
+}
+
+
+    .form-control1 {
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        border: 1px solid #556174;
+        background: #353C48;
+        height: 60px;
+        padding: 6px 10px;
+        transition: all 0.3s ease-out;
+        color: #d0d5dc;
+    }
+    .warning {
+        background: gainsboro;
+        color: red !important;
+        padding: 7px;
+        font-size: 12px;
+    }

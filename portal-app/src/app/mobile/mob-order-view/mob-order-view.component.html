@@ -1,0 +1,996 @@
+<div class="ov_list p-3 h-100 scroll_hide bg_2">
+
+  <!--  Order Received Start -->
+            <div class="ov_col_1" *ngIf="stage == 'received'">
+
+                <div class="d-flex align-items-center pb-3">
+                  <div class="flx_0 pr-3">
+                   <a href="/dashboard"> <i class="fa fa-chevron-circle-left back_arrow_2"></i></a>
+                  </div>
+
+                  <div class="flx_1 text-right">
+                    <h4 class="txt_semi cursor-pointer" (click)="history_action('A','approved')">View Histroy</h4>
+                  </div>
+                </div>
+
+                <h4 class="txt_semi cursor-pointer">Order {{stage}}</h4>
+                <!-- <div class="ex1"> -->
+                <ng-container *ngFor="let items of corderslist; let i = index">
+                <div class="ov_info mb-4">
+                    <div class="ov_info_col_1 bg_color_1">
+                      <div class="d-flex text-center align-items-center pb-3 pt-3 flex-row justify-content-center">
+                        <h4 class="pr-1">Order </h4>
+                        <h4>ID: {{items.order_id}}</h4>
+
+                      </div>
+                        <div class="ov_row_1">
+                            <div class="row">
+                                <div class="col-6" *ngIf="stage == 'received'">
+                                      <span (click)="updatestatus(items,'C')" >
+                                    <div class="d-inline-block ov_action_col text-center">
+                                        <img class="ov_img_1" src="../../assets/r_icon_6.png" alt="" />
+                                        <b class="pt-1 d-block txt_s_1">Reject</b>
+                                    </div>
+                                    </span>
+                                </div>
+                                <div class="col-6 text-right" *ngIf="stage == 'received'">
+                                  <span (click)="updatestatus(items,'A')" >
+                                    <div class="d-inline-block ov_action_col text-center">
+                                        <img class="ov_img_1" src="../../assets/r_icon_4.png" alt="" *ngIf="!Seal_visible" />
+                                        <img class="ov_img_1" src="../../assets/r_icon_5.png" alt="" *ngIf="Seal_visible"/>
+                                        <b class="pt-1 d-block txt_s_1">Accept</b>
+                                    </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ov_row_2 text-center">
+                            <b class="d-block pb-1">{{rest_name}}</b>
+                            <span class="d-block">ID: {{items.merchant}}</span>
+
+
+
+                        </div>
+
+                        <div class="ov_row_3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <b class="ov_r2_1">
+                                        QTY : {{items.prod_qty}}
+                                    </b>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <b class="ov_r2_1">
+                                        RM : {{items.prod_total_price}}
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                    <div class="ov_info_col_2">
+                    <div class="ov_c2_wrapper position-relative">
+
+                      <div class="seal_ov d-flex align-items-center justify-content-center" *ngIf="cancel_visible">
+                        <img src=" ../../../../assets/rejected_seal.png"/>
+                      </div>
+
+
+                        <div class="seal_ov d-flex align-items-center justify-content-center" *ngIf="Seal_visible">
+                            <img src=" ../../../../assets/approved_seal.png"/>
+                          </div>
+                        <div class="ov_c2_1">
+                            <div class="text-center">
+                                <b>User id : {{items.customer}}</b>
+                            </div>
+                        </div>
+
+                        <div class="ov_c2_2">
+                            <div class="ro_tble_new">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg_color_1">
+                                                S.No
+                                            </th>
+                                            <th class="bg_color_1">
+                                                Order Details
+                                            </th>
+                                            <th class="bg_color_1">
+                                                QTY
+                                            </th>
+                                            <th class="bg_color_1">
+                                                U.PRICE
+                                            </th>
+                                            <th class="bg_color_1">
+                                                T.PRICE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <ng-container *ngFor="let order of items.order_prods; let j = index">
+                                        <tr>
+                                            <td>
+                                               {{j+1}}
+                                            </td>
+                                            <td>
+                                                <div><b>Product id:</b> {{order.prod_id}}</div>
+                                                <p class="mb-0">
+                                                  {{order.prod_name}}
+                                                </p>
+                                                <p class="mb-0">
+                                                  {{order.prod_desc}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                              {{order.prod_qty}}
+                                            </td>
+                                            <td>
+                                               {{order.prod_price}}
+                                            </td>
+                                            <td>
+                                              {{order.prod_total_price}}
+                                            </td>
+                                        </tr>
+                                      </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+          </div>
+                    </div>
+
+                    <div class="ov_info_col_3 bg_color_1">
+                      <div class="text-center">
+                        <b>Notes if any</b>
+                        <div class="ov_note_box">
+          <div class="ro_tble_new">
+                           Please add more spicy
+                        </div>
+        </div>
+                    </div>
+                        <div class="text-center d-none">
+                            <b>Notes if any</b>
+                            <div class="ov_note_box">
+              <div class="ro_tble_new">
+                                <table class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="bg_color_1">
+                                                S.No
+                                            </th>
+                                            <th class="bg_color_1">
+                                                Descrition
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                12511
+                                            </td>
+                                            <td>
+                                                lorem ipsum lorem ipsum lorem ipsum
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+            </div>
+                        </div>
+                        <div class="text-center pt-1">
+                            <b>Date and time</b>
+                            <div class="ov_note_box">{{items.order_date | date}}</div>
+                        </div>
+
+                        <div class="row pt-2 align-items-end">
+                            <div class="col-6">
+                                <span class=" d-block"><b class="txt_semi">Rider :</b> John Rio</span>
+                                <span class="d-block">Accepted</span>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="#" class="txt_black txt_semi">Enquiry</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </ng-container>
+                <!-- </div> -->
+            </div>
+
+    <!--  Order Received End -->
+
+
+
+
+
+        <!--  Order Preparing Start -->
+
+
+
+        <div class="ov_col_1 pt-5" *ngIf="stage == 'approved'">
+          <div *ngIf="temp_data !== 'approved' && stage == 'approved'">
+
+            <div class="pb-3 text-right">
+              <h4 class="txt_semi cursor-pointer"   (click)="history_action('B','received')">Go Back</h4>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div *ngIf="temp_data == 'approved'">
+
+
+            <div class="d-flex align-items-center pb-3">
+                <div class="flx_0 pr-3">
+                 <a href="/dashboard"> <i class="fa fa-chevron-circle-left back_arrow_2"></i></a>
+                </div>
+
+                <div class="flx_1 text-right">
+                    <h4 class="txt_semi cursor-pointer"  (click)="history_action('P','picked')">View Histroy</h4>
+                </div>
+              </div>
+
+<!--
+            <a href="/dashboard">Back</a>
+            <div class="pb-3 text-right">
+              <h4 class="txt_semi cursor-pointer"  (click)="history_action('P','picked')">View Histroy</h4>
+          </div> -->
+
+
+
+          </div>
+
+
+
+          <h4 class="txt_semi">Order Preparing</h4>
+          <ng-container *ngFor="let items of corderslist; let i = index">
+          <div class="ov_info mb-4">
+              <div class="ov_info_col_1 bg_color_2">
+
+                <div class="d-flex text-center align-items-center pb-3 pt-3 flex-row justify-content-center">
+                  <h4 class="pr-1">Order </h4>
+                  <h4>ID: {{items.order_id}}</h4>
+                </div>
+
+                  <div class="ov_row_1">
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="d-inline-block ov_action_col text-center">
+                                <span (click)="updatestatus(items,'C')" >
+                                  <img class="ov_img_1" src="../../assets/r_icon_6.png" alt="" />
+                                  <b class="pt-1 d-block txt_s_1">Cancel</b>
+            <b class="d-block txt_s_1">0:30</b>
+                                </span>
+                              </div>
+                          </div>
+                          <div class="col-6 text-right">
+                              <div class="d-inline-flex align-items-center flex-row ov_action_col text-center">
+                                  <img class="ov_img_1 mr-1 flx_0" src="../../assets/r_icon_5.png" alt="" />
+            <b class="pt-1 d-block txt_s_1 flx_0 btn-success ov_r2_2">Accepted</b>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="ov_row_2 text-center">
+                    <b class="d-block pb-1">{{rest_name}}</b>
+                    <span class="d-block">ID: {{items.merchant}}</span>
+
+                </div>
+
+                <div class="ov_row_3">
+                    <div class="row">
+                        <div class="col-6">
+                            <b class="ov_r2_1">
+                                QTY : {{items.prod_qty}}
+                            </b>
+                        </div>
+                        <div class="col-6 text-right">
+                            <b class="ov_r2_1">
+                                RM : {{items.prod_total_price}}
+                            </b>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            <div class="ov_info_col_2">
+            <div class="ov_c2_wrapper position-relative">
+
+
+
+              <div class="seal_ov d-flex align-items-center justify-content-center" *ngIf="cancel_visible == true">
+                <img src=" ../../../../assets/cancelled_seal.png"/>
+              </div>
+
+
+                <div class="seal_ov d-flex align-items-center justify-content-center" *ngIf="cancel_visible == false">
+                    <img src=" ../../../../assets/approved_seal.png"/>
+                  </div>
+                <div class="ov_c2_1">
+                    <div class="text-center">
+                        <b>User id : {{items.customer}}</b>
+                    </div>
+                </div>
+
+                <div class="ov_c2_2">
+                    <div class="ro_tble_new">
+                        <table class="w-100">
+                            <thead>
+                                <tr>
+                                    <th class="bg_color_2">
+                                        S.No
+                                    </th>
+                                    <th class="bg_color_2">
+                                        Order Details
+                                    </th>
+                                    <th class="bg_color_2">
+                                        QTY
+                                    </th>
+                                    <th class="bg_color_2">
+                                        U.PRICE
+                                    </th>
+                                    <th class="bg_color_2">
+                                        T.PRICE
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let order of items.order_prods; let j = index">
+                                <tr>
+                                    <td>
+                                       {{j+1}}
+                                    </td>
+                                    <td>
+                                        <div><b>Product id:</b>{{order.prod_id}}</div>
+                                        <p class="mb-0">
+                                          {{order.prod_name}}
+                                        </p>
+                                        <p class="mb-0">
+                                          {{order.prod_desc}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                      {{order.prod_qty}}
+                                    </td>
+                                    <td>
+                                       {{order.prod_price}}
+                                    </td>
+                                    <td>
+                                      {{order.prod_total_price}}
+                                    </td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+  </div>
+            </div>
+
+
+            <div class="ov_info_col_3 bg_color_2">
+
+              <div class="text-center">
+                <b>Notes if any</b>
+                <div class="ov_note_box">
+                 <div class="ro_tble_new">
+                   Please add more spicy
+                </div>
+            </div>
+            </div>
+
+
+
+                <div class="text-center pt-1">
+                    <b>Date and time</b>
+                    <div class="ov_note_box">{{items.order_date | date}}</div>
+                </div>
+
+                <div class="row pt-2 align-items-end">
+                    <div class="col-6">
+                        <span class=" d-block"><b class="txt_semi">Rider :</b> John Rio</span>
+                        <span class="d-block">Accepted</span>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="#" class="txt_black txt_semi">Enquiry</a>
+                    </div>
+                </div>
+            </div>
+
+
+          </div>
+          </ng-container>
+      </div>
+
+<!--  Order Preparing End -->
+
+
+
+    <!--  Rider Picked Start -->
+    <div class="ov_col_1 pt-5" *ngIf="stage == 'picked'">
+      <div *ngIf="temp_data !== 'picked' && stage == 'picked'">
+
+        <div class="pb-3 text-right">
+          <h4 class="txt_semi cursor-pointer"  (click)="history_action('A','approved')">Go Back</h4>
+        </div>
+      </div>
+
+
+      <div *ngIf="temp_data == 'picked'">
+
+
+        <div class="d-flex align-items-center pb-3">
+            <div class="flx_0 pr-3">
+             <a href="/dashboard"> <i class="fa fa-chevron-circle-left back_arrow_2"></i></a>
+            </div>
+
+            <div class="flx_1 text-right">
+                <h4 class="txt_semi cursor-pointer" (click)="history_action('D','delivered')">View Histroy</h4></div>
+        </div>
+
+      </div>
+
+
+      <h4 class="txt_semi">Rider Picked</h4>
+
+      <ng-container *ngFor="let items of corderslist; let i = index">
+      <div class="ov_info mb-4">
+          <div class="ov_info_col_1 bg_color_5">
+            <div class="d-flex text-center align-items-center pb-3 pt-3 flex-row justify-content-center">
+              <h4 class="pr-1">Order </h4>
+              <h4>ID: {{items.order_id}}</h4>
+            </div>
+              <div class="ov_row_1">
+                  <div class="row">
+                      <div class="col-6">
+                            <b class="ov_r2_2 d-inline-block btn_black_overlay">
+                              Code : 4567
+                          </b>
+                      </div>
+                      <div class="col-6 text-right">
+                          <div class="d-inline-flex ov_action_col text-center">
+                              <img class="ov_img_1 flx_0 mr-2" src="../../assets/r_icon_5.png" alt="" />
+                              <b class="pt-1 d-block txt_s_1 ov_r2_2 ot_deliver">Out of Delivery</b>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="ov_row_2 text-center">
+                <b class="d-block pb-1">{{rest_name}}</b>
+                <span class="d-block">ID: {{items.merchant}}</span>
+
+            </div>
+
+            <div class="ov_row_3">
+                <div class="row">
+                    <div class="col-6">
+                        <b class="ov_r2_1">
+                            QTY : {{items.prod_qty}}
+                        </b>
+                    </div>
+                    <div class="col-6 text-right">
+                        <b class="ov_r2_1">
+                            RM : {{items.prod_total_price}}
+                        </b>
+                    </div>
+                </div>
+            </div>
+           </div>
+        <div class="ov_info_col_2">
+        <div class="ov_c2_wrapper position-relative">
+            <div class="seal_ov d-flex align-items-center justify-content-center">
+                <img src=" ../../../../assets/out_for_deliever_seal.png"/>
+              </div>
+            <div class="ov_c2_1">
+                <div class="text-center">
+                    <b>User id : {{items.customer}}</b>
+                </div>
+            </div>
+
+            <div class="ov_c2_2">
+                <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_5">
+                                    S.No
+                                </th>
+                                <th class="bg_color_5">
+                                    Order Details
+                                </th>
+                                <th class="bg_color_5">
+                                    QTY
+                                </th>
+                                <th class="bg_color_5">
+                                    U.PRICE
+                                </th>
+                                <th class="bg_color_5">
+                                    T.PRICE
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let order of items.order_prods; let j = index">
+                            <tr>
+                                <td>
+                                   {{j+1}}
+                                </td>
+                                <td>
+                                    <div><b>Product id:</b> {{order.prod_id}}</div>
+                                    <p class="mb-0">
+                                      {{order.prod_name}}
+                                    </p>
+                                    <p class="mb-0">
+                                      {{order.prod_desc}}
+                                    </p>
+                                </td>
+                                <td>
+                                  {{order.prod_qty}}
+                                </td>
+                                <td>
+                                   {{order.prod_price}}
+                                </td>
+                                <td>
+                                  {{order.prod_total_price}}
+                                </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+        </div>
+
+        <div class="ov_info_col_3 bg_color_5">
+          <div class="text-center">
+            <b>Notes if any</b>
+            <div class="ov_note_box">
+<div class="ro_tble_new">
+               Please add more spicy
+            </div>
+</div>
+        </div>
+            <div class="text-center d-none">
+                <b>Notes if any</b>
+                <div class="ov_note_box">
+  <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_1">
+                                    S.No
+                                </th>
+                                <th class="bg_color_1">
+                                    Descrition
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    12511
+                                </td>
+                                <td>
+                                    lorem ipsum lorem ipsum lorem ipsum
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+</div>
+            </div>
+            <div class="text-center pt-1">
+                <b>Date and time</b>
+                <div class="ov_note_box">{{items.order_date | date}}</div>
+            </div>
+
+            <div class="row pt-2 align-items-end">
+                <div class="col-6">
+                    <span class=" d-block"><b class="txt_semi">Rider :</b> John Rio</span>
+                    <span class="d-block">Accepted</span>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="#" class="txt_black txt_semi">Enquiry</a>
+                </div>
+            </div>
+        </div>
+
+
+      </div>
+    </ng-container>
+  </div>
+<!--  Rider Picked End -->
+
+
+
+    <!--  Delivered Start -->
+
+
+    <div class="ov_col_1 pt-5" *ngIf="stage == 'delivered'">
+      <div *ngIf="temp_data !== 'delivered' && stage == 'delivered'">
+
+        <div class="pb-3 text-right">
+          <h4 class="txt_semi cursor-pointer" (click)="history_action('P','picked')">Go Back</h4></div>
+      </div>
+
+      <div *ngIf="temp_data == 'delivered' && stage == 'delivered'">
+
+      <div class="d-flex align-items-center pb-3">
+        <div class="flx_0 pr-3">
+         <a href="/dashboard"> <i class="fa fa-chevron-circle-left back_arrow_2"></i></a>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+      <h4 class="txt_semi">Delivered</h4>
+      <ng-container *ngFor="let items of corderslist; let i = index">
+      <div class="ov_info mb-4">
+          <div class="ov_info_col_1 bg_color_4">
+            <div class="d-flex text-center align-items-center pb-3 pt-3 flex-row justify-content-center">
+              <h4 class="pr-1">Order </h4>
+              <h4>ID: {{items.order_id}}</h4>
+            </div>
+              <div class="ov_row_1">
+                  <div class="row">
+                      <div class="col-6">
+                           <b class="ov_r2_2 d-inline-block btn_black_overlay">
+                              Code : 4567
+                          </b>
+                      </div>
+                      <div class="col-6 text-right">
+                          <div class="d-inline-flex ov_action_col text-center">
+                              <img class="ov_img_1 flx_0 mr-2" src="../../assets/r_icon_5.png" alt="">
+                              <b class="pt-1 d-block txt_s_1 btn-success ov_r2_2">Delivered</b>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="ov_row_2 text-center">
+                <b class="d-block pb-1">{{rest_name}}</b>
+                <span class="d-block">ID: {{items.merchant}}</span>
+            </div>
+
+            <div class="ov_row_3">
+                <div class="row">
+                    <div class="col-6">
+                        <b class="ov_r2_1">
+                            QTY : {{items.prod_qty}}
+                        </b>
+                    </div>
+                    <div class="col-6 text-right">
+                        <b class="ov_r2_1">
+                            RM : {{items.prod_total_price}}
+                        </b>
+                    </div>
+                </div>
+            </div>
+           </div>
+        <div class="ov_info_col_2">
+        <div class="ov_c2_wrapper position-relative">
+            <div class="seal_ov d-flex align-items-center justify-content-center">
+                <img src=" ../../../../assets/delivered_seal.png"/>
+              </div>
+            <div class="ov_c2_1">
+                <div class="text-center">
+                    <b>User id : {{items.customer}}</b>
+                </div>
+            </div>
+
+            <div class="ov_c2_2">
+                <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_4">
+                                    S.No
+                                </th>
+                                <th class="bg_color_4">
+                                    Order Details
+                                </th>
+                                <th class="bg_color_4">
+                                    QTY
+                                </th>
+                                <th class="bg_color_4">
+                                    U.PRICE
+                                </th>
+                                <th class="bg_color_4">
+                                    T.PRICE
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let order of items.order_prods; let j = index">
+                            <tr>
+                                <td>
+                                   {{j+1}}
+                                </td>
+                                <td>
+                                    <div><b>Product id:</b> {{order.prod_id}}</div>
+                                    <p class="mb-0">
+                                      {{order.prod_name}}
+                                    </p>
+                                    <p class="mb-0">
+                                      {{order.prod_desc}}
+                                    </p>
+                                </td>
+                                <td>
+                                  {{order.prod_qty}}
+                                </td>
+                                <td>
+                                   {{order.prod_price}}
+                                </td>
+                                <td>
+                                  {{order.prod_total_price}}
+                                </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+        </div>
+
+        <div class="ov_info_col_3 bg_color_4">
+          <div class="text-center">
+            <b>Notes if any</b>
+            <div class="ov_note_box">
+<div class="ro_tble_new">
+               Please add more spicy
+            </div>
+</div>
+        </div>
+            <div class="text-center d-none">
+                <b>Notes if any</b>
+                <div class="ov_note_box">
+  <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_1">
+                                    S.No
+                                </th>
+                                <th class="bg_color_1">
+                                    Descrition
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    12511
+                                </td>
+                                <td>
+                                    lorem ipsum lorem ipsum lorem ipsum
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+</div>
+            </div>
+            <div class="text-center pt-1">
+                <b>Date and time</b>
+                <div class="ov_note_box">{{items.order_date | date}}</div>
+            </div>
+
+            <div class="row pt-2 align-items-end">
+                <div class="col-6">
+                    <span class=" d-block"><b class="txt_semi">Rider :</b> John Rio</span>
+                    <span class="d-block">Accepted</span>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="#" class="txt_black txt_semi">Enquiry</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+      </div>
+      </ng-container>
+</div>
+
+<!--  Delivered End -->
+
+
+    <!--  Cancelled Start -->
+
+    <div class="ov_col_1 pt-5" *ngIf="stage == 'delivered'">
+      <h4 class="txt_semi">Cancelled</h4>
+      <ng-container *ngFor="let items of corderslist; let i = index">
+      <div class="ov_info">
+          <div class="ov_info_col_1 bg_color_6">
+            <div class="d-flex text-center align-items-center pb-3 pt-3 flex-row justify-content-center">
+              <h4 class="pr-1">Order </h4>
+              <h4>ID: {{items.order_id}}</h4>
+            </div>
+              <div class="ov_row_1">
+                  <div class="row">
+                      <div class="col-12">
+                          <div class="d-inline-flex ov_action_col flex-row align-items-center text-center">
+                              <img class="ov_img_1 flx_0 mr-1" src="../../assets/r_icon_6.png" alt="">
+                              <b class="ov_r2_2 d-block btn-danger mt-1 flx_0">Cancelled</b>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="ov_row_2 text-center">
+                <b class="d-block pb-1">{{rest_name}}</b>
+                <span class="d-block">ID: {{items.merchant}}</span>
+
+            </div>
+
+            <div class="ov_row_3">
+                <div class="row">
+                    <div class="col-6">
+                        <b class="ov_r2_1">
+                            QTY : {{items.prod_qty}}
+                        </b>
+                    </div>
+                    <div class="col-6 text-right">
+                        <b class="ov_r2_1">
+                            RM : {{items.prod_total_price}}
+                        </b>
+                    </div>
+                </div>
+            </div>
+           </div>
+        <div class="ov_info_col_2">
+        <div class="ov_c2_wrapper position-relative">
+            <div class="seal_ov d-flex align-items-center justify-content-center">
+                <img src=" ../../../../assets/cancelled_seal.png"/>
+              </div>
+            <div class="ov_c2_1">
+                <div class="text-center">
+                    <b>User id : {{items.customer}}</b>
+                </div>
+            </div>
+
+            <div class="ov_c2_2">
+                <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_6">
+                                    S.No
+                                </th>
+                                <th class="bg_color_6">
+                                    Order Details
+                                </th>
+                                <th class="bg_color_6">
+                                    QTY
+                                </th>
+                                <th class="bg_color_6">
+                                    U.PRICE
+                                </th>
+                                <th class="bg_color_6">
+                                    T.PRICE
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let order of items.order_prods; let j = index">
+                            <tr>
+                                <td>
+                                   {{j+1}}
+                                </td>
+                                <td>
+                                    <div><b>Product id:</b> {{order.prod_id}}</div>
+                                    <p class="mb-0">
+                                      {{order.prod_name}}
+                                    </p>
+                                    <p class="mb-0">
+                                      {{order.prod_desc}}
+                                    </p>
+                                </td>
+                                <td>
+                                  {{order.prod_qty}}
+                                </td>
+                                <td>
+                                   {{order.prod_price}}
+                                </td>
+                                <td>
+                                  {{order.prod_total_price}}
+                                </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+        </div>
+
+        <div class="ov_info_col_3 bg_color_6">
+          <div class="text-center">
+            <b>Notes if any</b>
+            <div class="ov_note_box">
+<div class="ro_tble_new">
+               Please add more spicy
+            </div>
+</div>
+        </div>
+            <div class="text-center d-none">
+                <b>Notes if any</b>
+                <div class="ov_note_box">
+  <div class="ro_tble_new">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th class="bg_color_1">
+                                    S.No
+                                </th>
+                                <th class="bg_color_1">
+                                    Descrition
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    12511
+                                </td>
+                                <td>
+                                    lorem ipsum lorem ipsum lorem ipsum
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+</div>
+            </div>
+            <div class="text-center pt-1">
+                <b>Date and time</b>
+                <div class="ov_note_box">{{items.order_date | date}}</div>
+            </div>
+
+            <div class="row pt-2 align-items-end">
+                <div class="col-6">
+                    <span class=" d-block"><b class="txt_semi">Rider :</b> John Rio</span>
+                    <span class="d-block">Accepted</span>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="#" class="txt_black txt_semi">Enquiry</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+      </div>
+    </ng-container>
+</div>
+
+<!--  Cancelled End -->
+
+
+
+
+

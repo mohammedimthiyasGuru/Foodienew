@@ -1,0 +1,53 @@
+.ng-autocomplete {
+    width: 100%;
+}
+
+.warning {
+    background: gainsboro;
+    color: red !important;
+    padding: 7px;
+    font-size: 12px;
+}
+
+
+agm-map {
+  height: 300px;
+}
+
+.panel {
+    border: 1px solid #ffffff !important;
+    background-color: #2a303900 !important;
+}
+
+.loading_input{
+    position:relative;
+  }
+  .load_input{
+    position: absolute;
+    background: #f0f8ff1f;
+    top: 0px;
+    height: 100%;
+    /* right: 8px; */
+    width: 100%;
+  }
+  .cursor-pointer{
+      cursor:pointer
+  }
+
+  .hide {
+    background: gray;
+    width: 100%;
+    height: 35px;
+    color: white;
+    font-size: 17px;
+}
+
+
+.loading_input1{
+    position:relative;
+  }
+  .load_input1{
+    position: absolute;
+  top: 11px;
+  right: 8px;
+  }

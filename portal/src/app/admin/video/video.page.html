@@ -1,0 +1,147 @@
+<!-- Top Bar Starts -->
+<!-- <div class="top-bar clearfix">
+  <div class="row gutter">
+      <div class="col-12">
+          <div class="page-title">
+              <h3>Live Videos</h3>
+          </div>
+      </div>
+
+  </div>
+</div> -->
+<!-- Top Bar Ends -->
+
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>go-live</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<!-- <app-loader *ngIf="video_uploading"></app-loader> -->
+  <!-- Top Bar Starts -->
+  <!-- <div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-12">
+            <div class="page-title">
+                <h3>Go Live</h3>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+<!-- Top Bar Ends -->
+
+<div *ngIf="!video_add_status" >
+
+<!-- <div class="d-flex align-items-center justify-content-center flex-row">
+    <div class="text-center pr-3 pl-3">
+        <a href="#">
+            <span class="cart_icon d-inline-flex align-items-center justify-content-center">
+                <i class="icon-shopping-cart"></i>
+            </span>
+            <h5>Go Live</h5>
+        </a>
+    </div>
+
+</div> -->
+
+<div class="pt-2">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="form-group">
+                <textarea   class="terms form-control" placeholder="Video Comments" disabled>What’s in these terms?
+                    This index is designed to help you understand some of the key updates we’ve made to our Terms of Service (Terms). We hope this serves as a useful guide, but please ensure you read the Terms in full.
+                    
+                    Welcome to YouTube!
+                    This section outlines our relationship with you. It includes a description of the Service, defines our Agreement, and names your service provider.
+                    
+                    Who May Use the Service?
+                    This section sets out certain requirements for use of the Service, and defines categories of users.
+                    
+                    Your Use of the Service
+                    This section explains your rights to use the Service, and the conditions that apply to your use of the Service. It also explains how we may make changes to the Service.
+                    
+                    Your Content and Conduct
+                    This section applies to users who provide Content to the Service. It defines the scope of the permissions that you grant by uploading your Content, and includes your agreement not to upload anything that infringes on anyone else’s rights. 
+                    
+                    Account Suspension and Termination
+                    This section explains how you and YouTube may terminate this relationship.
+                    
+                    About Software in the Service
+                    This section includes details about software on the Service.
+                    
+                    Other Legal Terms
+                    This section includes our service commitment to you. It also explains that there are some things we will not be responsible for.
+                    
+                    About this Agreement
+                    This section includes some further important details about our contract, including what to expect if we need to make changes to these Terms; or which law applies to them.</textarea>
+            </div>
+            <div class="form-group">
+                <input type="checkbox"  class="largerCheckbox"  id="vehicle1" name="vehicle1" value="Bike" (change)="toggleEditable($event)"> Agree Terms &amp; Conditions
+                <div class="warning" *ngIf="terms" >
+                    Please accept our terms and conditions
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" (click)="Proceed()">Proceed Live</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="announc_form">
+  <div class="row">
+      <div class="col-lg-12" *ngIf="video_add_status">
+          <form>
+              <div class="panel mb-3">
+                  <div class="panel-body">
+                      <div class="styled-input-wrapper">
+                          <div class="input-icon">
+                              <i class="icon-file-text2"></i>
+                          </div>
+                          <div class="styled-input">
+                            <div class="form-group">
+                                <textarea style="height: 200px;" (keyup)="searchInterest()" [(ngModel)]="video_comments" name="video_comments"  class="form-control" placeholder="Video Comments"></textarea>
+                            </div>
+                            <div class="warning" *ngIf="comments_error" >
+                                Comments should not be empty
+                           </div>
+                              <div class="form-group">
+                                  <label for="userName">Upload Video</label>
+                                  <input type="file" class="form-control"  (change)="selectImg($event)"/>
+                              </div>
+                              <div class="warning" *ngIf="video_error" >
+                                Select Video
+                           </div>
+                           <div class="warning" *ngIf="video_error1" >
+                            Please upload the video below 20 mb
+                           </div>
+                           <div class="progress mt-3 mb-3" *ngIf="video_uploading">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{percentDone}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': percentDone_pre}">{{percentDone}}%</div>
+                          </div>                              
+                              <!-- <div class="flx_0">
+                                  <button title="Choose Default Image" class="btn btn-success" type="button" > <i class="icon-plus d-block"></i> </button>
+                              </div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="text-center pb-2" *ngIf="!video_uploading">
+                  <button type="submit" class="btn btn-success mr-2" (click)="uploadImg()">Save</button>
+                  <button type="reset" class="btn btn-danger" (click)="cancel()" >Cancel or Back</button>
+              </div>
+          </form>
+      </div>
+      <br>
+      <br>
+  </div>
+</div>

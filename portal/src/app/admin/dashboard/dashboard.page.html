@@ -1,0 +1,328 @@
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="page-title">
+          <h3>Dashboard</h3>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <ul class="right-stats" id="mini-nav-right">
+          
+          <li>
+            <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Export</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Top Bar Ends -->
+
+  <!-- Row starts -->
+  <div class="row gutter">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <a href='/admin/forms_type'>
+      <div class="panel yellow_panel text_black all_black">
+        <div class="social-details clearfix">
+          <div class="social-icon pull-left">
+            <div class="round-icon red-icon">
+              <i class="icon-calendar"></i>
+            </div>
+          </div>
+          <div class="social-num" >
+            <h2><span id="" class="odometer">0</span> </h2>
+            <p>Received Forms</p>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+      <a href='/admin/forms_type'>
+      <div class="panel yellow_panel text_black all_black">
+        <div class="social-details clearfix">
+          <div class="social-icon pull-left">
+            <div class="round-icon yellow-icon">
+              <i class="icon-tools"></i>
+            </div>
+          </div>
+          <div class="social-num">
+            <h2><span id="" class="odometer">0</span></h2>
+            <p>Approved Forms</p>
+        
+          </div>
+        </div>
+      </div>
+    </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+
+      <a href='/admin/forms_type'>
+      <div class="panel yellow_panel text_black all_black">
+        <div class="social-details clearfix">
+          <div class="social-icon pull-left">
+            <div class="round-icon green-icon">
+              <i class="icon-briefcase"></i>
+            </div>
+          </div>
+          <div class="social-num">
+            <h2><span id="" class="odometer">0</span></h2>
+            <p>Rejected forms</p>
+          
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+      <a href='/admin/forms_type'>
+      <div class="panel yellow_panel text_black all_black">
+        <div class="social-details clearfix">
+          <div class="social-icon pull-left">
+            <div class="round-icon blue-icon">
+              <i class="icon-presentation"></i>
+            </div>
+          </div>
+          <div class="social-num">
+            <h2><span id="" class="odometer">0</span></h2>
+            <p>Export pdf</p>
+         
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+  <!-- Row ends -->
+
+  <!-- Row starts -->
+  <div class="row gutter">
+    <div class="col-lg-9  col-sm-12 col-xs-12">
+      <div class="panel height2 border_yellow text_black">
+        <div class="panel-heading">
+          <h4>Audience Overview</h4>
+        </div>
+        <div class="panel-body">
+          <div id="audienceOverview" class="chart-height1"></div>
+          <h1 class="audience-total"><i class="icon-triangle-up"></i>0<span>/ today</span></h1>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-3  col-sm-12 col-xs-12">
+      
+        <div class="panel height1 yellow_panel text_black">
+                          <div class="panel-heading">
+                              <h4>Users</h4>
+                          </div>
+                          <div class="panel-body">
+                              <div class="sessions">
+                                  <h2>0</h2>
+                                  <div id="users" class="graph"></div>
+                              </div>
+                          </div>
+                      </div>
+        
+        <div class="panel height1 yellow_panel text_black">
+                          <div class="panel-heading">
+                              <h4>Visits</h4>
+                          </div>
+                          <div class="panel-body">
+                              <div class="sessions">
+                                  <h2>0</h2>
+                                  <div id="bouncerate" class="graph"></div>
+                              </div>
+                          </div>
+                      </div>
+      
+    </div>
+  </div>
+  <!-- Row ends -->
+
+  <!-- Row starts -->
+  <div class="row gutter mb-3">
+    
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      <div class="panel h-100 border_yellow text_black">
+        <div class="panel-heading">
+          <h4>Accounts</h4>
+        </div>
+        <div class="panel-body">
+          <div class="chart-height3" id="bankAccounts">
+            <svg></svg>
+          </div>
+          <ul class="bank-balance clearfix">
+            <li>Credit: <span class="text-green"> $0</span></li>
+            <li>Debit: <span class="text-red"> $0</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+      
+          <div class="panel h-100 border_yellow text_black">
+            <div class="panel-heading">
+              <h4>Subscribed Users</h4>
+            </div>
+            <div class="panel-body">
+              <div class="chart-horiz clearfix">
+                <ul class="sales-bar chart">
+                  <li class="current" title="Trails"><span class="bar" data-number="5679"></span><span class="number">0</span></li>
+                  <li class="current" title="Subscriptions"><span class="bar" data-number="3458"></span><span class="number">0</span></li>
+                  <li class="current" title="Expansions"><span class="bar" data-number="1934"></span><span class="number">0</span></li>
+                </ul>
+              </div>
+            </div>
+          
+                      
+      
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      
+      
+
+      <div class="panel h-100 border_yellow text_black">
+        <div class="panel-heading">
+          <h4>Customer Rating</h4>
+        </div>
+        <div class="customer-satisfaction">
+          <i class="icon-thumbs-up"></i>
+          <h2>0</h2>
+          <p>of customers would recommended this App.</p>
+        </div>
+        <div id="customerRating" class="chart-height4"></div>
+      </div>
+    
+  </div>
+  </div>
+  <!-- Row ends -->
+
+  <!-- Row starts -->
+  <div class="row gutter">
+
+    <div class="col-lg-5 col-md-4 col-sm-6">
+      <div class="panel h-100 yellow_panel text_black">
+        <div class="panel-heading">
+          <h4>App Downloads</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="app-downloads">
+            <li>
+              <p class="clearfix">
+                <i class="icon-appleinc"></i>IOS<span>0</span>
+              </p>
+              <div class="progress progress-md">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%">
+                  <span class="sr-only">89% Complete (success)</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <p class="clearfix">
+                <i class="icon-android"></i>Android<span>0</span>
+              </p>
+              <div class="progress progress-md">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%">
+                  <span class="sr-only">55% Complete (success)</span>
+                </div>
+              </div>
+            </li>
+         
+           
+          </ul>
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-lg-5 col-md-4 col-sm-6">
+      <div class="panel h-100 yellow_panel text_black">
+        <div class="panel-heading">
+          <h4>Transactions</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="transactions">
+            <li>
+              <a href="javascript:void(0)">
+                <span class="tra-icon">
+                  <i class="icon-shield3 text-red"></i>
+                </span>
+                <span class="tra-type">Day Income</span>
+                <span class="tra-amount text-green">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <span class="tra-icon">
+                  <i class="icon-aircraft text-green"></i>
+                </span>
+                <span class="tra-type">Week Income</span>
+                <span class="tra-amount text-red">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <span class="tra-icon">
+                  <i class="icon-shopping-cart text-blue"></i>
+                </span>
+                <span class="tra-type">Shopping</span>
+                <span class="tra-amount text-red">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <span class="tra-icon">
+                  <i class="icon-bowl text-yellow"></i>
+                </span>
+                <span class="tra-type">Month Income</span>
+                <span class="tra-amount text-red">0</span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <span class="tra-icon">
+                  <i class="icon-pig text-red"></i>
+                </span>
+                <span class="tra-type">Year Income</span>
+                <span class="tra-amount text-green">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-4 col-sm-12">
+      <div class="panel h-100">
+        <div class="panel-heading">
+          <h4>Social Engagement</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="social-engagement clearfix row">
+            <li class="fb col-12">
+              <a href="javascript:void(0)">
+                <i class="icon-facebook-with-circle"></i>
+              </a>
+              <span>0</span>
+
+            </li>
+            <li class="tw col-12 mt-3">
+              <a href="javascript:void(0)">
+                <i class="icon-instagram-with-circle"></i>
+              </a>
+              <span>0</span>
+
+            </li>
+            <li class="gplus col-12 mt-3">
+              <a href="javascript:void(0)">
+                <i class="icon-youtube-with-circle"></i>
+              </a>
+              <span>0</span>	
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <!-- Row ends -->

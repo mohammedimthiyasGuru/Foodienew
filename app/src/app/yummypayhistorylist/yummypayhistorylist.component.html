@@ -1,0 +1,158 @@
+<!-- <tr *ngFor="let e of employeedata | paginate: { itemsPerPage: count, currentPage: p }"> -->
+  <!--Including the pagination control.-->
+  <!-- <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div> -->
+
+
+
+
+  <div class="d-flex w-100 h-100 flex-column">
+    <div class="flx_1 overflow_auto">
+      <div class="chat_wrapper w-100 h-100 position-relative overflow_auto" style="margin-bottom: 75px;">
+
+          <div class="po_head mb-2 yellow_bg p-3">
+              <div class="d-flex align-items-center">
+                  <div class="flx_0 pr-2">
+                     <a (click)="back_action()"> <i class="fa fa-arrow-left txt_black2"></i></a>
+                  </div>
+                  <div class="flx_1 txt_semi text-center">
+                      Yummy's Pay Transactions History
+                  </div>
+              </div>
+          </div>
+
+          <div class="p-3">
+
+              <div class="pb-3">
+                  <div class="row no-gutters align-items-end">
+                      <div class="col-4 pr-2">
+                          <span class="pb-2">From</span>
+                          <input type="date" [(ngModel)]="start_date" placeholder="From" class="input_1 cus_input_1 w-100">
+
+                      </div>
+                      <div class="col-4 pr-2">
+                          <span class="pb-2">To</span>
+                          <input type="date" [(ngModel)]="end_date" placeholder="From" class="input_1 cus_input_1 w-100">
+                      </div>
+                      <div class="col-4 pr-2">
+                          <input type="button" (click)="filter()" value="Filter" class="btn_1">
+                      </div>
+
+
+                  </div>
+              </div>
+
+              <div class="row pt-3 align-items-center">
+                  <div class="col-12">
+                      <b class="txt_normal d-block">Search Results : {{employeedata.length}}</b>
+                  </div>
+
+              </div>
+
+              <div class="trac_list pt-3">
+                  <div class="trans_list">
+
+                    <ng-container *ngFor="let item of employeedata | paginate: { itemsPerPage: count, currentPage: p };let i = index ">
+                      <div class="trac_list pt-3">
+                          <div class="mb-3 bb_1 pb-3">
+                              <div class="d-flex flex-row btn-ripple btn-ripple-2 align-items-center">
+                                  <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                      <div class="flx_0 prof_img_3">
+                                          <img  src="{{item.trans_img}}" alt="">
+                                      </div>
+                                      <div class="flx_1 ellips_txt pl-2">
+                                          <b class="mo_txt_1 d-block ellips_txt">{{item.trans_id}}</b>
+                                          <span class="d-block ellips_txt">{{item.createdAt | date:'medium' }}</span>
+                                      </div>
+                                  </div>
+                                  <div class="flx_0 text-right">
+                                      <b class="d-block text-success" *ngIf="item.trans_type == 'Add Fund'">+ RM {{item.amount}}</b>
+                                      <b class="d-block text-danger" *ngIf="item.trans_type == 'Order'">- RM {{item.amount}}</b>
+                                      <span (click)="show_trans_detail(i)" class="sml_txt_2 d-block txt_black2 ViewMoreAction_2 txt_normal">View More </span>
+                                  </div>
+                              </div>
+
+                              <div class="ViewMoreInfo_2 " *ngIf="item.show_status">
+                                  <div class="trc_more border_1 mt-2 p-1" *ngIf="item.trans_type == 'Add Fund'">
+                                      <div class="row">
+                                          <div class="col-6 br_1">
+                                              <b class="d-block txt_semi"> Trans id</b>
+                                              <span>{{item.trans_id}}</span>
+                                          </div>
+                                          <div class="col-6">
+                                              <b class="d-block txt_semi"> Status</b>
+                                              <span>Completed</span>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="trc_more border_1 mt-2 p-1" *ngIf="item.trans_type == 'Order'">
+                                    <div class="row">
+                                        <div class="col-6 br_1">
+                                            <b class="d-block txt_semi"> Order id</b>
+                                            <span>{{item.order_id}}</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <b class="d-block txt_semi"> Status</b>
+                                            <span>Completed</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                              </div>
+                          </div>
+                      </div>
+                    </ng-container>
+
+
+
+
+                  </div>
+              </div>
+
+              <nav class="Page navigation pt-3 pb-3 pagination justify-content-center d-flex align-items-center">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  <!-- <ul class="pagination justify-content-center d-flex align-items-center">
+                      <li>
+                          <a href="#" aria-label="Previous">
+                              <span aria-hidden="true">«</span>
+                          </a>
+                      </li>
+                      <li class="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li>
+                          <a href="#" aria-label="Next">
+                              <span aria-hidden="true">»</span>
+                          </a>
+                      </li>
+                  </ul> -->
+              </nav>
+          </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+      <!-- Thank You Panel Start -->
+      <div class="popup_box_1 d-flex align-items-center jusitify-content-center" style="display:none !important">
+          <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+              <img width="160" src="images/thank-you.jpg" class="img-fluid" alt="">
+              <h3 class="text_2 txt_semi pt-3 pb-3">Thank you for</h3>
+              <p>
+                  some text here
+              </p>
+
+              <input type="button" class="btn_1 btn-ripple text-center box-shadow pl-4 pr-4 pt-2 pb-2 mr-3 txt_black_2"
+                  value="Ok" />
+          </div>
+      </div>
+      <!-- Thank You Panel End -->

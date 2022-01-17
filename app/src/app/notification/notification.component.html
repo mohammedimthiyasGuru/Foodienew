@@ -1,0 +1,48 @@
+
+
+
+<div class="d-flex w-100 h-100 flex-column">
+<div class="flx_1 overflow_auto">
+
+<div class="Home_new_1">
+<div class="hn_2">
+<div class="position-relative pd3_wrapper p-3">
+<div class="product_list wrapper pt-3">
+  <div class="flx_0 pr-2">
+    <a class="txt_black2" (click)="back_action()"><i class="fa fa-arrow-left back_arrow"></i></a>
+   </div>
+  <div class="pb-3">
+      <h3 class="txt_semi pb-1 mb-0" style="font-size: 25px;font-weight: 700;">Notification</h3>
+      <p>No of notification : {{ntotification_list.length}}.</p>
+  </div>
+  <div class="pb-5">
+    <ng-container *ngFor="let notify of ntotification_list; let i = index">
+      <div class="prod_list_2 bb_2 pt-1 mb-4" (click)="view_notify_details()">
+          <div class="prod_list_row cursor-pointer pb-3">
+              <div class="d-flex">
+                  <div class="flx_1 Product_Cnt_Popup cursor-pointer">
+                      <div class="d-flex">
+                          <div class="flx_1 pr-2">
+                              <h5 class="color_3 text_size_3 tw_none txt_semi two_lines_elips">
+                                 {{notify.note_title}}
+                                  </h5>
+                              <p class="color_1 two_lines_elips"> {{notify.note_content}}</p>
+                              <p class="color_1 two_lines_elips"> {{notify.createdAt}}</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="flx_0 pr-2">
+                    <i class="fa fa-bell-o icon_1 color_3" style="font-size: 40px;"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </ng-container>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,467 @@
+<div class="d-flex w-100 h-100 flex-column" *ngIf="page_name == 'Product'">
+	<div class="flx_1 overflow_auto">
+		<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+		<div class="all_offer">
+        <div class="ao_2 position-relative">
+          <div class="ao_img ao_img_2 position-absolute">
+              <img *ngIf="shop_detail.profile_img == null"  src="../../assets/product_img_2.jpg" class="img-fluid w-100 d-block" alt="" />
+              <img *ngIf="shop_detail.profile_img"  src="{{shop_detail.profile_img}}" class="img-fluid w-100 d-block" alt="" />
+                <!-- <img src="images/product_img_2.jpg" class="img-fluid w-100 d-block" alt="" /> -->
+            </div>
+            <div class="ao_1_info position-relative d-flex flex-column">
+              <div class="flx_0">
+                    <div class="wrapper pt-2">
+                        <div class="ch_row_1 pb-2" style="padding-top: 25px;">
+                            <div class="d-flex align-items-center text-white">
+                                <div class="flx_0 pr-3 cursor-pointer" (click)="back_action()" >
+                                     <a class="txt_white"><i style="color: white;" class="fa fa-arrow-left back_arrow"></i></a>
+                                </div>
+                                <!-- <div class="flx_1 text-right d-flex align-items-center flex-row justify-content-end">
+                                  <div class="noti_icon position-relative" (click)="move_notification()">
+                                        <i class="fa fa-bell-o icon_1"></i>
+                                        <span class="noti_count" *ngIf="notification_status">{{notification_count}}</span>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="pl-3 shop_cart_icon" (click)="move_cart()">
+                                  <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flx_1 wrapper text-white d-flex align-items-end justify-content-end flex-column">
+                    <div class="pv_i_head pb-3 w-100">
+                      <h2 class="text-white mb-0 text-center">{{shop_detail.profile_biz_name}}</h2>
+                      <div class="text-center">
+                            <i class="fa fa-star"></i> 4.6 (1k+)
+                            <div class="text-center">
+                              <img *ngIf="!fav_status" (click)="add_to_fav()"  style="width: 25px;" src="../../assets/fav1.png">
+                              <img *ngIf="fav_status" (click)="remove_from_fav()" style="width: 25px;" src="../../assets/fav0.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shape_img">
+              <svg width="100%" height="64px" viewBox="0 0 600 64" enable-background="new 0 0 600 64" xml:space="preserve">
+              <path fill="#FFFDFD" d="M-4.75,7.808c0,0,343.382,70.892,609.75-0.275V64H-3.987L-4.75,7.808z"></path>
+              </svg>
+              </div>
+
+        </div>
+
+        <div class="company_info  offer_info_3 wrapper mt-3 mb-1" *ngIf="promocode_desc !== 'No Promo code Available'">
+            <div class="wrapper pt-2">
+                <div class="d-flex align-items-center">
+                    <div class="flx_1">
+                        <h5 *ngIf="promocode_type == 'amount'" class="mb-0 txt_semi pb-1">Discount Price {{promocode_title}}</h5>
+                        <h5 *ngIf="promocode_type == 'percentage'" class="mb-0 txt_semi pb-1">Discount {{promocode_title}} %</h5>
+                        <p>
+                           {{promocode_desc}}
+                        </p>
+                    </div>
+                    <div class="flx_0 pl-3">
+                        <!-- <img src="../../assets/tag.png" class="discount_img" alt=""> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="d-flex flex-row flex-nowrap top_filter scroll_hide">
+            <ng-container *ngFor="let cat of cat_list; let i = index">
+            <div class="f_box_1 f_box_1_active" *ngIf="cat.select_status" (click)="cat_select(cat,i)">
+                  <span>
+                      {{cat.cat_name}}</span>
+              </div>
+              <div class="f_box_1" *ngIf="!cat.select_status" (click)="cat_select(cat,i)">
+                <span>
+                  {{cat.cat_name}}</span>
+            </div>
+            </ng-container>
+          </div>
+
+
+       <div class="product_list wrapper pt-3">
+            <div class="pb-3">
+                <h3 class="txt_semi pb-1 mb-0">{{list_title}}</h3>
+                <p>Most ordered right now.</p>
+            </div>
+            <div class="pb-5">
+              <div class="" *ngIf="prod_list.length == 0">
+                <h3>No Record Found</h3>
+              </div>
+              <div class="" *ngIf="prod_list.length !== 0">
+                <ng-container *ngFor="let prod of prod_list; let i = index">
+                  <div class="prod_list_2 bb_2 pt-1 mb-4" (click)="view_product_details(prod,i)"  *ngIf="prod.cat_id == cat_index">
+                      <div class="prod_list_row cursor-pointer pb-3">
+                          <div class="d-flex">
+                              <div class="flx_1 Product_Cnt_Popup cursor-pointer">
+                                  <div class="d-flex">
+                                      <div class="flx_1 pr-2">
+                                          <h5 class="color_3 text_size_3 tw_none txt_semi two_lines_elips">
+                                             {{prod.prod_name}}
+                                              </h5>
+                                          <p class="color_1 two_lines_elips">{{prod.item_name}}</p>
+                                          <h5 class="color_2 txt_semi">{{price_symbol}} {{prod.prod_price}}</h5>
+                                      </div>
+                                  </div>
+
+                              </div>
+                              <div class="flx_0 pr-2">
+                             <a (click)="view_product_details_one(prod,i)">
+                                  <div class="pl_img_4 position-relative">
+                                      <img class="w-100 h-100 rounded" src="{{prod.prod_img}}" >
+                                  </div>
+                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+        </div>
+    </div>
+
+	</div>
+
+
+	<div class="flx_0" >
+
+    <div class="cart_info_2" *ngIf="this.promocode_list.length !== 0 && this.grand_total !== 0">
+
+      <div *ngIf="promo_balance_amount > 0" class="bg_yellow txt_semi ci_3 ci_3_2 txt_black2 d-flex align-items-center flex-row">
+
+        <div class="flx_1 pr-2">
+          Add {{price_symbol}}  {{promo_balance_amount}} to get promo
+        </div>
+        <div class="flx_0">
+          <div class="d-flex align-items-center justify-content-end flex-row">
+            <span class="price_tag_cnt mr-1 bg-white">{{timer_value_min}}</span>
+            :
+            <span class="price_tag_cnt ml-1 bg-white">{{timer_value_sec}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart_info_2 box_shadow_2">
+      <div class="bg-white p-2">
+        <div class="d-flex align-items-center">
+          <div class="flx_1 d-flex align-items-center">
+            <span class="log_txt d-inline-flex align-items-center pr-1">
+            <span class="log_txt_1">
+              <img class="tag_price_img" src="../../assets/yummy-logo-black.png"/>
+            </span>
+            <b class="log_txt_2">OFF</b>
+            </span>
+            <ng-container *ngFor="let item of promocode_list">
+            <!-- <span class="price_tag_cnt price_tag_active mr-1">20%</span> -->
+            <span class="price_tag_cnt" *ngIf="item.promocode_type == 'percentage' && item.promocode_mini_value > grand_total">{{item.promocode_value}} %</span>
+            <span class="price_tag_cnt" *ngIf="item.promocode_type == 'amount' && item.promocode_mini_value > grand_total">{{item.promocode_value}} off</span>
+
+            <span class="price_tag_cnt price_tag_active mr-1" *ngIf="item.promocode_type == 'percentage' && item.promocode_mini_value <= grand_total">{{item.promocode_value}} %</span>
+            <span class="price_tag_cnt price_tag_active mr-1" *ngIf="item.promocode_type == 'amount'  && item.promocode_mini_value <= grand_total">{{item.promocode_value}} off</span>
+
+          </ng-container>
+          </div>
+          <div class="flx_0 d-flex align-items-center" *ngIf="promocode_index !== 0">
+            <i class="fa fa-star log_txt_3"></i>
+            <b class="price_tag_cnt ml-2">Promo {{promocode_index}} Unlocked</b>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+		<div class="footer_cart position-relative bg-white pt-2 pb-2" *ngIf="cart_detail.length !== 0">
+            <div class="wrapper brad_1 yellow_panel_1 text_black">
+            <div class="d-flex align-items-center">
+                <div class="flx_0">
+                  <span class="cart_cunt txt_semi">{{cart_detail.length}}</span>
+                </div>
+                <div class="flx_1 txt_semi pl-2 pr-2 text-center">
+
+				<a (click)="view_your_cart()" class="txt_black2">
+                    View Your Cart
+					</a>
+                 </div>
+                 <div class="flx_0 txt_semi text-right">
+                  {{price_symbol}} {{grand_total}}
+                 </div>
+            </div>
+        </div>
+    </div>
+
+	</div>
+
+
+
+</div>
+	</div>
+</div>
+
+
+
+
+<div class="popup_box_1 FootCartInfo align-items-end d-flex flow_hide" *ngIf="addtocart_visible">
+  <span class="close_foot_pop" (click)="back()">
+
+  </span>
+  <div class="cart_dialog w-100 bg-white p-4">
+    <div>
+        <div class="d-flex pb-3">
+            <div class="flx_1 pr-2">
+                <h5 class="mb-0 txt_semi">{{product_details.prod_name}}</h5>
+            </div>
+            <div class="flx_0">
+                <b>{{price_symbol}} {{product_details.prod_price}}</b>
+            </div>
+        </div>
+        <div class="pb-2">
+            <a (click)="visible_instruction()" class="text_black d-flex align-items-center">   <span class="plus_btn_2 flx_0 mr-2">+</span>  <span class="flx_1">Add Special Instructions</span> </a>
+            <!-- <button (click)="back()">back</button> -->
+        </div>
+
+        <div class="d-flex pt-4 align-items-center">
+            <div class="flx_0 pr-4">
+                <div class="d-flex plus_mins_btn align-items-center">
+                    <div class="flx_0">
+                        <span class="minus_btn" (click)="remove_count()" >-</span>
+                    </div>
+                    <div class="flx_1">
+                      <div class="input_pm">{{product_details.cart_count}}</div>
+                    </div>
+                    <div class="flx_0">
+                        <span class="plus_btn" (click)="add_count()">+</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flx_1">
+                <a *ngIf="product_details.cart_count !== 0" (click)="new_add_to_cart()" class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+                <a *ngIf="product_details.cart_count == 0"  class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////// -->
+
+<div class="overflow_auto h-100" *ngIf="page_name == 'Product_desc'">
+    <div class="w-100">
+      <div class="">
+        <div class="pd_main bg_circle position-relative">
+            <div class="wrapper">
+                <div class="ch_row_1 pb-2 pt-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flx_1 pr-3 cursor-pointer">
+                            <a class="txt_black2" (click)="hide_instruction()"><i class="fa fa-arrow-left back_arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      <div class="img_row_slider text-center pb-4">
+          <img src="{{product_details.prod_img}}" class="is_img box-shadow"/>
+            </div>
+
+            <div class="wrapper text-center pb-2">
+                <h3 class="mb-0 pb-2">{{product_details.prod_price}}</h3>
+                <h5 class="txt_normal pt-2">{{product_details.prod_name}}</h5>
+            </div>
+            <div>
+                <div class="p-3">
+                    <div class="row no-gutters tab_action" *ngIf="visible_desc_list">
+                        <div class="col-6 text-center">
+                            <button rel="DescripProduct" (click)="show_product_detail()" class="btn_5 bg_yellow txt_normal w-100 tab_button d-block text_black brad_3">Details</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button rel="ProductRate" (click)="hide_product_detail()" class="btn_5 tab_button d-block w-100 brad_4">Rating</button>
+                        </div>
+                    </div>
+                    <div class="row no-gutters tab_action" *ngIf="visible_rate_list">
+                      <div class="col-6 text-center">
+                          <button rel="DescripProduct" (click)="show_product_detail()" class="btn_5  txt_normal w-100 tab_button d-block text_black brad_3">Details</button>
+                      </div>
+                      <div class="col-6 text-center">
+                          <button rel="ProductRate" (click)="hide_product_detail()" class="btn_5 bg_yellow tab_button d-block w-100 brad_4">Rating</button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+        <div class="p-3 tab_info">
+          <div class="details_tb DescripProduct tab_info_panel" *ngIf="visible_desc_list">
+                   <ng-container  *ngFor="let prod_desc of product_details.prod_desc; let i = index">
+                     <p>{{prod_desc.title}}</p>
+                     <p>{{prod_desc.desc}}</p>
+                   </ng-container>
+          </div>
+          <div *ngIf="visible_rate_list" class="review_tb pt-3 ProductRate tab_info_panel">
+                    <h5 class="txt_semi">{{rating_list.length}} Reviews</h5>
+                    <ng-container  *ngFor="let rating of rating_list; let i = index">
+                    <div class="pt-1 pb-3 mb-2 bb_2">
+                        <div class="d-flex pb-1">
+                            <div class="flx_1">
+                                <h6 class="mb-0 txt_semi">{{rating.pr_user_name}}</h6>
+                                <small class="pb-1 d-block">{{rating.pr_rating_date}}</small>
+                            </div>
+                            <div class="flx_0">
+                                <i class="fa fa-star txt_yellow pr-2"></i>
+                                <i class="fa fa-star txt_yellow pr-2"></i>
+                                <i class="fa fa-star txt_yellow pr-2"></i>
+                                <i class="fa fa-star text-secondary pr-2"></i>
+                                <i class="fa fa-star text-white pr-2"></i>
+                            </div>
+                        </div>
+                        <p class="mb-0">{{rating.pr_rating_text}}</p>
+                    </div>
+                    </ng-container>
+          </div>
+        </div>
+            <div class="pt-5 pb-2">
+               <div class="wrapper">
+                <div class="pb-2">
+                    <a (click)="visible_instruction()" class="text_black d-flex align-items-center">   <span class="plus_btn_2 flx_0 mr-2">+</span>  <span class="flx_1">Add Special Instructions</span> </a>
+                </div>
+                <div class="d-flex pt-4 align-items-center">
+                    <div class="flx_0 pr-4">
+                        <div class="d-flex plus_mins_btn align-items-center">
+                          <div class="flx_0">
+                            <span class="minus_btn" (click)="remove_count()" >-</span>
+                        </div>
+                        <div class="flx_1">
+                          <div class="input_pm">{{product_details.cart_count}}</div>
+                        </div>
+                        <div class="flx_0">
+                            <span class="plus_btn" (click)="add_count()">+</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="flx_1">
+                      <a *ngIf="product_details.cart_count !== 0" (click)="new_add_to_cart()" class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+                      <a *ngIf="product_details.cart_count == 0"  class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="" *ngIf="page_name == 'Special_ins'">
+    <div class="d-flex w-100 h-100 flex-column">
+      <div class="flx_1 overflow_auto">
+        <div class="d-flex w-100 h-100 flex-column">
+      <div class="flx_1 overflow_auto">
+        <div class="custo_page">
+            <div class="wrapper cp_col_1">
+                <div class="ch_row_1 bb_1 pb-2 pt-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flx_0 pr-3 cursor-pointer" (click)="hide_instruction()" >
+                            <i class="fa fa-arrow-left back_arrow"></i>
+                        </div>
+                        <div class="flx_1 pr-2 d-flex align-items-start">
+                            <div class="d-flex align-items-center">
+                                <h6 class="mb-0 pr-2">Customize</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3">
+                    <div class="d-flex pb-3">
+                        <div class="flx_1 pr-2">
+                            <h4 class="mb-0 txt_semi">{{product_details.prod_name}}</h4>
+                        </div>
+                        <div class="flx_0">
+                            <b>{{price_symbol}} {{product_details.prod_price}}</b>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <h5 class="txt_semi">Special Instructions</h5>
+                        <p>
+                            Please let us know if you are allergic to anything or if we need to avoid anything
+                        </p>
+
+                        <textarea name=""  [(ngModel)]="product_details.instruction" id="" class="si_text w-100 p-2" placeholder="eg:no mayo"></textarea>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+      <div class="flx_0">
+        <div class="footer_cart position-relative bg-white box-shadow p-3">
+                <div class="">
+                    <div class="d-flex align-items-center">
+                        <div class="flx_0 pr-4">
+                            <div class="d-flex plus_mins_btn">
+                                <div class="flx_0">
+                                    <span class="minus_btn" (click)="remove_count()">-</span>
+                                </div>
+                                <div class="flx_1">
+                                  <div class="input_pm">{{product_details.cart_count}}</div>
+                                </div>
+                                <div class="flx_0">
+                                    <span class="plus_btn" (click)="add_count()">+</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="flx_1">
+                          <a *ngIf="product_details.cart_count !== 0" (click)="new_add_to_cart()" class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+                          <a *ngIf="product_details.cart_count == 0"  class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit"> <b class="txt_semi">Add to Cart </b></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="popup_box_1 d-flex align-items-center jusitify-content-center" *ngIf="msg_show">
+  <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+      <img width="160" src="../../assets/thank-you.jpg" class="img-fluid" alt="">
+      <h3 class="text_2 txt_semi pt-3 pb-3">{{msg_title}}</h3>
+<p>
+  {{msg_text}}
+</p>
+<input type="button" (click)="click_action()" class="btn_1 btn-ripple text-center box-shadow pl-4 pr-4 pt-2 pb-2 mr-3 txt_black_2" value="Ok"/>
+<input type="button" (click)="hide_msg()" class="btn_1 btn-ripple text-center box-shadow pl-4 pr-4 pt-2 pb-2 mr-3 txt_black_2" value="Cancel"/>
+
+  </div>
+</div>
+
+
+
+
+
+
+

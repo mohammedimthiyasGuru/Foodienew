@@ -1,0 +1,22 @@
+// .map {
+//   width: 100%;
+//   min-height: 50vh;
+//   height: 0;
+// }
+
+agm-map{
+  height: 130px
+}
+
+// .map agm-map {
+//   height: 100%;
+//   width: 100%;
+// }
+
+.agm-map-container-inner {
+  width: inherit;
+  height: inherit;
+}
+.agm-map-content {
+  display:none;
+}

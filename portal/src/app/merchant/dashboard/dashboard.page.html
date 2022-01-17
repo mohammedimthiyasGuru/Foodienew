@@ -1,0 +1,1357 @@
+
+<!-- Top Bar Starts -->
+
+<head>
+   
+</head>
+
+<div class="top-bar clearfix">
+  <div class="row gutter">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="page-title">
+              <h3>Dahsboard</h3>
+          </div>
+      </div>
+      <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <ul class="right-stats" id="mini-nav-right">
+              <li>
+                  <a href="#" class="btn btn-info"><i class="icon-download6"></i> Export</a>
+              </li>
+          </ul>
+      </div> -->
+  </div>
+</div>
+<!-- Top Bar Ends -->
+<!-- Row starts -->
+<div *ngIf="profile">
+<app-loader *ngIf="loader"></app-loader>
+<div class="row gutter">
+  <div class="col-lg-5 col-md-5 col-sm-9 col-xs-12">
+      <div class="panel height2 random-bg-five">
+          <div class="panel-body">
+             
+              <div class="user-profile clearfix">
+                  <div class="user-img">
+                      <img *ngIf="!profile.profile_img" src="../../../assets/images/thumbs/user1.png" alt="User Info">
+                      <img *ngIf="profile.profile_img" src="{{profile.profile_img}}" alt="User Info">
+                  </div>
+                  <h3>{{profile.profile_first_name}} {{profile.profile_last_name}}</h3>
+                  <h4>{{profile.profile_contact}}</h4>
+                  <h4>{{profile.profile_email}}</h4>
+                  <h4>Date of Joining - {{profile.createdAt | date}}</h4>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    <!-- <div class="" style="background-color: #c3807cb8;">
+    <div class="container" style="z-index: -1;margin-left: -4%;width: 108%;">
+        <agm-map [latitude]="base_lat" [longitude]="base_lng" [zoom]="zoom" [disableDefaultUI]="false"
+        [zoomControl]="false">
+        <agm-marker [latitude]="location_lat" [longitude]="location_lng" [markerDraggable]="true">
+          <agm-info-window>
+          </agm-info-window>
+        </agm-marker>
+        </agm-map>
+      </div>
+      <div class="bottom-left" style="width: 90%;"><h5 class="location" style="color: white;font-weight: 700;">{{profile.profile_location}}</h5></div>
+      <h4 class="top-left"><i style="font-size: 22px;" class="icon-location icon-2x"></i>Location</h4>
+      <div class="top-right"><a class="" href="/common/user-profile"> <i class="fa fa-pencil" style="font-size: 20px;"></i></a></div>
+    </div> -->
+
+
+
+      <div class="panel p-2 height2 random-bg-six">
+          <div class="panel-body no-padding text_black">
+              <div class="current-location">
+                  <h4 class="text-white no-margin"><i class="icon-location icon-2x"></i> Location</h4>
+                 
+                  <!-- <div id="mapDenmark" class="chart-height1" #worldMapElement></div> -->
+                  <div class="text-center">
+                      <img src="assets/images/vmaps/vector-map-{{profile.country | lowercase}}.png" alt="" height="200px">
+                  </div>
+                  <!-- <h5 class="location text_black position-relative pl-2 pb-2">{{profile.city}}, {{profile.state}}, {{profile.country}}</h5> -->
+                <h5 class="location text_black position-relative pl-2 pb-2">{{profile.profile_address}}</h5>
+
+                  
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text_black">
+      <!-- Row inside row starts -->
+      <div class="row gutter">
+          <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+            <a  href="admin/live_video/{{profile.profile_id}}">
+              <div class="panel height1 random-bg-two">
+                  <div class="panel-body text-center">
+                 
+                      <div class="user-stats">
+                          <h1>{{video_count}}</h1>
+                          <h5>Total Live Videos</h5>
+                      </div>
+                 
+                  </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+              <div class="panel height1 random-bg-four">
+                  <div class="panel-body text-center">
+                      <div class="user-stats">
+                          <h1>0</h1>
+                          <h5>Total Followers</h5>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-12">
+              
+                  <div class="panel height1">
+                      <div class="row gutter h-100 align-items-end">
+                          <div class="col-md-4 col-xs-12">
+                              <a href="{{profile.profile_facebook}}" class="socail-stats fb-bg">
+                                  <i class="icon-facebook-with-circle icon-2x"></i>
+                                  <h4>0</h4>
+                              </a>
+                          </div>
+                          <div class="col-md-4  col-sm-3 col-xs-12">
+                              <a href="{{profile.profile_instagram}}" class="socail-stats tw-bg">
+                                  <i class="icon-instagram-with-circle icon-2x"></i>
+                                  <h4>0</h4>
+                              </a>
+                          </div>
+                          <div class="col-md-4  col-sm-3 col-xs-12">
+                              <a href="{{profile.profile_youtube}}" class="socail-stats gplus-bg">
+                                  <i class="icon-youtube-with-circle icon-2x"></i>
+                                  <h4>0</h4>
+                              </a>
+                          </div>
+                         
+                      </div>
+                  </div>
+              
+          </div>
+          
+      </div>
+      <!-- Row inside row ends -->
+  </div>
+</div>
+<!-- Row ends -->
+<!-- Row starts -->				
+<div class="row gutter">
+  <div class="col-lg-7 col-md-8 col-xs-12">
+      <!-- Row inside row starts -->
+      <div class="panel summary_bg h-100">
+        <div class="panel-body">
+            <h3> Summary</h3>
+             <a class="edit edit_fix" (click)="edit_summary_action()"> <i class="fa fa-pencil"></i></a>
+             <div class="" *ngIf="!edit_summary">
+            <p class="text-justify">{{profile.profile_summary}}</p>
+            </div>
+
+            <div class="" *ngIf="edit_summary">
+                <textarea class="form-control bg-transparent" name="" id="" cols="30" rows="10" [(ngModel)]="summary_value" value="{{profile.profile_summary}}"></textarea>
+                <button class="btn btn-success" (click)="edit_submit()" >submit</button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+      <!-- Row inside row ends -->    
+  </div>
+  <div class="col-lg-5 col-md-4 col-xs-12">
+      <!-- Row inside row starts -->
+      <div class="row gutter">
+        <div class="bank_card w-100 h-100 position-relative overflow_auto">
+            <div class="bank_card_row position-relative text-white">
+                <div class="d-flex align-items-center p-3">
+                    <div class="flx_0">
+                        <img alt="" src="../../../assets/images/144x144.png" style="width: 100px;">
+                    </div>
+                    <div class="flx_1">
+                        <div class="bank_name_card card_row"><input type="text" placeholder="{{profile.bank_name}}" disabled class="card_input w-100 txt_bold"></div>
+                       
+                    </div>
+                </div>
+              
+                <div class="account_card card_row"><input type="text" placeholder="{{profile.bank_acc_no}}" disabled  class="card_input w-100 txt_bold"></div>
+                <div class="row card_row align-items-center">
+                    <div class="col-5">
+                        <div class="account_spec"><input type="text" placeholder="{{profile.bank_ifsc_no}}" disabled class="card_input w-100 txt_bold"></div>
+                    </div>
+                    <div class="col-7">
+                        <div class="card_expiry"><input type="text" placeholder="{{profile.bank_branch}}" disabled class="card_input w-100 text-right txt_bold"></div>
+                    </div>
+                </div>
+                <div class="card_holder_name card_row">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <input type="text" placeholder="{{profile.profile_first_name}} {{profile.profile_last_name}}" disabled  class="card_input w-100 txt_bold">
+                        </div> 
+                        <!-- <div class="col-lg-5 pr-3 text-right">
+                            
+                            <input placeholder="country" class="card_input w-100 text-right txt_bold" type="text"/>
+                        </div> -->
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- Row inside row ends -->
+
+
+      <!-- <div class="panel">
+          <div class="panel-body height2">
+              <h4><i class="icon-file-text2 icon-2x text-blue"></i> Recent Reviews</h4>
+              <ul class="contacts">
+                  <li class="client clearfix">
+                      <img src="../../../assets/images/thumbs/user4.png" class="avatar" alt="Arise Admin Dashboard">
+                      <div class="client-details">
+                          <p>
+                              <span class="name">Jeffery</span>
+                              <span class="email">mail.jeff@mail.ro</span>
+                          </p>
+                          <ul class="icons-nav">
+                              <li>
+                                  <a href="javascript:void(0)">
+                                      <i class="icon-speech-bubble text-red"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li class="client clearfix">
+                      <img src="../../../assets/images/thumbs/user5.png" class="avatar" alt="Arise Admin Dashboard">
+                      <div class="client-details">
+                          <p>
+                              <span class="name">Lisa</span>
+                              <span class="email">id.lisa@mail.io</span>
+                          </p>
+                          <ul class="icons-nav">
+                              <li>
+                                  <a href="javascript:void(0)">
+                                      <i class="icon-speech-bubble text-yellow"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li class="client clearfix">
+                      <img src="../../../assets/images/thumbs/user10.png" class="avatar" alt="Arise Admin Dashboard">
+                      <div class="client-details">
+                          <p>
+                              <span class="name">John</span>
+                              <span class="email">johnvvn@mail.ro</span>
+                          </p>
+                          <ul class="icons-nav">
+                              <li>
+                                  <a href="javascript:void(0)">
+                                      <i class="icon-speech-bubble text-green"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+                  <li class="client clearfix">
+                      <img src="../../../assets/images/thumbs/user6.png" class="avatar" alt="Arise Admin Dashboard">
+                      <div class="client-details">
+                          <p>
+                              <span class="name">Steve</span>
+                              <span class="email">steeve@mail.com</span>
+                          </p>
+                          <ul class="icons-nav">
+                              <li>
+                                  <a href="javascript:void(0)">
+                                      <i class="icon-speech-bubble text-blue"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div> -->
+
+      <!-- <div class="panel">
+          <div class="panel-body height2">
+              <h4><i class="icon-file-text2 icon-2x text-blue"></i> Joining Date</h4>
+              <ul class="experience">
+                  <li class="green">
+                      <div class="detail-info">
+                          <p class="date text-green">2014 - present</p>
+                          <p class="message">Co-Founder, Chairman</p>
+                          <p class="message">Arise Inc</p>
+                      </div>
+                  </li>
+                  <li class="red">
+                      <div class="detail-info">
+                          <p class="date text-red">2010 - 2013</p>
+                          <p class="message">Senior Developer</p>
+                          <p class="message">Facebook</p>
+                      </div>
+                  </li>
+                  <li class="blue">
+                      <div class="detail-info">
+                          <p class="date text-blue">1996 - 2004</p>
+                          <p class="message">Web Designer</p>
+                          <p class="message">Google Inc</p>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div> -->
+
+  </div>
+
+<!-- Row ends -->
+</div>
+
+
+<div class="row gutter">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div>
+        <h3 class="text-left text-red pt-3 pb-1">Order Info</h3>
+    </div>
+</div>
+</div>
+
+
+
+<!-- /////////Order Confirmation//////// -->
+<div class="row gutter"  *ngIf="confirmation_list.length !== 0" >
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <h4 class="text-left text-red pt-3 pb-1">Order Confirmation</h4>
+            <div class="receipt_row">
+                <div class="row w-100">
+                    <ng-container *ngFor="let order of confirmation_list | paginate: { itemsPerPage: 3, currentPage: p1, id: 'first' },let i = index">
+                    <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+                        <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+                        <div class="ro_col text-center">
+                            <div class="ro_col_1">
+                                <div class="row align-items-center">
+                                    <div class="col-auto text-center">
+                                        <!-- <span (click)="updatestatus('Cancel',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Rejected</span>
+                                        </span> -->
+                                    </div>
+                                    <div class="col text-center p-0">
+                                        <div class="rc2_main">
+                                        <div class="ro_col1_2">
+                                        <div class="rc1_1 pb-1">
+                                            <b class="text_yellow d-block"> {{order.order_detail.order_mst.merchant_info.profile_biz_name}}</b>
+                                            <span class="cus_white">ID:{{order.order_detail.order_mst.merchant_info.profile_id}}</span>
+                                        </div>
+                                        <div class="rc1_2 pt-1 pb-1">
+                                            ORDER ID: {{order.order_detail.order_id}}
+                                        </div>
+                                        <div class="row no-gutters pt-1">
+                                            <div class="col text-left">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.order_qty}}</span>
+                                            </div>
+                                            <div class="col-auto text-right">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.order_value}}</span>
+                                            </div>
+                                        </div>
+                                          </div>
+                                    </div>
+                                    <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.order_detail.order_mst.customer_info.profile_id}} </span>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Approved</span>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="ro_col_2 pt-2">
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           s.no
+                                                        </th>
+                                                        <th>
+                                                            Order Details
+                                                        </th>
+                                                        <th>
+                                                            QTY
+                                                        </th>
+                                                        <th>
+                                                            U.PRICE
+                                                        </th>
+                                                        <th>
+                                                            PRICE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container  *ngFor="let item of order.product_details">
+                                                        <tr>
+                                                            <td>
+                                                                1.
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                               <b>Product is:</b> {{item.product.prod_id}} 
+                                                            </div>
+                                                            <p class="mb-0">
+                                                                {{item.product.prod_name}}
+                                                            </p>
+                                                            </td>
+                                                            <td>
+                                                                {{item.prod_qty}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price_total}}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+            
+                            <div class="ro_col_3 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                        Note If any
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                           some text
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="ro_col_4 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                       Date and time
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            {{order.order_detail.createdAt | date:'medium'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                            </div>
+                            <div class="ro_col_5 pt-2 pl-3">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                                        <b class="d-block">John </b>
+                                        <b class="d-block">Approved</b>
+                                    </div>
+                                    <div class="col-lg-4 col-12 text-center text-md-right">
+                                        <a href='#'><b>Enquiry</b></a>
+                                       
+                                    </div>
+                                </div>
+            
+            
+                            </div>
+                           
+                        </div>
+
+
+                        <div class="recp_approved recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                        </div>
+                        <div class="recp_cancel recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'C'">
+                        </div>
+                        <div class="recp_riderpick recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'P'">
+                        </div>
+                        <div class="recp_deliever recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'D'">
+                        </div>
+
+
+                    </div>
+                    </ng-container>
+            
+                    <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+                        <h4 class="text-left txt_bold">No Record found</h4>
+                    </div> -->
+                 
+                </div>
+                <div class="pt-5 pb-3 text-center">
+                    <nav aria-label="Page navigation">
+                        <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p1 = $event" id="first"></pagination-controls>
+                    </nav>
+                </div>
+           </div>
+        </div>
+    </div>
+  <!-- Row ends -->
+  </div>
+<!-- /////////Order Confirmation//////// -->
+
+
+<!-- /////////Order Preparing//////// -->
+<div class="row gutter" *ngIf="preparing_list.length !== 0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <h4 class="text-left text-red pt-3 pb-1">Order Preparing</h4>
+            <div class="receipt_row">
+                <div class="row w-100">
+                    <ng-container *ngFor="let order of preparing_list | paginate: { itemsPerPage: 3, currentPage: p2, id: 'second' },let i = index">
+                    <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+                        <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+                        <div class="ro_col text-center">
+                            <div class="ro_col_1">
+                                <div class="row align-items-center">
+                                    <div class="col-auto text-center">
+                                        <!-- <span (click)="updatestatus('Cancel',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Rejected</span>
+                                        </span> -->
+                                    </div>
+                                    <div class="col text-center p-0">
+                                        <div class="rc2_main">
+                                        <div class="ro_col1_2">
+                                        <div class="rc1_1 pb-1">
+                                            <b class="text_yellow d-block"> {{order.order_detail.order_mst.merchant_info.profile_biz_name}}</b>
+                                            <span class="cus_white">ID:{{order.order_detail.order_mst.merchant_info.profile_id}}</span>
+                                        </div>
+                                        <div class="rc1_2 pt-1 pb-1">
+                                            ORDER ID: {{order.order_detail.order_id}}
+                                        </div>
+                                        <div class="row no-gutters pt-1">
+                                            <div class="col text-left">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.order_qty}}</span>
+                                            </div>
+                                            <div class="col-auto text-right">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.order_value}}</span>
+                                            </div>
+                                        </div>
+                                          </div>
+                                    </div>
+                                    <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.order_detail.order_mst.customer_info.profile_id}} </span>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Approved</span>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="ro_col_2 pt-2">
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           s.no
+                                                        </th>
+                                                        <th>
+                                                            Order Details
+                                                        </th>
+                                                        <th>
+                                                            QTY
+                                                        </th>
+                                                        <th>
+                                                            U.PRICE
+                                                        </th>
+                                                        <th>
+                                                            PRICE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container  *ngFor="let item of order.product_details">
+                                                        <tr>
+                                                            <td>
+                                                                1.
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                               <b>Product is:</b> {{item.product.prod_id}} 
+                                                            </div>
+                                                            <p class="mb-0">
+                                                                {{item.product.prod_name}}
+                                                            </p>
+                                                            </td>
+                                                            <td>
+                                                                {{item.prod_qty}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price_total}}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+            
+                            <div class="ro_col_3 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                        Note If any
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                           some text
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="ro_col_4 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                       Date and time
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            {{order.order_detail.createdAt | date:'medium'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                            </div>
+                            <div class="ro_col_5 pt-2 pl-3">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                                        <b class="d-block">John </b>
+                                        <b class="d-block">Approved</b>
+                                    </div>
+                                    <div class="col-lg-4 col-12 text-center text-md-right">
+                                        <a href='#'><b>Enquiry</b></a>
+                                       
+                                    </div>
+                                </div>
+            
+            
+                            </div>
+                           
+                        </div>
+
+
+                        <div class="recp_approved recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                        </div>
+                        <div class="recp_cancel recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'C'">
+                        </div>
+                        <div class="recp_riderpick recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'P'">
+                        </div>
+                        <div class="recp_deliever recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'D'">
+                        </div>
+
+
+
+                    </div>
+                    </ng-container>
+            
+                    <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+                        <h4 class="text-left txt_bold">No Record found</h4>
+                    </div> -->
+                 
+                </div>
+                <div class="pt-5 pb-3 text-center">
+                    <nav aria-label="Page navigation">
+                        <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p2 = $event" id="second"></pagination-controls>
+                    </nav>
+                </div>
+           </div>
+        </div>
+    </div>
+  <!-- Row ends -->
+  </div>
+<!-- /////////Order Preparing//////// -->
+
+
+<!-- /////////Rider Picked//////// -->
+<div class="row gutter"  *ngIf="rider_list.length !== 0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <h4 class="text-left text-red pt-3 pb-1">Rider Picked</h4>
+            <div class="receipt_row">
+                <div class="row w-100">
+                    <ng-container *ngFor="let order of rider_list | paginate: { itemsPerPage: 3, currentPage: p3, id: 'third' },let i = index">
+                    <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+                        <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+                        <div class="ro_col text-center">
+                            <div class="ro_col_1">
+                                <div class="row align-items-center">
+                                    <div class="col-auto text-center">
+                                        <!-- <span (click)="updatestatus('Cancel',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Rejected</span>
+                                        </span> -->
+                                    </div>
+                                    <div class="col text-center p-0">
+                                        <div class="rc2_main">
+                                        <div class="ro_col1_2">
+                                        <div class="rc1_1 pb-1">
+                                            <b class="text_yellow d-block"> {{order.order_detail.order_mst.merchant_info.profile_biz_name}}</b>
+                                            <span class="cus_white">ID:{{order.order_detail.order_mst.merchant_info.profile_id}}</span>
+                                        </div>
+                                        <div class="rc1_2 pt-1 pb-1">
+                                            ORDER ID: {{order.order_detail.order_id}}
+                                        </div>
+                                        <div class="row no-gutters pt-1">
+                                            <div class="col text-left">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.order_qty}}</span>
+                                            </div>
+                                            <div class="col-auto text-right">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.order_value}}</span>
+                                            </div>
+                                        </div>
+                                          </div>
+                                    </div>
+                                    <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.order_detail.order_mst.customer_info.profile_id}} </span>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Approved</span>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="ro_col_2 pt-2">
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           s.no
+                                                        </th>
+                                                        <th>
+                                                            Order Details
+                                                        </th>
+                                                        <th>
+                                                            QTY
+                                                        </th>
+                                                        <th>
+                                                            U.PRICE
+                                                        </th>
+                                                        <th>
+                                                            PRICE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container  *ngFor="let item of order.product_details">
+                                                        <tr>
+                                                            <td>
+                                                                1.
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                               <b>Product is:</b> {{item.product.prod_id}} 
+                                                            </div>
+                                                            <p class="mb-0">
+                                                                {{item.product.prod_name}}
+                                                            </p>
+                                                            </td>
+                                                            <td>
+                                                                {{item.prod_qty}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price_total}}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+            
+                            <div class="ro_col_3 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                        Note If any
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                           some text
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="ro_col_4 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                       Date and time
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            {{order.order_detail.createdAt | date:'medium'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                            </div>
+                            <div class="ro_col_5 pt-2 pl-3">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                                        <b class="d-block">John </b>
+                                        <b class="d-block">Approved</b>
+                                    </div>
+                                    <div class="col-lg-4 col-12 text-center text-md-right">
+                                        <a href='#'><b>Enquiry</b></a>
+                                       
+                                    </div>
+                                </div>
+            
+            
+                            </div>
+                           
+                        </div>
+
+                        <div class="recp_approved recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                        </div>
+                        <div class="recp_cancel recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'C'">
+                        </div>
+                        <div class="recp_riderpick recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'P'">
+                        </div>
+                        <div class="recp_deliever recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'D'">
+                        </div>
+
+                    </div>
+                    </ng-container>
+            
+                    <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+                        <h4 class="text-left txt_bold">No Record found</h4>
+                    </div> -->
+                 
+                </div>
+                <div class="pt-5 pb-3 text-center">
+                    <nav aria-label="Page navigation">
+                        <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p3 = $event" id="third"></pagination-controls>
+                    </nav>
+                </div>
+           </div>
+        </div>
+    </div>
+  <!-- Row ends -->
+  </div>
+<!-- /////////Rider Picked//////// -->
+
+
+<!-- /////////Delivered//////// -->
+<div class="row gutter"  *ngIf="deliver_list.length !== 0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <h4 class="text-left text-red pt-3 pb-1">Delivered</h4>
+            <div class="receipt_row">
+                <div class="row w-100">
+                    <ng-container *ngFor="let order of deliver_list | paginate: { itemsPerPage: 3, currentPage: p4, id: 'fourth' },let i = index">
+                    <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+                        <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+                        <div class="ro_col text-center">
+                            <div class="ro_col_1">
+                                <div class="row align-items-center">
+                                    <div class="col-auto text-center">
+                                        <!-- <span (click)="updatestatus('Cancel',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Rejected</span>
+                                        </span> -->
+                                    </div>
+                                    <div class="col text-center p-0">
+                                        <div class="rc2_main">
+                                        <div class="ro_col1_2">
+                                        <div class="rc1_1 pb-1">
+                                            <b class="text_yellow d-block"> {{order.order_detail.order_mst.merchant_info.profile_biz_name}}</b>
+                                            <span class="cus_white">ID:{{order.order_detail.order_mst.merchant_info.profile_id}}</span>
+                                        </div>
+                                        <div class="rc1_2 pt-1 pb-1">
+                                            ORDER ID: {{order.order_detail.order_id}}
+                                        </div>
+                                        <div class="row no-gutters pt-1">
+                                            <div class="col text-left">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.order_qty}}</span>
+                                            </div>
+                                            <div class="col-auto text-right">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.order_value}}</span>
+                                            </div>
+                                        </div>
+                                          </div>
+                                    </div>
+                                    <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.order_detail.order_mst.customer_info.profile_id}} </span>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Approved</span>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="ro_col_2 pt-2">
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           s.no
+                                                        </th>
+                                                        <th>
+                                                            Order Details
+                                                        </th>
+                                                        <th>
+                                                            QTY
+                                                        </th>
+                                                        <th>
+                                                            U.PRICE
+                                                        </th>
+                                                        <th>
+                                                            PRICE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container  *ngFor="let item of order.product_details">
+                                                        <tr>
+                                                            <td>
+                                                                1.
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                               <b>Product is:</b> {{item.product.prod_id}} 
+                                                            </div>
+                                                            <p class="mb-0">
+                                                                {{item.product.prod_name}}
+                                                            </p>
+                                                            </td>
+                                                            <td>
+                                                                {{item.prod_qty}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price_total}}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+            
+                            <div class="ro_col_3 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                        Note If any
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                           some text
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="ro_col_4 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                       Date and time
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            {{order.order_detail.createdAt | date:'medium'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                            </div>
+                            <div class="ro_col_5 pt-2 pl-3">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                                        <b class="d-block">John </b>
+                                        <b class="d-block">Approved</b>
+                                    </div>
+                                    <div class="col-lg-4 col-12 text-center text-md-right">
+                                        <a href='#'><b>Enquiry</b></a>
+                                       
+                                    </div>
+                                </div>
+            
+            
+                            </div>
+                           
+                        </div>
+
+
+                        <div class="recp_approved recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                        </div>
+                        <div class="recp_cancel recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'C'">
+                        </div>
+                        <div class="recp_riderpick recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'P'">
+                        </div>
+                        <div class="recp_deliever recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'D'">
+                        </div>
+
+
+                    </div>
+                    </ng-container>
+            
+                    <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+                        <h4 class="text-left txt_bold">No Record found</h4>
+                    </div> -->
+                 
+                </div>
+                <div class="pt-5 pb-3 text-center">
+                    <nav aria-label="Page navigation">
+                        <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p4 = $event" id="fourth"></pagination-controls>
+                    </nav>
+                </div>
+           </div>
+        </div>
+    </div>
+  <!-- Row ends -->
+  </div>
+<!-- /////////Delivered//////// -->
+
+
+<!-- /////////Cancelled//////// -->
+<div class="row gutter" *ngIf="cancel_list.length !== 0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div>
+            <h4 class="text-left text-red pt-3 pb-1">Cancelled</h4>
+            <div class="receipt_row">
+                <div class="row w-100">
+                    <ng-container *ngFor="let order of cancel_list | paginate: { itemsPerPage: 3, currentPage: p5, id: 'fifth' },let i = index">
+                    <div class="col-lg-4 col-md-6 col-12 pb-3 recp_main text-center pr-4">
+                        <img src="../../../../../assets/images/product_img_2.jpg" alt="" class="prod_merc_img"/>
+                        <div class="ro_col text-center">
+                            <div class="ro_col_1">
+                                <div class="row align-items-center">
+                                    <div class="col-auto text-center">
+                                        <!-- <span (click)="updatestatus('Cancel',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Rejected</span>
+                                        </span> -->
+                                    </div>
+                                    <div class="col text-center p-0">
+                                        <div class="rc2_main">
+                                        <div class="ro_col1_2">
+                                        <div class="rc1_1 pb-1">
+                                            <b class="text_yellow d-block"> {{order.order_detail.order_mst.merchant_info.profile_biz_name}}</b>
+                                            <span class="cus_white">ID:{{order.order_detail.order_mst.merchant_info.profile_id}}</span>
+                                        </div>
+                                        <div class="rc1_2 pt-1 pb-1">
+                                            ORDER ID: {{order.order_detail.order_id}}
+                                        </div>
+                                        <div class="row no-gutters pt-1">
+                                            <div class="col text-left">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">QTY:{{order.order_qty}}</span>
+                                            </div>
+                                            <div class="col-auto text-right">
+                                                <span class="text_yellow bg-black pt-1 pb-1 pl-2 pr-2 d-inline-block">RM:{{order.order_value}}</span>
+                                            </div>
+                                        </div>
+                                          </div>
+                                    </div>
+                                    <span class="d-block text-center pt-2"> <b>USER ID :</b>{{order.order_detail.order_mst.customer_info.profile_id}} </span>
+                                    </div>
+                                    <div class="col-auto text-center">
+                                        <!-- <span class="pl-1 d-block" (click)="updatestatus('Accept',order)">
+                                            <img src="../../../../../assets/images/r_icon_4.png" alt="" class="r_close_icon"/>
+                                            <span class="d-block">Approved</span>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="ro_col_2 pt-2">
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center">  <img src="../../../../../assets/images/r_icon_1.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                           s.no
+                                                        </th>
+                                                        <th>
+                                                            Order Details
+                                                        </th>
+                                                        <th>
+                                                            QTY
+                                                        </th>
+                                                        <th>
+                                                            U.PRICE
+                                                        </th>
+                                                        <th>
+                                                            PRICE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ng-container  *ngFor="let item of order.product_details">
+                                                        <tr>
+                                                            <td>
+                                                                1.
+                                                            </td>
+                                                            <td>
+                                                                <div>
+                                                               <b>Product is:</b> {{item.product.prod_id}} 
+                                                            </div>
+                                                            <p class="mb-0">
+                                                                {{item.product.prod_name}}
+                                                            </p>
+                                                            </td>
+                                                            <td>
+                                                                {{item.prod_qty}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price}}
+                                                            </td>
+                                                            <td>
+                                                                {{item.mercant_price_total}}
+                                                            </td>
+                                                        </tr>
+                                                    </ng-container>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+            
+                            <div class="ro_col_3 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_2.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                        Note If any
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                           some text
+                                                        </td>
+                                                      
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            <div class="ro_col_4 pt-2">
+                               
+                                    
+                                    <div class="text-left position-relative">
+                                    <span class="order_icn_left d-flex align-items-center"> <img src="../../../../../assets/images/r_icon_3.png" alt="" class="r_order_icon"/></span>
+                                        <div class="ro_tble">
+                                            <table class="w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">
+                                                       Date and time
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">
+                                                            {{order.order_detail.createdAt | date:'medium'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                              
+                            </div>
+                            <div class="ro_col_5 pt-2 pl-3">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8 col-12 text-center text-md-left pb-3  pb-md-0">
+                                        <b class="d-block">John </b>
+                                        <b class="d-block">Approved</b>
+                                    </div>
+                                    <div class="col-lg-4 col-12 text-center text-md-right">
+                                        <a href='#'><b>Enquiry</b></a>
+                                       
+                                    </div>
+                                </div>
+            
+            
+                            </div>
+                           
+                        </div>
+
+                         <div class="recp_approved recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'A'">
+                        </div>
+                        <div class="recp_cancel recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'C'">
+                        </div>
+                        <div class="recp_riderpick recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'P'">
+                        </div>
+                        <div class="recp_deliever recp_main_seal" *ngIf="order.order_detail.order_dtl_status == 'D'">
+                        </div>
+
+                        
+                    </div>
+                    </ng-container>
+            
+                    <!-- <div class="panel-heading mb-0 pb-0" *ngIf="corderslist.length == 0">
+                        <h4 class="text-left txt_bold">No Record found</h4>
+                    </div> -->
+                 
+                </div>
+                <div class="pt-5 pb-3 text-center">
+                    <nav aria-label="Page navigation">
+                        <pagination-controls  class="pagination no-margin d-inline-flex" (pageChange)="p5 = $event" id="fifth"></pagination-controls>
+                    </nav>
+                </div>
+           </div>
+        </div>
+    </div>
+  <!-- Row ends -->
+  </div>
+<!-- /////////Delivered//////// -->
+
+
+  </div>

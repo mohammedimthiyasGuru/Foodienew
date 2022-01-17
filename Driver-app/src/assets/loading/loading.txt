@@ -1,0 +1,77 @@
+<!-- loading Red Color -->
+	<div class="loading w-100 h-100">
+		<div class=" position-relative w-100 h-100 d-flex align-items-center justify-content-center">
+		<div class="spinner  spinner-4 d-flex align-items-center justify-content-center">
+		<img src="images/logo-loading-3.png">
+		</div>
+	  </div>
+	</div>
+	<!-- loading Gold Color -->
+	<div class="loading loading2 w-100 h-100 d-none">
+		<div class=" position-relative w-100 h-100 d-flex align-items-center justify-content-center">
+		<div class="spinner  spinner-4 d-flex align-items-center justify-content-center">
+		<img src="images/logo-loading-2.png">
+		</div>
+	  </div>
+	</div>
+
+
+
+
+/* Loading css start */
+.loading{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:9999;
+	background:rgba(0,0,0,0.5);
+}
+.spinner {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.spinner-4 img{
+	height: 100px;
+}
+.spinner:before,.spinner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-width: 2px;
+  border-style: dashed;
+  border-radius: 50%;
+}
+.spinner.spinner-4:before {
+  width: 142px;
+  height: 142px;
+  border-color: #ffffff;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.spinner.spinner-4:after {
+ background: url('../images/logo-loading-3.png') no-repeat left top / cover;
+display: block;
+border: 0px;
+top: 50.5px;
+top: 54px;
+left: -17px;
+overflow: hidden;
+-webkit-transform-origin: 88px;
+transform-origin: 88px;
+-webkit-animation: rotate 3s linear 0s infinite;
+animation: rotate 3s linear 0s infinite;
+width: 40px;
+height: 40px;
+}
+.loading2 .spinner.spinner-4:before {
+	border-color: #fdc701;
+}
+.loading2 .spinner.spinner-4:after{
+	background: url('../images/logo-loading-2.png') no-repeat left top / cover;
+}
+/* Loading css end */

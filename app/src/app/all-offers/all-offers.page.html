@@ -1,0 +1,182 @@
+<ion-content>
+  <div class="all_offer h-100">
+    <div class="ao_1 position-relative">
+      <div class="ao_img">
+        <img src="../../assets/product_img_2.jpg" class="img-fluid w-100 d-block" alt="" />
+      </div>
+      <div class="ao_1_info d-flex flex-column">
+        <div class="flx_0">
+          <div class="wrapper pt-2">
+            <div class="ch_row_1 bb_1 pb-2">
+              <div class="d-flex align-items-center text-white">
+                <div class="flx_0 pr-3 cursor-pointer" routerLink="/client-home">
+                  <i class="fa fa-arrow-left back_arrow text-white"></i>
+
+                </div>
+                <div class="flx_1 pr-2 d-flex align-items-start">
+                  <div class="d-flex align-items-center">
+                    <h6 class="mb-0 pr-2">{{location_detail.type}}</h6>
+                    <p class="ts_1 mb-0">{{location_detail.address_text}}</p>
+                  </div>
+                </div>
+                <div class="flx_0 text-right">
+                  <div class="noti_icon position-relative">
+                    <i class="fa fa-bell-o icon_1"></i>
+                    <span class="noti_count">10</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flx_1 wrapper text-white d-flex align-items-end">
+          <div class="pv_i_head pb-3 bb_2">
+            <h2 class="text-white mb-0">{{shop_detail.profile_biz_name}}</h2>
+            <p class="ts_1 mb-0 text-white text_op_1"> <i class="fa fa-map-marker location_i"></i>
+              {{shop_detail.profile_address}}</p>
+            <div class="pt-2 pb-3 w-100">
+              <button class="btn_1 text_size_1 text-center box-shadow p-2 text-white" (click)="viewSummary()">
+                {{viewsummary ? 'Close' : 'More Info'}}
+              </button>
+            </div>
+          </div>
+
+          <!-- <h1 class="txt_bold">{{shop_detail.profile_biz_name}}</h1> -->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="company_info" *ngIf="viewsummary">
+      <div class="wrapper p-1">
+        {{shop_detail.profile_summary}}
+      </div>
+    </div>
+
+    <div class="wrapper">
+
+
+
+
+      <div class="filter_top pt-3 d-flex flex-row scroll_hide">
+        <div class="f_box">
+          <i class="fa fa-sliders"></i> Filter
+        </div>
+        <div class="f_box">
+
+          <div class="dropdown">
+            Rating
+          </div>
+        </div>
+        <div class="f_box f_box_active">
+          Safe & Hygienic</div>
+        <div class="f_box">
+          Fast Delivery</div>
+        <div class="f_box">
+          Filter</div>
+        <div class="f_box f_box_active">
+          Safe & Hygienic</div>
+        <div class="f_box">
+          Fast Delivery</div>
+        <div class="f_box">
+          Filter</div>
+
+      </div>
+    </div>
+
+    <div class="product_list wrapper pt-3">
+
+      <ng-container *ngFor="let item of Over_Product; let j = index;">
+        <article class="product_row pb-2">
+
+          <div class="prod_img" (click)="product_detail(item,j)">
+            <img class="img-fluid w-100" src="{{item.rec_prod_img}}" onerror="this.src='../../assets/product_img_2.jpg'"
+              alt="">
+            <figcaption class="prod_offer_cap text-white">
+              50% OFF - use code Oeat50
+            </figcaption>
+          </div>
+          <div class="pb-3 pt-2 prod_info">
+            <a (click)="product_detail(item,j)">
+              <h6 class="color_3 mb-0">{{item.rec_prod_name}}</h6>
+              <div class="pi_2 pt-1 d-flex align-items-center">
+                <div class="rate_prod">
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star start_on"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <div class="pl-2">
+                  <span class="color_3">4.0</span>
+                  <span class="color_1">(2452 Delivery Reviews)</span>
+                </div>
+              </div>
+              <div class="prod_keywords color_1 text_5 pt-1">
+                {{item.prod_desc}}
+              </div>
+              <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                  <li>${{item.rec_prod_price}}</li>
+                  <li>52 mins</li>
+                </ul>
+              </div>
+            </a>
+
+            <div style="text-align: right;">
+              <div class="flx_0" style="width: 25%;">
+                <div class="" *ngIf="item.rec_count_status">
+                  <div class="input-group rang_input">
+                    <span class="input-group-prepend">
+                      <button type="button" class="btn btn-outline-secondary" (click)="pro_item_remove(item,j)">
+                        <span class="fa fa-minus color_2"></span>
+                      </button>
+                    </span>
+                    <input type="text" class="form-control input-number text-center w_100 h-auto"
+                      value="{{item.rec_count}}">
+                    <span class="input-group-append">
+                      <button type="button" class="btn btn-outline-secondary" (click)="pro_item_add(item,j)">
+                        <span class="fa fa-plus color_2"></span>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+                <div *ngIf="!item.rec_count_status"
+                  class="add_btn color_3 btn btn-outline-secondary d-block txt_semi text-uppercase"
+                  (click)="pro_change_countstatus(item,j)">Add
+                  <span class="color_2">+</span>
+                </div>
+                <small class="color_6 text_size_1">customizable</small>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+        </article>
+      </ng-container>
+    </div>
+
+
+
+  </div>
+
+  <a (click)="view_cart()">
+    <div class="float" *ngIf="cart_display">
+      <div class="d-flex button_text">
+        <div class="flx_0 pr-2">
+          {{Item_count}}
+        </div>
+        <div class="flx_1 text-center">
+          View your cart
+        </div>
+        <div class="flx_0 pr-2">
+          Rs. {{Total_price}}
+        </div>
+      </div>
+    </div>
+  </a>
+</ion-content>

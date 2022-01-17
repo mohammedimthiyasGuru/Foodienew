@@ -1,0 +1,22 @@
+.default {cursor: default;}
+
+.warning {
+    background: gainsboro;
+    color: red !important;
+    padding: 7px;
+    font-size: 12px;
+}
+
+
+
+.loading_input{
+    position:relative;
+  }
+  .load_input{
+    position: absolute;
+  top: 11px;
+  right: 8px;
+  }
+  .cursor-pointer{
+      cursor:pointer
+  }

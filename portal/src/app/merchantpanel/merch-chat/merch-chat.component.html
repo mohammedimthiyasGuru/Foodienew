@@ -1,0 +1,133 @@
+<!-- <ion-content> -->
+  <div class="main_wrapper" >
+    <app-merch-header></app-merch-header>
+    <app-merch-sidemenu></app-merch-sidemenu>
+    <div class="dashboard-wrapper h-100">
+      <div class="container-fluid h-100">
+<!-- <ion-content> -->
+<!-- ********************************************************************************************** -->
+
+
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>message</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+
+<!-- Top Bar Starts -->
+<div class="top-bar clearfix">
+  <div class="row gutter">
+    <div class="col-lg-12">
+      <div class="page-title">
+        <h3>Message</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Top Bar Ends -->
+<div class="row gutter ">
+  <div class="col-md-4 mb-0 col-sm-4 col-xs-12 message_list">
+    <div class="task-wrapper mb-0" [style.height.px]="innerHeight">
+
+      <div class="task-block bug" *ngFor="let user of users" (click)="openChat(user)">
+        <h5 class="task-id">{{user.profile_first_name}} {{user.profile_last_name}} <i class="icon-controller-record"></i> </h5>
+        <div class="assigned-user">
+          <img *ngIf="!user.profile_img" src="assets/images/thumbs/user12.png" class="img-fluid" alt="Admin">
+          <img *ngIf="user.profile_img" [src]="user.profile_img" class="img-fluid" alt="Admin">
+        </div>
+        <p class="task-desc">{{user.role_name}}</p>
+        <ul class="task-footer">
+          <li>{{user.last_msg_time | timeAgo}}</li>
+        </ul>
+        <span class="task-type">{{user.role_name}}</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-sm-8">
+
+    <div class="d-flex chat_col_2 flex-column" [style.height.px]="innerHeight">
+      <div class="flx_1 pb-2 position-relative">
+        <div class="chat_info_load scroll_y" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngFor="let chat of chats">
+
+          <div class="d-flex justify-content-start mb-2" *ngIf="chat.chat_receiver == senderId">
+            <div class="flx_0 chat_txt_w">
+              <div class="panel">
+                <h5 class="task-name text-red mb-0 pb-0 shadow_none">{{receiver}}</h5>
+                <p>
+                  {{chat.chat_content}}
+                </p>
+                <div class="text-right time_chat">
+                  {{chat.chated_on | date: 'hh:mm a'}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-2" *ngIf="chat.chat_sender == senderId">
+            <div class="flx_0 chat_txt_w">
+              <div class="panel">
+                <h5 class="task-name text-green mb-0 pb-0 shadow_none">{{sender}}</h5>
+                <p>
+                  {{chat.chat_content}}
+                </p>
+                <div class="text-right time_chat">
+                  {{chat.chated_on | date: 'hh:mm a'}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- <div class="d-flex justify-content-end mb-2">
+
+          <div class="flx_0 chat_txt_w">
+            <div class="panel">
+              <h5 class="task-name text-green mb-0 pb-0 shadow_none">Sample Name - 147</h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-start mb-2">
+          <div class="flx_0 chat_txt_w">
+            <div class="panel">
+              <h5 class="task-name text-red mb-0 pb-0 shadow_none">Sample Name - 147</h5>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                Ipsum has been the industry's standard dummy text ever
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="flx_0">
+        <div class="d-flex align-items-center">
+          <div class="flx_1 pr-2">
+            <textarea style="height: 70px;" class="form-control" [(ngModel)]="chatmsg"></textarea>
+          </div>
+          <div class="flx_0">
+            <button type="button" class="btn btn-success" (click)="send()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- ********************************************************************************************** -->
+<!-- <ion-content> -->   
+      </div>
+    </div>
+  </div>
+<!-- </ion-content> -->

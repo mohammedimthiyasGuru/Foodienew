@@ -1,0 +1,10 @@
+.location{
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 53px;
+    white-space: normal;
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

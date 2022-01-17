@@ -1,0 +1,85 @@
+
+/* Loading css start */
+.loading{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:9999;
+	background:rgba(0,0,0,0.5);
+}
+.spinner {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.spinner{
+	transform: scale(0.45);
+}
+
+.spinner-4 img{
+	height: 100px;
+}
+.spinner:before,.spinner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-width: 2px;
+  border-style: dashed;
+  border-radius: 50%;
+}
+.spinner.spinner-4:before {
+  width: 142px;
+  height: 142px;
+  border-color: #ffffff;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+
+.spinner.spinner-4:after {
+ background: url('../../../assets/images/logo-loading-3.png') no-repeat left top / cover;
+display: block;
+border: 0px;
+top: 50.5px;
+top: 54px;
+left: -17px;
+overflow: hidden;
+-webkit-transform-origin: 88px;
+transform-origin: 88px;
+-webkit-animation: rotate 3s linear 0s infinite;
+animation: rotate 3s linear 0s infinite;
+width: 40px;
+height: 40px;
+}
+.loading2 .spinner.spinner-4:before {
+	border-color: #fdc701;
+}
+.loading2 .spinner.spinner-4:after{
+	background: url('../../../assets/images/logo-loading-2.png') no-repeat left top / cover;
+}
+/* Loading css end */

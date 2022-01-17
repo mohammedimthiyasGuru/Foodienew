@@ -1,0 +1,119 @@
+<ion-content class="layout_wrapper">
+  <div class="merchant_wrapper w-100 h-100 position-relative d-flex flex-column overflow_auto">
+    <div class="flx_0">
+      <app-mob-header></app-mob-header>
+    </div>
+  <div class="flx_1 overflow_auto position-relative">
+   <!-- *********************************************************************************************************** -->
+
+
+   <ion-content>
+    <div class="wrapper">
+  <div class="pt-3">
+  <h3 class="txt_semi pb-3">Order Status</h3>
+  <div class="row">
+      <div class="col-6 text-center pb-4">
+          <img src="../../assets/product_img_2.jpg" alt="" class="prod_merc_img">
+          <div class="info_product text-center bg_color_1">
+              <h6 class="txt_normal">Order <br> Received</h6>
+              <div class="row no-gutters pt-2 align-items-center">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi mb-0">{{confirm_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+                   <a  (click)="action('orders-list/received')" class="go_btn">
+                       Go <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                   </a>
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-6 text-center pb-4">
+        <img src="../../assets/product_img_2.jpg" alt="" class="prod_merc_img">
+        <div class="info_product text-center  bg_color_2">
+            <h6 class="txt_normal">Order <br> Preparing</h6>
+            <div class="row no-gutters pt-2 align-items-center">
+              <div class="col-6 text-left">
+                  <h4 class="txt_semi mb-0">{{prepare_count}}</h4>
+              </div>
+              <div class="col-6 text-right">
+                 <a (click)="action('orders-list/approved')"  class="go_btn">
+                     Go <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                 </a>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-6 text-center pb-4">
+      <img src="../../assets/product_img_2.jpg" alt="" class="prod_merc_img">
+      <div class="info_product text-center  bg_color_3">
+          <h6 class="txt_normal">Rider <br> Picked</h6>
+          <div class="row no-gutters pt-2 align-items-center">
+            <div class="col-6 text-left">
+                <h4 class="txt_semi mb-0">{{picked_count}}</h4>
+            </div>
+            <div class="col-6 text-right">
+               <a (click)="action('orders-list/picked')"  class="go_btn">
+                   Go <i class="fa fa-chevron-right" aria-hidden="true"></i>
+               </a>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+
+      <div class="col-6 text-center pb-4">
+          <img src="../../assets/product_img_2.jpg" alt="" class="prod_merc_img">
+          <div class="info_product text-center bg_color_4">
+              <h6 class="txt_normal">Cancelled &<br> Delivered</h6>
+              <div class="row no-gutters pt-2 align-items-center">
+                <div class="col-6 text-left">
+                    <h4 class="txt_semi mb-0">{{deliver_count}}</h4>
+                </div>
+                <div class="col-6 text-right">
+                   <a (click)="action('orders-list/delivered')"  class="go_btn">
+                       Go <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                   </a>
+                </div>
+            </div>
+          </div>
+      </div>
+
+
+  </div>
+</div>
+</div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- *********************************************************************************************************** -->
+
+  </div>
+  <div class="flx_0">
+      <app-mob-footer></app-mob-footer>
+  </div>
+</div>
+</ion-content>

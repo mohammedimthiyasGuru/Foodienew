@@ -1,0 +1,843 @@
+<!-- <ion-content> -->
+  <div class="main_wrapper" >
+    <app-merch-header></app-merch-header>
+    <app-merch-sidemenu></app-merch-sidemenu>
+    <div class="dashboard-wrapper h-100">
+      <div class="container-fluid h-100">
+<!-- <ion-content> -->
+<!-- ********************************************************************************************** -->
+  <!-- Top Bar Starts -->
+
+
+
+      <!-- Container fluid Starts -->
+      <div class="container-fluid">
+          <!-- Top Bar Starts -->
+          <div class="top-bar clearfix">
+              <div class="row gutter">
+                  <div class="col-12">
+                      <div class="page-title">
+                          <h3 class="txt_black_2">Promo Code Create</h3>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+          <!-- Top Bar Ends -->
+
+          <div class="add_new_category">
+              <div class="row">
+                  <div class="col-lg-5 col-md-12">
+
+                      <div class="panel mb-3">
+                          <div class="panel-body">
+
+                              <!-- <div class="form-group">
+                                  <label>Choose User</label>
+                                  <select name="" class="form-control" id="">
+                                      <option value="">Select</option>
+                                      <option value="1">user</option>
+                                      <option value="1">user</option>
+                                  </select>
+                              </div> -->
+
+                              <!-- <div class="form-group">
+                                  <label>Merchant id</label>
+                                  <input type="text" value="Sample Id" class="form-control" readonly>
+                              </div> -->
+
+                              <div class="row">
+                                  <div class="col-lg-5">
+                                      <div class="form-group">
+                                          <label>Select <small class="text-danger">*</small></label>
+                                          <select name="" [(ngModel)]="promocode_type" class="form-control" id="RmDropDown">
+                                              <option value="amount">Value</option>
+                                              <option value="percentage">%</option>
+                                          </select>
+                                          <p class="error_status" *ngIf="promocode_type_error !== ''">* {{promocode_type_error}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-7">
+                                      <div class="form-group ValueDrop">
+                                          <label>Offer value</label>
+                                          <div class="d-flex align-items-center">
+                                              <div class="flx_1 pr-2">
+                                                  <div class="input-group">
+                                                      <select name="" [(ngModel)]="promocode_value" class="form-control" id="" *ngIf="promocode_type == 'percentage'" >
+                                                          <option value="0">0</option>
+                                                          <option value="5">5</option>
+                                                          <option value="10">10</option>
+                                                          <option value="15">15</option>
+                                                          <option value="20">20</option>
+                                                          <option value="25">25</option>
+                                                          <option value="30">30</option>
+                                                          <option value="35">35</option>
+                                                          <option value="40">40</option>
+                                                          <option value="45">45</option>
+                                                          <option value="50">50</option>
+                                                          <option value="55">55</option>
+                                                          <option value="60">60</option>
+                                                          <option value="65">65</option>
+                                                          <option value="70">70</option>
+                                                          <option value="75">75</option>
+                                                          <option value="80">80</option>
+                                                          <option value="85">85</option>
+                                                          <option value="90">90</option>
+                                                          <option value="95">95</option>
+                                                      </select>
+                                                      <input type="number" min="1" [(ngModel)]="promocode_value" class="form-control" *ngIf="promocode_type == 'amount'"  />
+                                                      <span class="input-group-addon bl_0 bg_wh" *ngIf="promocode_type == 'percentage'" >%</span>
+                                                      <span class="input-group-addon righ_box bl_0" *ngIf="promocode_type == 'amount'" >off</span>
+
+                                                  </div>
+                                                  <p class="error_status" *ngIf="promocode_value_error !== ''">* {{promocode_value_error}}</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label>Mininum Order Value</label>
+                                  <div class="d-flex align-items-center">
+                                      <div class="flx_1 pr-2">
+                                          <div class="input-group">
+                                              <span class="input-group-addon">RM</span>
+                                              <input type="number" min="1" [(ngModel)]="promocode_mini_value" class="form-control"/>
+
+                                              <!-- <select name="" class="form-control" id="">
+                                                  <option value="">10</option>
+                                                  <option value="1">15</option>
+                                                  <option value="1">20</option>
+                                              </select> -->
+
+                                          </div>
+                                          <p class="error_status" *ngIf="promocode_mini_value_error !== ''">* {{promocode_mini_value_error}}</p>
+
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label>Valid until</label>
+                                  <input type="date"  [(ngModel)]="promocode_until" class="form-control">
+                                  <br><p class="error_status" *ngIf="promocode_until_error !== ''">* {{promocode_until_error}}</p>
+
+                              </div>
+
+                              <div class="form-group">
+                                  <label>Times of use</label>
+                                  <select name="" [(ngModel)]="promocode_usage" class="form-control" id="">
+                                    <option value="1">1 times</option>  
+                                    <option value="2">2 times</option>
+                                      <option value="3">3 times</option>
+                                  </select>
+                                  <p class="error_status" *ngIf="promocode_usage_error !== ''">* {{promocode_usage_error}}</p>
+                              </div>
+                              <div class="form-group">
+                                  <label>Upload Image</label>
+                                  <input type="file" class="form-control input_2" accept="image/*" (change)="selectImgidprofileone($event)">
+                                  <img src="{{promocode_img}}" class="img_size">
+                                  <p class="error_status" *ngIf="promocode_img_error !== ''">* {{promocode_img_error}}</p>
+
+
+                              </div>
+                          </div>
+
+
+                      </div>
+
+
+
+                      <div class="text-center">
+                          <button type="button" (click)="check_value()" class="btn btn-success btn-ripple">Submit</button>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+
+
+          <div class="offer_list pt-5">
+
+
+              <div class="page-title">
+                  <h3 class="txt_black_2">Active</h3>
+              </div>
+
+              <div class="row">
+                <ng-container *ngFor="let promocode of Active_promo_code_list; let i = index">
+
+
+                  <div class="col-lg-4 col-md-6 col-12">
+                      <div class="offer_col offer_1 d-flex text-center align-items-center">
+                          <div class="flx_0 offer_left d-flex flex-column">
+                              <figure class="d-inline-flex align-items-center justify-content-center">
+                                  <img src="{{promocode.promocode_img}}" alt="">
+                              </figure>
+                              <span class="offer_collect bg-white d-inline-block m-auto">Collect</span>
+                          </div>
+                          <div class="flx_1 offer_right">
+                            <h6>{{promocode.promocode_usage}} timies only</h6>
+                            <h1 *ngIf="promocode.promocode_type == 'percentage' ">RM {{promocode.promocode_value}}% Off</h1>
+                            <h1 *ngIf="promocode.promocode_type == 'amount' ">RM {{promocode.promocode_value}} Off</h1>
+                            <p>Valid until {{promocode.promocode_until | date}}</p>
+                          </div>
+                      </div>
+
+                      <div class="pt-2">
+                          <label class="switch switch_2 mb-0" *ngIf="promocode.promocode_status  ==  'Deactive'">
+                              <input type="checkbox" class="switch-input" (click)="status_change('Active',i)">
+                              <span class="switch-label" data-on="ON" data-off="OFF"></span>
+                              <span class="switch-handle"></span>
+                          </label>
+
+                          <label class="switch switch_2 mb-0" *ngIf="promocode.promocode_status  ==  'Active' ">
+                            <input type="checkbox" class="switch-input" checked (click)="status_change('Deactive',i)">
+                            <span class="switch-label" data-on="ON" data-off="OFF"></span>
+                            <span class="switch-handle"></span>
+                        </label>
+                      </div>
+                  </div>
+
+                  </ng-container>
+                
+
+
+              </div>
+          </div>
+
+
+          <div class="offer_list pt-5">
+
+
+              <div class="page-title">
+                  <h3 class="txt_black_2">Expired</h3>
+              </div>
+
+              <div class="row">
+           
+                <ng-container *ngFor="let promocode of Exp_promo_code_list">
+                  <div class="col-lg-4 col-md-6 col-12">
+                      <div class="offer_col offer_1 expired_offer d-flex text-center align-items-center">
+                          <div class="flx_0 offer_left d-flex flex-column">
+                              <figure class="d-inline-flex align-items-center justify-content-center">
+                                  <img src="{{promocode.promocode_img}}" alt="">
+                              </figure>
+                              <span class="offer_collect bg-white d-inline-block m-auto">Collect</span>
+                          </div>
+                          <div class="flx_1 offer_right">
+                              <h6>{{promocode.promocode_usage}} timies only</h6>
+                              <h1 *ngIf="promocode.promocode_type == 'percentage' ">RM {{promocode.promocode_value}}% Off</h1>
+                              <h1 *ngIf="promocode.promocode_type == 'amount' ">RM {{promocode.promocode_value}} Off</h1>
+                              <p>Valid until {{promocode.promocode_until | date}}</p>
+                          </div>
+                      </div>
+                  </div>
+                  </ng-container>
+
+
+                
+
+
+              </div>
+
+
+
+
+          </div>
+
+      </div>
+      <!-- Container fluid ends -->
+
+
+
+
+
+  <!-- Wallet Premium Poup Start -->
+  <div class="modal fade" id="WalletPremium" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal_wallet" role="document">
+          <div class="modal-content bg-white">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Wallet Premium</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="txt_black_2">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="mobile_view">
+                      <div class="panel mb-3">
+                          <div class="panel-body">
+                              <div class="row">
+                                  <div class="col-lg-12">
+                                      <div class="pb-4 bb_1 mb-3">
+                                          <h5 class="txt_semi">Yummy's pay</h5>
+
+                                          <div class="d-flex align-items-center pay_col">
+                                              <div class="flx_1 br_1 pay_col_1 p-2">
+                                                  <label>Available</label>
+                                                  <h4 class="mb-0"> <b>RM:</b> 12.52 </h4>
+                                              </div>
+                                              <div class="flx_0 pay_col_2 text-center p-2">
+                                                  <img src="images/yummy-logo-black.png" alt="">
+                                              </div>
+                                          </div>
+
+                                          <div class="d-flex tab_action pt-3">
+                                              <div class="flx_1">
+                                                  <button rel="AddFund" class="btn tab_button  bor_black btn-ripple shadow_none 
+w-100">Add Fund</button>
+                                              </div>
+                                              <div class="flx_1">
+                                                  <button rel="Transaction" class="btn tab_button btn_type_2 bor_black btn-ripple 
+shadow_none w-100">Transaction</button>
+                                              </div>
+
+                                          </div>
+
+
+                                          <div class="tab_info">
+
+
+
+
+                                              <div class="pt-3 tab_info_panel AddFund">
+                                                  <h5 class="txt_semi">Topup</h5>
+                                                  <div class="d-flex ">
+                                                      <div class="flx_1">
+                                                          <input type="text" class="w-100 cus_i_pt input_1">
+                                                      </div>
+                                                      <div class="flx_0">
+                                                          <button class="btn cus_btn_6">Pay</button>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+
+
+                                              <div class="y_saver_tran tab_info_panel Transaction flow_hide">
+                                                  <div class="row pt-3 align-items-center">
+                                                      <div class="col-12">
+                                                          <h5 class="txt_normal d-block">Transactions Details</h5>
+                                                      </div>
+
+                                                  </div>
+                                                  <div class="row pt-2 align-items-center">
+                                                      <div class="col-8">
+                                                          <b class="txt_semi d-block">Today</b>
+                                                      </div>
+                                                      <div class="col-4 text-right">
+                                                          <b
+                                                              class="txt_semi d-block cursor-pointer HistoryAction">History</b>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="trac_list pt-3">
+                                                      <div class="mb-3 bb_1 pb-3">
+                                                          <div
+                                                              class="d-flex flex-row btn-ripple btn-ripple-2 align-items-center">
+
+                                                              <div
+                                                                  class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                                  <div class="flx_0 prof_img_3">
+                                                                      <img src="images/profile_user.jpg" alt="">
+                                                                  </div>
+                                                                  <div class="flx_1 ellips_txt pl-2">
+                                                                      <b class="mo_txt_1 d-block ellips_txt">12542</b>
+                                                                      <span class="d-block ellips_txt">12 jun
+                                                                          2021</span>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="flx_0 text-right">
+                                                                  <b class="d-block text-success">+ RM 10.95</b>
+                                                                  <span
+                                                                      class="sml_txt_2 d-block txt_black2 txt_normal ViewMoreAction">View
+                                                                      More </span>
+                                                              </div>
+                                                          </div>
+
+                                                          <div class="flow_hide ViewMoreInfo">
+                                                              <div class="trc_more border_1 mt-2 p-1">
+                                                                  <div class="row">
+                                                                      <div class="col-6 br_1">
+                                                                          <b class="d-block txt_semi"> Order id</b>
+                                                                          <span>sample id</span>
+                                                                      </div>
+                                                                      <div class="col-6">
+                                                                          <b class="d-block txt_semi"> Status</b>
+                                                                          <span>Completed</span>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="mb-3  pb-3">
+                                                          <div
+                                                              class="d-flex flex-row btn-ripple btn-ripple-2 align-items-center">
+
+                                                              <div
+                                                                  class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                                  <div class="flx_0 prof_img_3">
+                                                                      <img src="images/profile_user.jpg" alt="">
+                                                                  </div>
+                                                                  <div class="flx_1 ellips_txt pl-2">
+                                                                      <b class="mo_txt_1 d-block ellips_txt">12542</b>
+                                                                      <span class="d-block ellips_txt">12 jun
+                                                                          2021</span>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="flx_0 text-right">
+                                                                  <b class="d-block text-danger">- RM 10.95</b>
+                                                                  <span
+                                                                      class="sml_txt_2 d-block txt_black2 txt_normal">View
+                                                                      More </span>
+                                                              </div>
+                                                          </div>
+
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                          <div class="pt-3 pb-3">
+                                              <h5 class="txt_semi">Yummy's saver</h5>
+                                              <div class="text-right pb-2">
+                                                  <span class="badge badge-danger">Premium User </span>
+                                              </div>
+                                              <div class="d-flex align-items-center pay_col">
+                                                  <div class="flx_1 br_1 pay_col_1 p-2">
+                                                      <label>Days Left</label>
+                                                      <h4 class="mb-0"> 21 Days 12 hrs 12.52 </h4>
+                                                  </div>
+                                                  <div class="flx_0 pay_col_2 text-center p-2">
+                                                      <img src="images/yummy-logo-black.png" alt="">
+                                                  </div>
+                                              </div>
+                                              <div class="pt-2 text-right">
+                                                  <button type="button"
+                                                      class="btn btn-success btn-ripple">Renew</button>
+                                              </div>
+                                          </div>
+
+                                          <div class="pt-3">
+                                              <div class="pb-4">
+                                                  <span>Today Deals : </span> <span class="badge badge-danger">Premium
+                                                      Rider </span>
+                                              </div>
+
+
+                                              <div>
+                                                  <div class="row pt-4">
+                                                      <div class="col-lg-12">
+
+                                                          <div class="deals_col deals_col_1 mb-4 text-center">
+                                                              <div class="dc_head">
+                                                                  Light
+                                                              </div>
+                                                              <div class="dc_col_2">
+                                                                  <div class="dc_info_1 pb-2">
+                                                                      sample text here
+                                                                  </div>
+                                                                  <div class="dc_info_2 pb-3">
+                                                                      <h3 class="mb-0">RM 15</h3>
+                                                                  </div>
+                                                                  <div class="ref_row text-center">
+                                                                      <select name="" id="ReferalDrop" class="form-control bg-transparent 
+w-100">
+                                                                          <option value="">Referal</option>
+                                                                          <option value="1">yes</option>
+                                                                          <option value="2">No</option>
+                                                                      </select>
+                                                                      <div class="ref_input flow_hide pt-2">
+                                                                          <input type="text"
+                                                                              class="form-control bg-transparent w-100">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="dc_info_3 pr-3 pt-2">
+                                                                      <div class="d-flex">
+                                                                          <div class="col-8 text-right">
+                                                                              <button
+                                                                                  class="btn-ripple btn_offer">BUY</button>
+                                                                          </div>
+                                                                          <div
+                                                                              class="col-4 BenefitsBtn cursor-pointer text-right ">
+                                                                              Benefits
+                                                                          </div>
+                                                                      </div>
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+
+
+
+
+
+
+
+                                                      </div>
+                                                      <div class="col-lg-12">
+                                                          <div class="deals_col deals_col_2 mb-4 text-center">
+                                                              <div class="dc_head">
+                                                                  Light
+                                                              </div>
+                                                              <div class="dc_col_2">
+                                                                  <div class="dc_info_1 pb-2">
+                                                                      sample text here
+                                                                  </div>
+                                                                  <div class="dc_info_2 pb-3">
+                                                                      <h3 class="mb-0">RM 15</h3>
+                                                                  </div>
+                                                                  <div class="ref_row text-center">
+                                                                      <select name="" id="ReferalDrop" class="form-control bg-transparent 
+w-100">
+                                                                          <option value="">Referal</option>
+                                                                          <option value="1">yes</option>
+                                                                          <option value="2">No</option>
+                                                                      </select>
+                                                                      <div class="ref_input flow_hide pt-2">
+                                                                          <input type="text"
+                                                                              class="form-control bg-transparent w-100">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="dc_info_3 pr-3 pt-2">
+                                                                      <div class="d-flex">
+                                                                          <div class="col-8 text-right">
+                                                                              <button
+                                                                                  class="btn-ripple btn_offer">BUY</button>
+                                                                          </div>
+                                                                          <div
+                                                                              class="col-4 BenefitsBtn cursor-pointer text-right ">
+                                                                              Benefits
+                                                                          </div>
+                                                                      </div>
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+                                                      <div class="col-lg-12">
+                                                          <div class="deals_col deals_col_3 mb-4 text-center">
+                                                              <div class="dc_head">
+                                                                  Light
+                                                              </div>
+                                                              <div class="dc_col_2">
+                                                                  <div class="dc_info_1 pb-2">
+                                                                      sample text here
+                                                                  </div>
+                                                                  <div class="dc_info_2 pb-3">
+                                                                      <h3 class="mb-0">RM 15</h3>
+                                                                  </div>
+                                                                  <div class="ref_row text-center">
+                                                                      <select name="" id="ReferalDrop" class="form-control bg-transparent 
+w-100">
+                                                                          <option value="">Referal</option>
+                                                                          <option value="1">yes</option>
+                                                                          <option value="2">No</option>
+                                                                      </select>
+                                                                      <div class="ref_input flow_hide pt-2">
+                                                                          <input type="text"
+                                                                              class="form-control bg-transparent w-100">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="dc_info_3 pr-3 pt-2">
+                                                                      <div class="d-flex">
+                                                                          <div class="col-8 text-right">
+                                                                              <button
+                                                                                  class="btn-ripple btn_offer">BUY</button>
+                                                                          </div>
+                                                                          <div
+                                                                              class="col-4 BenefitsBtn cursor-pointer text-right ">
+                                                                              Benefits
+                                                                          </div>
+                                                                      </div>
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+                                                      <div class="col-lg-12">
+                                                          <div class="deals_col deals_col_1 mb-4 text-center">
+                                                              <div class="dc_head">
+                                                                  Light
+                                                              </div>
+                                                              <div class="dc_col_2">
+                                                                  <div class="dc_info_1 pb-2">
+                                                                      sample text here
+                                                                  </div>
+                                                                  <div class="dc_info_2 pb-3">
+                                                                      <h3 class="mb-0">RM 15</h3>
+                                                                  </div>
+                                                                  <div class="ref_row text-center">
+                                                                      <select name="" id="ReferalDrop" class="form-control bg-transparent 
+w-100">
+                                                                          <option value="">Referal</option>
+                                                                          <option value="1">yes</option>
+                                                                          <option value="2">No</option>
+                                                                      </select>
+                                                                      <div class="ref_input flow_hide pt-2">
+                                                                          <input type="text"
+                                                                              class="form-control bg-transparent w-100">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="dc_info_3 pr-3 pt-2">
+                                                                      <div class="d-flex">
+                                                                          <div class="col-8 text-right">
+                                                                              <button
+                                                                                  class="btn-ripple btn_offer">BUY</button>
+                                                                          </div>
+                                                                          <div
+                                                                              class="col-4 BenefitsBtn cursor-pointer text-right ">
+                                                                              Benefits
+                                                                          </div>
+                                                                      </div>
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+
+
+
+                                          </div>
+
+
+                                      </div>
+
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+  <!-- Wallet Premium Poup End -->
+
+
+  <!-- Assignment message popup  Details Start -->
+
+
+  <!-- Assignment message popup  Details End  -->
+
+  <!-- Benefits Poup End -->
+
+
+  <section class="popup_box BenefitsPop hide_popup">
+      <div class="popup_info d-flex align-items-center justify-content-center w-100 h-100">
+          <div class="pop_wrapper w-50 position-relative">
+              <span class='popup_close CloseBenefits'>x</span>
+              <div class="form-group">
+                  <h4>Benefits</h4>
+                  <p>
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                      the industry's standard
+                      dummy text ever since the 1500s,
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+  <!-- Benefits  Poup End -->
+
+
+  <!-- Mobile View All History  Start -->
+
+  <section class="m_outline HistoryPopup hide_popup">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+          <div class="m_out_2 d-inline-flex">
+
+              <div class="m_out_3 position-relative">
+                  <span class="m_out_close HistoryClose">X</span>
+                  <div class="p-2 m_out_4">
+                      <div class="m_out_head">
+                          <h5 class="modal-title pb-3" id="exampleModalLabel">History</h5>
+                      </div>
+                      <div class="mobile_view">
+                          <div class="">
+
+                              <div class="pb-3">
+                                  <div class="row txt_white no-gutters align-items-end">
+                                      <div class="col-4 pr-2">
+                                          <span class="pb-2">From</span>
+                                          <input type="date" placeholder="From" class="form-control w-100">
+
+                                      </div>
+                                      <div class="col-4 pr-2">
+                                          <span class="pb-2">To</span>
+                                          <input type="date" placeholder="From" class="form-control w-100">
+                                      </div>
+                                      <div class="col-4 pr-2">
+                                          <input type="button" value="Filter"
+                                              class="btn btn-success btn-ripple search_bt">
+                                      </div>
+
+
+                                  </div>
+                              </div>
+
+                              <div class="row pt-3 txt_white align-items-center">
+                                  <div class="col-12">
+                                      <b class="txt_normal d-block">Search Results : 25</b>
+                                  </div>
+
+                              </div>
+
+                              <div class="trac_list pt-3">
+                                  <div class="trans_list">
+                                      <div class="mo_i_1 panel_mo mb-1 btn-ripple btn-ripple-2">
+                                          <div class="d-flex flex-row w-100 align-items-center">
+                                              <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                  <div class="flx_0 prof_img_3">
+                                                      <img src="images/profile_user.jpg" alt="">
+                                                  </div>
+                                                  <div class="flx_1 ellips_txt pl-2">
+                                                      <b class="mo_txt_1 d-block ellips_txt">T.Id 154215412</b>
+                                                      <span class="sml_txt d-block">Today, 10:25 am</span>
+                                                  </div>
+                                              </div>
+                                              <div class="flx_0 text-right">
+                                                  <b class="d-block text-danger">- RM 10.95</b>
+                                                  <span
+                                                      class="sml_txt_2 d-block txt_yellow txt_normal ViewMoreAction_2">View
+                                                      Info <i class="fa fa-angle-right txt_yellow"></i>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <div
+                                              class="trc_more ViewInfo_2 flow_hide border_1 br_color_white txt_white mt-2 p-1">
+                                              <div class="row">
+                                                  <div class="col-6 br_1">
+                                                      <b class="d-block sml_txt txt_semi"> Order id</b>
+                                                      <span>sample id</span>
+                                                  </div>
+                                                  <div class="col-6">
+                                                      <b class="d-block sml_txt txt_semi"> Status</b>
+                                                      <span>Completed</span>
+                                                  </div>
+                                              </div>
+
+
+                                          </div>
+                                      </div>
+
+                                      <div class="mo_i_1 panel_mo mb-1 btn-ripple btn-ripple-2">
+                                          <div class="d-flex flex-row w-100 align-items-center">
+                                              <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                  <div class="flx_0 prof_img_3">
+                                                      <img src="images/profile_user.jpg" alt="">
+                                                  </div>
+                                                  <div class="flx_1 ellips_txt pl-2">
+                                                      <b class="mo_txt_1 d-block ellips_txt">T.Id 154215412</b>
+                                                      <span class="sml_txt d-block ellips_txt">Today, 10:25 am</span>
+                                                  </div>
+                                              </div>
+                                              <div class="flx_0 text-right">
+                                                  <b class="d-block text-success">- RM 10.95</b>
+                                                  <span class="sml_txt_2 d-block txt_yellow txt_normal">View Info <i
+                                                          class="fa fa-angle-right 
+txt_yellow"></i>
+                                                  </span>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="mo_i_1 panel_mo mb-1 btn-ripple btn-ripple-2">
+                                          <div class="d-flex flex-row w-100 align-items-center">
+                                              <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                  <div class="flx_0 prof_img_3">
+                                                      <img src="images/profile_user.jpg" alt="">
+                                                  </div>
+                                                  <div class="flx_1 ellips_txt pl-2">
+                                                      <b class="mo_txt_1 d-block ellips_txt">T.Id 154215412</b>
+                                                      <span class="sml_txt d-block ellips_txt">Today, 10:25 am</span>
+                                                  </div>
+                                              </div>
+                                              <div class="flx_0 text-right">
+                                                  <b class="d-block text-success">- RM 10.95</b>
+                                                  <span class="sml_txt_2 d-block txt_yellow txt_normal">View Info <i
+                                                          class="fa fa-angle-right 
+txt_yellow"></i>
+                                                  </span>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                      <div class="mo_i_1 panel_mo mb-1 btn-ripple btn-ripple-2">
+                                          <div class="d-flex flex-row w-100 align-items-center">
+                                              <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                                  <div class="flx_0 prof_img_3">
+                                                      <img src="images/profile_user.jpg" alt="">
+                                                  </div>
+                                                  <div class="flx_1 ellips_txt pl-2">
+                                                      <b class="mo_txt_1 d-block ellips_txt">T.Id 154215412</b>
+                                                      <span class="sml_txt d-block ellips_txt">Today, 10:25 am</span>
+                                                  </div>
+                                              </div>
+                                              <div class="flx_0 text-right">
+                                                  <b class="d-block text-success">- RM 10.95</b>
+                                                  <span class="sml_txt_2 d-block txt_yellow txt_normal">View Info <i
+                                                          class="fa fa-angle-right 
+txt_yellow"></i>
+                                                  </span>
+                                              </div>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <nav class="Page navigation text-center pt-3 pb-3">
+                                  <ul class="pagination justify-content-center d-flex align-items-center">
+                                      <li>
+                                          <a href="#" aria-label="Previous">
+                                              <span aria-hidden="true">«</span>
+                                          </a>
+                                      </li>
+                                      <li class="active"><a href="#">1</a></li>
+                                      <li><a href="#">2</a></li>
+                                      <li><a href="#">3</a></li>
+                                      <li><a href="#">4</a></li>
+                                      <li><a href="#">5</a></li>
+                                      <li>
+                                          <a href="#" aria-label="Next">
+                                              <span aria-hidden="true">»</span>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </nav>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Mobile View All History  end -->
+
+
+<!-- ********************************************************************************************** -->
+<!-- <ion-content> -->   
+      </div>
+    </div>
+  </div>
+<!-- </ion-content> -->

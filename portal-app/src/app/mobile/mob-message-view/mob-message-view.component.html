@@ -1,0 +1,84 @@
+<ion-content>
+  <div class="d-flex h-100 flex-column">
+
+  <div class="flx_0 bg-white p-2 bb_5">
+    <div class="d-flex align-items-center">
+      <div class="flx_0 pr-3">
+        <a href="/chat-user-list">
+        <i class="fa fa-chevron-circle-left back_arrow_2"></i>
+      </a>
+      </div>
+      <div class="flx_0 pr-2 text-center">
+        <img src="{{merchant_img}}" class="c_img" alt="" />
+        <span class="small_txt_2 txt_black d-block b-0">{{role_detail}}</span>
+      </div>
+      <div class="flx_1 d-flex min-w-0">
+        <h5 class="txt_semi ellips_txt">{{merchant_name}}</h5>
+      </div>
+    </div>
+  </div>
+
+
+    <div [style.height.px]="innerHeight" class="flx_1 chat_msg_info p-3 position-relative d-flex flex-column-reverse  overflow_auto">
+      <div class="chat_bottom_start p-2" >
+        <div *ngFor="let chat of chats" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+          <div class="d-flex justify-content-start pb-3" *ngIf="chat.chat_receiver == senderId">
+            <div class="msg_client msg_col">
+              <h6 class="task-name text-green mb-3 pb-0 shadow_none">{{receiver}}</h6>
+              <p class="mb-0">
+                {{chat.chat_content}}
+              </p>
+              <div class="text-right">
+                <span class="chat_msg_time">{{chat.chated_on | date: 'hh:mm a'}} | {{chat.chated_on | timeAgo}}</span>
+                <span class="tick_img pl-3">
+                  <img src="../../assets/tick.png" class="tick_unread" alt="" />
+                  <img src="../../assets/tick-read.png" class="tick_read" alt="" />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end pb-3" *ngIf="chat.chat_sender == senderId">
+            <div class="msg_self msg_col">
+              <h6 class="task-name text-green mb-3 pb-0 shadow_none">{{sender}}</h6>
+              <p class="mb-0">
+                {{chat.chat_content}}
+              </p>
+              <div class="text-right">
+                <span class="chat_msg_time">{{chat.chated_on | date: 'hh:mm a'}} | {{chat.chated_on | timeAgo}}</span>
+                <span class="tick_img pl-3">
+                  <img src="../../assets/tick-white.png" class="tick_unread" alt="" />
+                  <img src="../../assets/tick-white.png" class="tick_read" alt="" />
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+    </div>
+
+
+
+
+  <div class="flx_0 p-2">
+    <div class="d-flex align-items-center">
+      <div class="flx_0 pr-2">
+        <label class="mb-0">
+          <i class="fa fa-paperclip chat_file"></i> <input type="file" hidden>
+        </label>
+
+      </div>
+      <div class="flx_1">
+        <textarea name="" class="chat_input w-100" [(ngModel)]="chatmsg"></textarea>
+      </div>
+      <div class="flx_0 pr-2" (click)="send()">
+        <button class="msg_send_btn">Send</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</ion-content>

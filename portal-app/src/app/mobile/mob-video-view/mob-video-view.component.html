@@ -1,0 +1,79 @@
+<p>
+  mob-video-view works!
+</p>
+
+<ion-content>
+  <div class="video_view w-100 h-100 position-relative overflow_auto">
+      <div class="video_view_row w-100 h-100 position-relative" *ngIf="video">
+          <header class="video_head p-2">
+              <div class="row no-gutters align-items-center">
+                  <div class="col-6 pl-2 video_top_left d-flex align-items-center flex-row">
+                      <a  targe="_blank"><img src="../../assets/google_play_icon.png" class="app_img mr-2"
+                              alt=""></a>
+                      <a  targe="_blank"><img src="../../assets/app_store_icon.png" class="app_img"
+                              alt=""></a>
+                  </div>
+                  <div class="col-6 pr-2 text-right video_top_right">
+                      <img src="../../assets/144x144.png" alt="">
+                  </div>
+              </div>
+          </header>
+          <aside class="aside_video d-flex justify-content-center align-items-ceter flex-column">
+              <span class="mb-4 text-center aside_row_1 position-relative">
+                  <div class="position-relative">
+                      <img *ngIf="!video.merchant_info.profile_img" src="../../assets/profile_user.jpg" class="prof_video_view m-auto" alt="" />
+                      <img *ngIf="video.merchant_info.profile_img" src="{{video.merchant_info.profile_img}}" class="prof_video_view m-auto" alt="" />
+                      <i class="fa fa-plus-circle"></i>
+                  </div>
+                  <span class="d-block pt-2">Follow</span>
+              </span>
+              <span class="cursor-pointer pb-4 text-center">
+                  <img src="../../assets/like-icon.png" class="video_action_img" alt="">
+                  <span class="d-block">5052</span>
+              </span>
+              <span class="cursor-pointer pb-4 text-center">
+                  <img src="../../assets/comments-icon.png" class="video_action_img" alt="">
+                  <span class="d-block">5052</span>
+              </span>
+              <span class="cursor-pointer pb-4 text-center">
+                  <img src="../../assets/share-icon.png" class="video_action_img" alt="">
+                  <span class="d-block">5052</span>
+              </span>
+
+              <span class="cursor-pointer pb-4 text-center" (click)="goNext()" *ngIf="next_button_visible">
+                  <img src="../../assets/next-icon.png" class="video_action_img video_next_icon" alt="">
+                  <span class="d-block">Next</span>
+              </span>
+
+              <span class="cursor-pointer pb-4 text-center" style="opacity: 0.3;" *ngIf="!next_button_visible">
+                <img src="../../assets/next-icon.png" class="video_action_img video_next_icon" alt="">
+                <span class="d-block">Next</span>
+            </span>
+
+
+
+              <span class="cursor-pointer pb-4 text-center" routerLink="/video-list" (click)="goNext()">
+                  <img src="../../assets/back icon.png" class="video_action_img video_back_icon" alt="">
+                  <span class="d-block">Back</span>
+              </span>
+          </aside>
+          <article class="video_info_txt text-white">
+              <h6 class="text-uppercase txt_semi mb-0 pb-1">{{video.merchant_info.profile_first_name}}</h6>
+              <span class="small_txt_1 pb-2 d-block">{{video.createdAt | timeAgo}}</span>
+              <p>{{video_details}}</p>
+          </article>
+
+          <video controls class="video_view_2" #myVideo id="{{video_index}}">
+              <source src="{{video_details}}" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+
+
+          <!-- <video autoPlay loop muted class="video_view_2">
+              <source src="{{video.video_link}}" type="video/mp4">
+              Your browser does not support HTML5 video.
+          </video> -->
+
+      </div>
+  </div>
+</ion-content>

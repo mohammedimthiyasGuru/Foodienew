@@ -1,0 +1,263 @@
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+    <div class="row gutter">
+        <div class="col-12">
+            <div class="page-title">
+                <h3>Add New Product</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Top Bar Ends -->
+
+<div class="add_new_category">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="panel mb-3">
+                <div class="panel-body">
+                   
+                    <div class="form-group">
+                        <label>Choose Category</label>
+                        <div class="d-flex align-items-center">
+                            <div class="flx_1 pr-2">
+                                  <select formControlName="cat_id" id="cid" class="form-control" >
+                                      <option *ngFor="let category of categories" value="{{category.cat_id}}">{{category.cat_name}}</option>
+                                  </select>  
+                                       
+                              </div>
+                              <div class="flx_0">
+                                  <a class="btn btn-success" href="/merchant/add-new-category" > <i class="icon-plus d-block"></i> </a>
+                              </div>
+                          </div>
+                          <div *ngIf="submitted && f.cat_id.errors" class="invalid-feedback">
+                            <div *ngIf="f.cat_id.errors.required">Category is required</div>
+                            </div>   
+                      </div>
+                      <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" class="form-control" formControlName="prod_name" [ngClass]="{ 'is-invalid': submitted && f.prod_name.errors }" placeholder="Product Name">
+                        <div *ngIf="submitted && f.prod_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.prod_name.errors.required">Product Name is required</div>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Details</label>
+                        <input type="text" class="form-control" formControlName="prod_desc" [ngClass]="{ 'is-invalid': submitted && f.prod_desc.errors }" placeholder="Product Details">
+                        <div *ngIf="submitted && f.prod_desc.errors" class="invalid-feedback">
+                            <div *ngIf="f.prod_desc.errors.required">Product Details is required</div>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Pricing</label>
+                       
+                        <div class="d-flex align-items-center">
+                            <div class="flx_1 pr-2">
+                                
+                                    <div class="input-group">
+                                        <span class="input-group-addon">RM</span>
+                                        <input type="number" class="form-control" formControlName="prod_price" [ngClass]="{ 'is-invalid': submitted && f.prod_price.errors }" placeholder="Product Price">
+                                    </div>
+                                
+                            </div>
+                        </div>
+                        <div *ngIf="submitted && f.prod_price.errors" class="invalid-feedback">
+                          <div *ngIf="f.prod_price.errors.required">Product Price is required</div>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Availability Start Time</label>
+                      <select  class="form-control" id="st" formControlName="prod_avail_time_s" [ngClass]="{ 'is-invalid': submitted && f.prod_avail_time_s.errors }">
+                          <option value="01:00 AM">01:00 AM</option>
+                          <option value="02:00 AM">02:00 AM</option>
+                          <option value="03:00 AM">03:00 AM</option>
+                          <option value="04:00 AM">04:00 AM</option>
+                          <option value="05:00 AM">05:00 AM</option>
+                          <option value="06:00 AM">06:00 AM</option>
+                          <option value="07:00 AM">07:00 AM</option>
+                          <option value="08:00 AM">08:00 AM</option>
+                          <option value="09:00 AM">09:00 AM</option>
+                          <option value="10:00 AM">10:00 AM</option>
+                          <option value="11:00 AM">11:00 AM</option>
+                          <option value="12:00 AM">12:00 AM</option>
+                          <option value="01:00 PM">01:00 PM</option>
+                          <option value="02:00 PM">02:00 PM</option>
+                          <option value="03:00 PM">03:00 PM</option>
+                          <option value="04:00 PM">04:00 PM</option>
+                          <option value="05:00 PM">05:00 PM</option>
+                          <option value="06:00 PM">06:00 PM</option>
+                          <option value="07:00 PM">07:00 PM</option>
+                          <option value="08:00 PM">08:00 PM</option>
+                          <option value="09:00 PM">09:00 PM</option>
+                          <option value="10:00 PM">10:00 PM</option>
+                          <option value="11:00 PM">11:00 PM</option>
+                          <option value="12:00 PM">12:00 PM</option>
+                      </select>
+                      <div *ngIf="submitted && f.prod_avail_time_s.errors" class="invalid-feedback">
+                          <div *ngIf="f.prod_avail_time_s.errors.required">Availability Start Time is required</div>
+                          </div>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label>Availability End Time</label>
+                      <select  class="form-control" id="et" formControlName="prod_avail_time_e" [ngClass]="{ 'is-invalid': submitted && f.prod_avail_time_e.errors }" placeholder="">
+                          <option value="01:00 AM">01:00 AM</option>
+                          <option value="02:00 AM">02:00 AM</option>
+                          <option value="03:00 AM">03:00 AM</option>
+                          <option value="04:00 AM">04:00 AM</option>
+                          <option value="05:00 AM">05:00 AM</option>
+                          <option value="06:00 AM">06:00 AM</option>
+                          <option value="07:00 AM">07:00 AM</option>
+                          <option value="08:00 AM">08:00 AM</option>
+                          <option value="09:00 AM">09:00 AM</option>
+                          <option value="10:00 AM">10:00 AM</option>
+                          <option value="11:00 AM">11:00 AM</option>
+                          <option value="12:00 AM">12:00 AM</option>
+                          <option value="01:00 PM">01:00 PM</option>
+                          <option value="02:00 PM">02:00 PM</option>
+                          <option value="03:00 PM">03:00 PM</option>
+                          <option value="04:00 PM">04:00 PM</option>
+                          <option value="05:00 PM">05:00 PM</option>
+                          <option value="06:00 PM">06:00 PM</option>
+                          <option value="07:00 PM">07:00 PM</option>
+                          <option value="08:00 PM">08:00 PM</option>
+                          <option value="09:00 PM">09:00 PM</option>
+                          <option value="10:00 PM">10:00 PM</option>
+                          <option value="11:00 PM">11:00 PM</option>
+                          <option value="12:00 PM">12:00 PM</option>
+                      </select>
+                      <div *ngIf="submitted && f.prod_avail_time_e.errors" class="invalid-feedback">
+                          <div *ngIf="f.prod_avail_time_e.errors.required">Availability End Time is required</div>
+                      </div>
+                  </div>
+                      <div class="form-group" *ngIf="product.prod_id">
+                          <label>Product image</label>
+                         
+                          <div class="d-flex align-items-center">
+                              <div class="flx_1 pr-2">
+                                  <input type="file" class="form-control" (change)="selectImg($event)" accept="image/*">     
+                              </div>
+                              <div class="flx_0">
+                                  <button title="Choose Default Image" class="btn btn-success" type="button" (click)="uploadImg()"> <i class="icon-plus d-block"></i> </button>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <!-- <div class="form-group">
+                          <label>Product Id (Auto Generate)</label>
+                          <input type="text" class="form-control">
+                      </div>
+                      <div class="pb-3">
+                          <button class="btn btn-info">More Product</button>
+                      </div>
+                      <div class="form-group">
+                          <input type="checkbox"> Agree Terms & Conditions
+                      </div> -->
+                  </div>
+              </div>
+
+
+              <div class="text-center">
+                  <button type="submit" class="btn btn-success">POST PRODUCT</button>
+              </div>
+            </form>
+          </div>
+      </div>
+
+    <!-- <div class="pt-5">
+        <div class="panel panel-red">
+            <div class="panel-heading mb-0 pb-0">
+                <h3 class="text-left text-blue">History</h3>
+            </div>
+            <div class="panel-body pb-0 table-responsive product_table td_center">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>Product Id</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Pricing</th>
+                            <th>Timing</th>
+                            <th>Product Name</th>
+                            <th width="180">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="text-center cart_col">
+                                    <span
+                                        class="cart_icon d-inline-flex align-items-center justify-content-center">
+                                        <i class="icon-shopping-cart"></i>
+                                    </span>
+                                    <h5 class="mb-0">15421</h5>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <span
+                                        class="cart_icon d-inline-flex align-items-center justify-content-center">
+                                        <i class="icon-shopping-cart"></i>
+                                    </span>
+                                    <h5 class="mb-0">15421</h5>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <span
+                                        class="cart_icon d-inline-flex align-items-center justify-content-center">
+                                        <i class="icon-shopping-cart"></i>
+                                    </span>
+                                    <h5 class="mb-0">15421</h5>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <span
+                                        class="cart_icon d-inline-flex align-items-center justify-content-center">
+                                        <i class="icon-shopping-cart"></i>
+                                    </span>
+                                    <h5 class="mb-0">15421</h5>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <span
+                                        class="cart_icon d-inline-flex align-items-center justify-content-center">
+                                        <i class="icon-shopping-cart"></i>
+                                    </span>
+                                    <h5 class="mb-0">15421</h5>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart_info">
+                                    <p>
+                                        Product Name
+                                    </p>
+                                    <p class="mb-0">
+                                        Product Details
+                                    </p>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-info mb-2 w-100 btn-sm" type="button">Pending Live</button>
+                                <button class="btn btn-success w-100 btn-sm" type="button">Approval Pending</button>
+                            </td>
+                           
+                        </tr>
+                       
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+        
+        
+    </div> -->
+</div>

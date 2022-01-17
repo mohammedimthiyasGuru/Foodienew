@@ -1,0 +1,312 @@
+<ion-content class="layout_wrapper">
+  <div class="merchant_wrapper w-100 h-100 position-relative d-flex flex-column overflow_auto">
+    <!-- <div class="flx_0">
+      <app-mob-header></app-mob-header>
+    </div> -->
+  <div class="flx_1 overflow_auto position-relative">
+   <!-- *********************************************************************************************************** -->
+
+   <ion-content>
+    <div class="yellow_bg pt-4 h-100">
+        <h5 class="txt_semi p-3">My Videos</h5>
+        <div class="bg-white br_lr pt-3">
+
+  <div class="video_wrapper pb_70 w-100 h-100 position-relative overflow_auto">
+
+
+
+    <div class="my_videos">
+
+
+        <h5 class="txt_semi p-3">Top Trending</h5>
+
+        <div class="position-relative my_video_cont p-3 scroll_hide align-items-start">
+            <ng-container *ngFor="let video of myVideos; let i = index">
+                <div class="d-inline-flex my_video_row">
+                    <div class="all_video_col position-relative">
+                        <div class="position-relative video_main">
+                            <header class="video_head">
+                                <div class="d-flex">
+                                  <div class="col-6 video_top_left d-flex align-items-center flex-row">
+                                    <a href="#" targe="_blank"><img src="../../assets/google_play_icon.png"
+                                            class="app_img mr-2" alt=""></a>
+                                    <a href="#" targe="_blank"><img src="../../assets/app_store_icon.png"
+                                            class="app_img" alt=""></a>
+                                     </div>
+                                    <div class="col-6 text-right video_top_right">
+                                        <img src="../../assets/144x144.png" alt="">
+                                    </div>
+                                </div>
+                            </header>
+                            <video src="{{video.video_link}}" class="all_video_row"></video>
+                            <!-- <video autoplay="false" muted class="all_video_row">
+                                <source src="{{video.video_link}}" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video> -->
+                            <footer class="video_play">
+                                <i class="fa fa-play text-white video_play_btn cursor-pointer" (click)="action3('/video-view/',video.id,'myvid_',i)"></i>
+                            </footer>
+                        </div>
+
+                        <div class="video_desc p-1 text-white">
+                            <h5 class="txt_semi pl-2 mb-0">{{video.video_note}}</h5>
+                            <span class="small_txt_1 pl-2">{{video.createdAt | timeAgo}}</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+
+    <div class="my_fav_video">
+        <h5 class="txt_semi p-3">My Videos</h5>
+
+        <div class="position-relative my_video_cont pl-3 pb-3 scroll_hide align-items-start">
+            <ng-container *ngFor="let video of favouriteVideos; let i = index">
+                <div class="d-inline-flex my_video_row">
+                    <div class="all_video_col position-relative">
+
+
+                        <div class="position-relative video_main">
+
+                            <header class="video_head">
+                                <div class="d-flex">
+                                    <div class="col-6 video_top_left d-flex align-items-center flex-row">
+                                        <a href="#" targe="_blank"><img src="../../assets/google_play_icon.png"
+                                                class="app_img mr-2" alt=""></a>
+                                        <a href="#" targe="_blank"><img src="../../assets/app_store_icon.png"
+                                                class="app_img" alt=""></a>
+                                    </div>
+                                    <div class="col-6 text-right video_top_right">
+                                        <img src="../../assets/144x144.png" alt="">
+                                    </div>
+                                </div>
+                            </header>
+
+                            <video src="{{video.video_link}}" class="all_video_row"></video>
+                            <!-- <video autoplay="false" muted class="all_video_row">
+                                <source src="{{video.video_link}}" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video> -->
+                            <footer class="video_play d-flex align-items-center justify-content-center">
+                                <i class="fa fa-play text-white video_play_btn cursor-pointer"  (click)="action3('/video-view/',video.id,'myfav_',i)"></i>
+                            </footer>
+                        </div>
+
+                        <div class="video_desc p-1 text-white">
+                            <h6 class="txt_semi pl-2 pb-1 mb-0">{{video.video_note}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- <div class="d-inline-flex my_video_row">
+                <div class="all_video_col position-relative">
+                    <div class="position-relative video_main">
+
+                        <video autoplay="false" muted class="all_video_row">
+                            <source src="../../assets/RW20seconds_1.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <footer class="video_play d-flex align-items-center justify-content-center">
+                            <i class="fa fa-play text-white video_play_btn cursor-pointer" ></i>
+                        </footer>
+                    </div>
+
+                    <div class="video_desc p-1 text-white">
+                        <h6 class="txt_semi pl-2 pb-1 mb-0">sample name</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-flex my_video_row">
+                <div class="all_video_col position-relative">
+                    <div class="position-relative video_main">
+
+                        <video autoplay="false" muted class="all_video_row">
+                            <source src="../../assets/RW20seconds_1.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <footer class="video_play d-flex align-items-center justify-content-center">
+                            <i class="fa fa-play text-white video_play_btn cursor-pointer" ></i>
+                        </footer>
+                    </div>
+
+                    <div class="video_desc p-1 text-white">
+                        <h6 class="txt_semi pl-2 pb-1 mb-0">sample name</h6>
+                    </div>
+                </div>
+            </div>    -->
+        </div>
+    </div>
+
+    <div class="all_videos wrapper">
+        <h5 class="txt_semi pb-3 pt-3">All Videos</h5>
+        <div class="all_video_load">
+            <ng-container *ngFor="let video of allVideos; let i = index">
+                <div class="all_video_col position-relative">
+                    <div class="position-relative video_main">
+                        <header class="video_head">
+                            <div class="d-flex">
+                                <div class="col-6 video_top_left d-flex align-items-center flex-row">
+                                    <!-- <a href="#" targe="_blank"><img src="../../assets/google_play_icon.png" class="app_img mr-2" alt=""></a>
+                                    <a href="#" targe="_blank"><img src="../../assets/app_store_icon.png" class="app_img" alt=""></a> -->
+                                 </div>
+                                <div class="col-6 text-right video_top_right">
+                                    <img src="../../assets/144x144.png" alt="">
+                                </div>
+                            </div>
+                        </header>
+                        <video src="{{video.video_link}}" class="all_video_row"></video>
+                        <!-- <video autoplay="false" muted class="all_video_row">
+                            <source src="{{video.video_link}}" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video> -->
+                        <footer class="video_play">
+                            <i class="fa fa-play text-white video_play_btn cursor-pointer"  (click)="action3('/video-view/',video.id,'allvid_',i)" ></i>
+                        </footer>
+                    </div>
+
+                    <div class="video_desc p-1">
+                        <h6 class="txt_normal video_title">{{video.video_note}}</h6>
+                        <div class="d-flex align-items-center">
+                            <div class="flx_1">
+                                <div class="d-flex align-items-center">
+                                    <div class="flx_0 pr-2">
+                                        <img src="{{video.merchant_info.profile_img}}" class="video_prof" alt="">
+                                    </div>
+                                    <div class="flx_1 video_pro_h">
+                                        {{video.merchant_info.profile_first_name}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flx_0 video_like">
+                                <i class="fa fa-heart-o cursor-pointer"></i> <span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- <div class="all_video_col position-relative">
+                <div class="position-relative video_main">
+                    <header class="video_head">
+                        <div class="d-flex">
+                            <div class="col-6 video_top_left d-flex align-items-center flex-row">
+                                <a href="#" targe="_blank"><img src="../../assets/google_play_icon.png" class="app_img mr-2" alt=""></a>
+                                <a href="#" targe="_blank"><img src="../../assets/app_store_icon.png" class="app_img" alt=""></a>
+                             </div>
+                            <div class="col-6 text-right video_top_right">
+                                <img src="../../assets/144x144.png" alt="">
+                            </div>
+                        </div>
+                    </header>
+                    <video autoplay="false" muted class="all_video_row">
+                        <source src="../../assets/home_video.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+
+                    <footer class="video_play">
+                        <i class="fa fa-play text-white video_play_btn cursor-pointer" ></i>
+                    </footer>
+                </div>
+
+                <div class="video_desc p-1">
+                    <h6 class="txt_normal video_title">sample name</h6>
+                    <div class="d-flex align-items-center">
+                        <div class="flx_1">
+                            <div class="d-flex align-items-center">
+                                <div class="flx_0 pr-2">
+                                    <img src="../../assets/profile_user.jpg" class="video_prof" alt="">
+                                </div>
+                                <div class="flx_1 video_pro_h">
+                                    profile name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flx_0 video_like">
+                            <i class="fa fa-heart cursor-pointer"></i> <span>53</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="all_video_col position-relative">
+                <div class="position-relative video_main">
+                    <header class="video_head">
+                        <div class="d-flex">
+                            <div class="col-6 video_top_left d-flex align-items-center flex-row">
+                                <a href="#" targe="_blank"><img src="../../assets/google_play_icon.png" class="app_img mr-2" alt=""></a>
+                                <a href="#" targe="_blank"><img src="../../assets/app_store_icon.png" class="app_img" alt=""></a>
+                             </div>
+                            <div class="col-6 text-right video_top_right">
+                                <img src="../../assets/144x144.png" alt="">
+                            </div>
+                        </div>
+                    </header>
+                    <video autoplay="false" muted class="all_video_row">
+                        <source src="../../assets/RW20seconds_1.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                                        <footer class="video_play">
+                        <i class="fa fa-play text-white video_play_btn cursor-pointer" ></i>
+                    </footer>
+                </div>
+
+                <div class="video_desc p-1">
+                    <h6 class="txt_normal video_title">sample name</h6>
+                    <div class="d-flex align-items-center">
+                        <div class="flx_1">
+                            <div class="d-flex align-items-center">
+                                <div class="flx_0 pr-2">
+                                    <img src="../../assets/profile_user.jpg" class="video_prof" alt="">
+                                </div>
+                                <div class="flx_1 video_pro_h">
+                                    profile name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flx_0 video_like">
+                            <i class="fa fa-heart cursor-pointer"></i> <span>53</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+<div class="add_video_com">
+  <a (click)="action1()">
+    +
+  </a>
+</div>
+</div>
+</div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- *********************************************************************************************************** -->
+
+  </div>
+  <div class="flx_0">
+      <app-mob-footer></app-mob-footer>
+  </div>
+</div>
+</ion-content>
+

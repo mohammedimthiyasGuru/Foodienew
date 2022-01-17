@@ -1,0 +1,68 @@
+  <!-- Top Bar Starts -->
+  <div class="top-bar clearfix">
+      <div class="row gutter">
+          <div class="col-12">
+              <div class="page-title">
+                  <h3>Add New Category</h3>
+              </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="panel mb-3">
+                <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label text-white">Enter Your Category</label>
+                        <input type="text" class="form-control input_2" maxlength="25" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" placeholder="Enter Your Category">
+                        <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                          <div *ngIf="f.category.errors.required">Category is required</div>
+                          </div>
+                    </div>
+                    <div class="pb-3">
+                        <button type="submit" class="btn btn-info">Create </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="add_new_category">
+        <div class="pt-5">
+            <div class="panel panel-red">
+                <div class="panel-heading mb-0 pb-0">
+                    <h3 class="text-left text-blue">Product List</h3>
+                </div>
+                <div class="panel-body pb-0 table-responsive product_table td_center">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>Category Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let category of categories">
+                                <td>
+                                    <div class="text-center cart_col">
+                                        <h5 class="mb-0">{{category.cat_name}}</h5>
+                                    </div>
+                                </td>
+                                <td>                            
+                                    <button style="margin: 5px; background-color: #bf7a6a;" (click)="cat_delete(category.cat_id)" type="submit" class="btn btn-info">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>   
+        </div>
+      </div>
+      
+  </div>
+  <!-- Top Bar Ends -->
+
+
+
+
+

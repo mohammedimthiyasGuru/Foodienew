@@ -1,0 +1,20 @@
+.task-wrapper,
+.over_auto {
+    overflow-y: auto;
+    overflow-X: hidden;
+}
+
+.chat_info_load {
+    position: absolute;
+    bottom  : 0;
+    left    : 0;
+    right   : 0;
+    overflow: auto;
+    top     : 0;
+
+}
+
+.time_chat {
+    color    : rgba(8, 6, 6, 0.5);
+    font-size: 11px;
+}

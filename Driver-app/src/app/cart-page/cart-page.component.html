@@ -1,0 +1,323 @@
+<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+		<div class="w-100 h-100 position-relative d-flex flex-column">
+	<div class="flx_1 po_1 bg_gray_1 overflow_auto">
+		<div class="po_head mb-2 yellow_bg p-3">
+            <div class="d-flex align-items-center">
+                <div class="flx_0 pr-2">
+                     <a class="txt_black2" (click)="back_action()"><i class="fa fa-arrow-left back_arrow"></i></a>
+                </div>
+                <div class="flx_1 txt_semi text-center">
+                    {{shop_detail.profile_biz_name}}
+                </div>
+            </div>
+        </div>
+		<div class="wrapper mb-2 pt-2 pb-2">
+            <div class="bg-white brad_1 box-shadow-2 p-3">
+
+              <ng-container *ngFor="let item of cart_detail; let i = index">
+              <div class="d-flex pb-2">
+                    <div class="flx_0 pr-2">
+                        <div class="d-flex plus_mins_btn align-items-center">
+                            <div class="flx_0">
+                                <span class="minus_btn_2" (click)="remove_count(i)">-</span>
+                            </div>
+                            <div class="flx_1">
+                              <div class="input_pm">{{item.cart_count}}</div>
+                            </div>
+                            <div class="flx_0">
+                                <span class="plus_btn_2" (click)="add_count(i)">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flx_1">
+                        {{item.prod_name}}
+                    </div>
+                    <div class="flx_0 text-right">
+                        {{price_symbol}} {{item.total}}
+                    </div>
+              </div>
+            </ng-container>
+
+            </div>
+        </div>
+		<div class="pt-2" *ngIf="prod_list.length !== 0">
+            <div class="wrapper">
+                <h6 class="txt_semi pb-1">Popular with your order</h6>
+            </div>
+
+            <div class="w-100">
+            <div class="row no-gutters flex-row flex-nowrap pl-3 scroll_hide">
+
+
+         <ng-container *ngFor="let item of prod_list">
+              <div class="col-8 pr-3 pt-2 pb-2">
+                    <div class="bg-white p-2 brad_1 box-shadow-2">
+                        <h6 class="txt_semi">{{item.prod_name}}</h6>
+                        <p>{{item.item_name}}</p>
+
+                        <div class="d-flex align-items-center">
+                            <div class="flx_1">
+                              {{price_symbol}} {{item.prod_price}}
+                            </div>
+                            <div class="flx_0">
+                                <span class="plus_btn" (click)="add_to_cart(item)">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </ng-container>
+
+            </div>
+        </div>
+    </div>
+
+		<div class="wrapper mb-2 pt-2 pb_foot_space_1">
+
+            <div class="bg-white mb-3  cus_panel_2 p-3">
+                <div class="d-flex">
+                    <div class="flx_1 pr-2">
+                        <h6>Contactless delivery</h6>
+                        <p class="mb-0">
+                            Only orders paid online are eligible to a contactless delivery
+                        </p>
+                    </div>
+                    <div class="flx_0">
+                        <div class="active_chk">
+
+                            <label class="switch switch_2 mb-0" *ngIf="!contactless_status">
+                              <input type="checkbox" class="switch-input" (click)="contactless(true)">
+                              <span class="switch-label" data-on="ON" data-off="OFF"></span>
+                              <span class="switch-handle"></span>
+
+                          </label>
+
+                          <label class="switch switch_2 mb-0" *ngIf="contactless_status">
+                            <input type="checkbox" class="switch-input" checked (click)="contactless(false)">
+                            <span class="switch-label" data-on="ON" data-off="OFF"></span>
+                            <span class="switch-handle"></span>
+
+                        </label>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="bg-white brad_1 box-shadow-2 p-3">
+               <div class="d-flex pb-2">
+                   <div class="flx_1">
+                       Subtotal
+                   </div>
+                   <div class="flx_0">
+                    {{price_symbol}} {{sub_total}}
+                </div>
+               </div>
+               <div class="d-flex pb-2">
+                <div class="flx_1">
+                    Delivery Fee
+                </div>
+                <div class="flx_0">
+                  {{price_symbol}} {{delivery_fee}}
+             </div>
+            </div>
+
+            <div class="d-flex pb-2">
+              <div class="flx_1">
+                Processing_fee
+              </div>
+              <div class="flx_0">
+                {{price_symbol}} {{processing_fee}}
+           </div>
+          </div>
+            <div class="d-flex pb-2">
+                <div class="flx_1">
+                    Incl.Service Fee
+                </div>
+                <div class="flx_0">
+                  {{price_symbol}} {{inc_service}}
+             </div>
+            </div>
+            <div class="d-flex pb-2">
+              <div class="flx_1">
+                <span *ngIf="!promo_applied" class="text_black vochure_open cursor-pointer">Do you have a vocher?</span>
+                <span *ngIf="promo_applied" class="text_black vochure_open cursor-pointer">Vocher value</span>
+              </div>
+              <div class="flx_0">
+              - {{price_symbol}}  {{vocher_value}}
+           </div>
+          </div>
+          <div class="pb-2">
+				<div class="vocher_plan">
+					<div class="pt-3">
+                            <div class="d-flex ">
+                                <div class="flx_1">
+                                    <input type="text"[(ngModel)]="promo_code_text" name="promo_code_text" class="w-100 input_1">
+                                </div>
+                                <div class="flx_0">
+                                    <a (click)="view_available_promo()" class="btn btn_1 cus_btn_6" *ngIf="!promo_applied">Available Promo</a>
+                                    <a (click)="remove_promocode()" *ngIf="promo_applied" class="btn btn_1 cus_btn_6">Remove Promo</a>
+                                </div>
+                            </div>
+                        </div>
+				</div>
+            </div>
+
+            </div>
+
+
+			<!-- Level - 2 -->
+
+			<div class="mb-2 pt-4 pb-2">
+            <div class="bg-white box-shadow-2  brad_1 p-3">
+                <div>
+                    <div class="d-flex">
+                        <div class="flx_0 d-flex align-items-end">
+                            <h5 class="txt_semi pr-2 mb-0">Total</h5> <small>Incl.val</small>
+                        </div>
+                        <div class="flx_1 text-right">
+                            <b>{{price_symbol}} {{over_all_total}}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="mb-2 pt-2 pb-2">
+            <div class="bg-white box-shadow-2  brad_1 p-3">
+                <div class="pb-3 mb-3 bb_2">
+                    <div class="d-flex">
+                        <div class="flx_0">
+                            Contact info
+                        </div>
+                        <div class="flx_1 text-right">
+                          {{email_id}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pb-3 mb-3 bb_2" (click)="change_location()">
+                    <div class="d-flex align-items-center">
+                        <div class="flx_1">
+                            Delivery details Home
+                        </div>
+                        <div class="flx_0">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <p class="pt-2 mb-0 pb-2">
+                        {{user_location.address_text}}
+                    </p>
+                </div>
+
+                <div class="pb-3 mb-3 bb_2">
+                    <div class="d-flex">
+                        <div class="flx_0">
+                           Delivery Time <br>
+                          {{distance_km}} KM
+                        </div>
+                        <div class="flx_1 text-right">
+                            ASAP ({{delivery_time}}) <i class="fa fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="mb-2 pt-2 pb-2">
+            <div class="bg-white box-shadow-2  brad_1 p-3">
+
+                    <div class="d-flex">
+                        <div class="flx_1">
+                            Payment Methods
+                        </div>
+                        <div class="flx_0 text-right">
+                          <a (click)="payment_method()" class="txt_black2"> Change</a>
+                        </div>
+                    </div>
+                    <div class="d-flex pt-2">
+                        <div class="flx_1">
+                            <i class="fa fa-money"></i> {{payment_type}}
+                        </div>
+                        <div class="flx_0 text-right">
+                          {{price_symbol}} {{over_all_total}}
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+		<!-- Level 2 End -->
+
+		<!-- Level 3 Start -->
+
+		<div class="pb-3">
+            <p>
+            By completing this order, I agree to all Terms &amp; Conditions
+
+            <br><br>
+            Please Note: sold by Restorn Rest 1 Maju
+        </p>
+        <p class="txt_semi">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry
+        </p>
+
+        </div>
+		<!-- Level 3 End -->
+        </div>
+	</div>
+	<div class="flx_0">
+		 <div class="footer_cart position-relative bg-white pt-2 pb-2">
+        <div class="wrapper brad_1 yellow_panel_1 text_black">
+        <div class="d-flex align-items-center">
+            <div class="flx_0">
+               <span class="cart_cunt txt_semi">{{cart_detail.length}}</span>
+            </div>
+            <div class="flx_1 txt_semi pl-2 pr-2 text-center">
+               <a (click)="startTimer()"> Place Order</a>
+             </div>
+             <div class="flx_0 txt_semi text-right">
+              {{price_symbol}} {{over_all_total}}
+             </div>
+        </div>
+    </div>
+    </div>
+	</div>
+</div>
+	</div>
+</div>
+
+
+<div class="popup_box_1 FootCartInfo align-items-end d-flex flow_hide" *ngIf="addtocart_visible">
+  <span class="close_foot_pop">
+  </span>
+  <div class="cart_dialog w-100 bg-white p-4">
+    <div>
+        <div class="d-flex pt-4 align-items-center">
+            <div class="flx_0 pr-4">
+                <div class="d-flex plus_mins_btn align-items-center">
+                    <div class="flx_1">
+                      <div class="input_pm">{{timeLeft}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flx_1">
+                <a class="w-100 brad_1 text_black btn btn_1 AddCartCntSubmit" (click)="cancel_button()"> <b class="txt_semi">Cancel Order</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="popup_box_1 d-flex align-items-center jusitify-content-center" *ngIf="msg_show">
+  <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+      <img width="160" src="../../assets/thank-you.jpg" class="img-fluid" alt="">
+      <h3 class="text_2 txt_semi pt-3 pb-3">{{msg_title}}</h3>
+<p>
+  {{msg_text}}
+</p>
+<input type="button" (click)="click_action()" class="btn_1 btn-ripple text-center box-shadow pl-4 pr-4 pt-2 pb-2 mr-3 txt_black_2" value="Ok"/>
+  </div>
+</div>

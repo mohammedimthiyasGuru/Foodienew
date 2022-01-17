@@ -1,0 +1,78 @@
+<ion-content>
+  <div class="filter">
+    <div class="wrapper">
+      <div class="top_arrow pb-3 pt-2">
+        <div class="d-flex">
+            <div class="flx_0 pr-2">
+                <i class="fa fa-arrow-left back_arrow color-2"></i>
+            </div>
+            <div class="flx_1 text-center">
+              <h5 class="txt_semi color_3"> Filter</h5>
+            </div>
+        </div>
+    </div>
+      <div class="filter_sort  pb-3">
+        <h6 class="color_3 mb-0 txt_semi pb-1">Recently added</h6>
+        <div class="fs_list">
+          <div class="fs_list_row color_2 pt-2 pb-2 d-flex align-items-center">
+            <div class="flx_1">
+              Most Popular
+            </div>
+            <div class="flx_0">
+              <i class="fa fa-check"></i>
+            </div>
+          </div>
+          <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+          <div class="fs_list_row pt-2 pb-2 d-flex align-items-center">
+            <div class="flx_1">
+              Price High to Low
+            </div>
+            <div class="flx_0">
+              <i class="fa fa-check"></i>
+            </div>
+          </div>
+          <div class="bs_row w-100 d-block mt-2 mb-2"></div>
+          <div class="fs_list_row pt-2 pb-2 d-flex align-items-center">
+            <div class="flx_1">
+              Price Low to High
+            </div>
+            <div class="flx_0">
+              <i class="fa fa-check"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Cuisines pt-3">
+        <h6 class="color_3 mb-0 txt_semi">Price</h6>
+        <div>
+          <ion-list>
+          <ion-item>
+            <ion-range min="-200" max="200" [(ngModel)]="saturation" color="secondary">
+              <ion-label range-left>-200</ion-label>
+              <ion-label range-right>200</ion-label>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+        </div>
+      </div>
+      <div class="Cuisines pt-3">
+        <h6 class="color_3 mb-0 txt_semi">Cuisines</h6>
+        <div class="cuusine_list badge_box pt-2">
+          <span>All</span>
+          <span>Fast Food</span>
+          <span>Indian</span>
+          <span class="cl_active">Chines</span>
+          <span>Thai</span>
+          <span>Asian</span>
+          <span>American</span>
+        </div>
+      </div>
+
+
+      <div class="pt-5">
+        <a href="" class="btn_1 d-block text-center box-shadow p-2 w-100 text-white">Apply</a>
+      </div>
+    </div>
+  </div>
+</ion-content>

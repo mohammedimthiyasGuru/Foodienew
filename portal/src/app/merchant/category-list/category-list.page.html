@@ -1,0 +1,40 @@
+<div class="add_new_category">
+  <div class="pt-5">
+      <div class="panel panel-red">
+          <div class="panel-heading mb-0 pb-0">
+              <h3 class="text-left text-blue">Category</h3>
+          </div>
+          <div class="panel-body pb-0 table-responsive product_table td_center">
+              <table class="table no-margin">
+                  <thead>
+                      <tr>
+                          <th>Category</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let category of categories_list">
+                          <td>
+                              <div class="text-left cart_col">
+                                  <h5 class="mb-0">{{category.cat_name}}</h5>
+                              </div>
+                          </td>
+                          <td>
+                              <div class="text-center">
+                                  <h5 class="mb-0">{{category.cat_status == 'A' ? 'Active' : 'Inactive'}}</h5>
+                              </div>
+                          </td>
+                          <td>
+                              <button style="margin: 5px; background-color: #a9bd7a;" type="submit" class="btn btn-info" (click)="statusupdate('A',category.cat_id)" *ngIf="category.cat_status == 'B'">Enable</button>
+                              <button style="margin: 5px; background-color: #bf7a6a;" type="submit" class="btn btn-info" (click)="statusupdate('B',category.cat_id)" *ngIf="category.cat_status == 'A'">Disable</button>
+                              <button style="margin: 5px;" type="submit" (click)="edit(category.cat_id,category.cat_name)" class="btn btn-info">Edit</button>
+                              <button style="margin: 5px; background-color: #bf7a6a;" (click)="cat_delete(category.cat_id)" type="submit" class="btn btn-info">Delete </button>
+                        </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

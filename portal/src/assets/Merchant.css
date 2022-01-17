@@ -1,0 +1,579 @@
+.bg_red{
+    background: #C8171D;
+}
+
+.color_red{
+    color: #C8171D;   
+}
+
+.prof_img{
+    width: 40px;
+height: 40px;
+border-radius: 50%;
+}
+.prod_merc_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: -70px;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.4);
+}
+.info_product{
+    border-radius: 10px;
+    padding: 100px 20px 20px 20px;
+}
+.info_product *{
+color:#000
+}
+.arrow_mer{
+    font-size: 27px;
+color: #c8171d;
+}
+/* iphone style on off buttno start */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 53px;
+    height: 20px;
+    border-radius: 18px;
+    cursor: pointer;
+    padding-right: 0px;
+}
+
+.switch-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 10px;
+    text-transform: capitalize;
+   background: #fff;
+    border-radius: inherit;
+    -webkit-transition: 0.15s ease-out;
+    -moz-transition: 0.15s ease-out;
+    -o-transition: 0.15s ease-out;
+    transition: 0.15s ease-out;
+    -webkit-transition-property: opacity background;
+    -moz-transition-property: opacity background;
+    -o-transition-property: opacity background;
+    transition-property: opacity background;
+	border: 1px solid #ffffff;
+}
+
+    .switch-label:before,
+    .switch-label:after {
+        position: absolute;
+        top: 50%;
+        margin-top: -.5em;
+        line-height: 1;
+        -webkit-transition: inherit;
+        -moz-transition: inherit;
+        -o-transition: inherit;
+        transition: inherit;
+    }
+
+    .switch-label:before {
+        content: attr(data-off);
+        right: 2px;
+        color: #545454;
+        width: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .switch-label:after {
+        content: attr(data-on);
+        left: 0;
+        color: #000;
+        text-align: center;
+        width: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+    }
+
+.switch-input:checked ~ .switch-label {
+    background: #ffffff;
+}
+
+
+
+    .switch-input:checked ~ .switch-label:before {
+        opacity: 0;
+    }
+
+    .switch-input:checked ~ .switch-label:after {
+        opacity: 1;
+    }
+
+.switch-handle {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-transition: left 0.15s ease-out;
+    -moz-transition: left 0.15s ease-out;
+    -o-transition: left 0.15s ease-out;
+    transition: left 0.15s ease-out;
+}
+
+    .switch-handle:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -6px 0 0 -6px;
+        width: 12px;
+        height: 12px;
+        background: #C8171D;
+        border-radius: 6px;
+    }
+
+.switch-input:checked ~ .switch-handle {
+    left: 32px;
+}
+.switch-input:checked ~ .switch-handle:before {
+    background:#C8171D
+}
+.switch_1 .switch
+{
+	width:62px
+}
+
+/* iphone style on off buttno end */
+.mer_tble_info{
+    padding-top:100px;
+    border-radius: 10px;
+}
+.tble_merchant td:first-child{
+width:130px;
+color: #c8171d
+}
+.mer_tb_action i{
+    font-size: 28px;
+}
+
+
+
+/* Chat message start */
+.chat_pro{
+    border-radius: 25px 25px 0px 0px;
+    padding:15px;
+}
+.chat_pro ul, .chat_pro li{
+    list-style: none;
+    margin: 0 auto;
+    padding:0px;
+}
+.c_img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.c_name{
+    font-size:13px;
+}
+.c_msg{
+    color:rgba(0,0,0,0.5);
+    font-size:12px;
+}
+.line_n{
+    line-height: normal;
+}
+.c_mg_count{
+    width:22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size:12px;
+}
+.c_time{
+    color:rgba(0,0,0,0.5);
+    font-size:12px;
+}
+.tick_img{
+    position: relative;
+}
+.tick_img img{
+    width:12px;
+    margin-left: -10px;
+}
+.tick_unread{
+opacity: 0.5;
+}
+.back_arrow{
+    font-size:22px;
+}
+.chat_msg_info{
+    background: rgba(0,0,0,0.05);
+}
+.msg_col{
+    max-width: 80%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+
+}
+.msg_self{
+    border-radius: 10px 10px 0px 10px;
+    background: #C8171D;
+    color:#fff;
+    padding:7px;
+}
+.msg_self *{
+color:#ffffff
+}
+.msg_client{
+    border-radius: 10px 10px 10px 0px;
+    background: #ffffff;
+    padding:7px;
+}
+.chat_msg_time
+{
+    color:rgba(0,0,0,0.5);
+    font-size:11px;
+}
+.chat_file{
+    font-size:15px;
+}
+.chat_input{
+    height: 33px;
+    padding-left:15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.msg_col img {
+    max-width: 100%;
+}
+/* Chat message end */
+
+/* Video Start */
+
+.video_row video{
+height: 250px;
+}
+.all_video_col{
+    background: #ffbf1f;
+    width: 44%;
+    margin: 15px 0 0px 15px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+.all_video_load:after{
+content: '';
+display: block;
+clear: both;
+}
+.all_video_row{
+    width:100%
+}
+.all_video_load{
+    background:rgba(0,0,0,0.05);
+}
+.my_video_row{
+    width: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    height: 220px;
+}
+.my_video_row .video_desc{
+    position: absolute;
+    bottom: 0;
+    right: 45px;
+    left: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.my_video_row .video_desc h5{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.my_video_row .all_video_row{
+    width: 100%;
+    height: 230px;
+    object-fit: fill;
+    overflow: hidden;
+}
+.my_video_row .video_play{
+    bottom: 37px;
+    right: 18px;
+}
+.my_video_row .all_video_col{
+    float: none;
+    width: 100%;
+    margin: 0;
+}
+
+.video_title{
+    font-size:13px;
+    font-weight: 500;
+}
+.video_like i{
+    font-size:10px;
+}
+.video_like span{
+font-size:11px;
+color:rgba(0,0,0,0.5)
+}
+.video_prof{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.video_pro_h{
+    font-size:12px;
+}
+.video_android, .video_mac{
+opacity: 0.8;
+font-size:22px;
+}
+.video_head{
+    position: absolute;
+left: 0;
+right: 0;
+z-index: 2;
+top: 6px;
+}
+.video_top_right img{
+    opacity: 0.8;
+    max-height: 30px;
+}
+.video_play{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    z-index: 2;
+}
+.video_view_row{
+    overflow: hidden;
+    background: #000000;
+}
+.video_view_2{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: fixed;
+    display: block;
+}
+.aside_video{
+    position: absolute;
+    bottom:10px;
+    right:15px;
+    z-index: 2;
+}
+.prof_video_view{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #ffbf1f;
+}
+.aside_video i{
+font-size:25px;
+}
+.video_info_txt{
+    position: absolute;
+    bottom:10px;
+    left:15px;
+    z-index: 2;
+    right: 80px;
+}
+.video_info_txt h6{
+    letter-spacing: 4px;
+}
+.video_info_txt *{
+color:rgba(255, 255, 255, 0.9)
+}
+.video_info_txt p{
+font-size:12px;
+}
+.bank_card_row{
+    width:500px;
+    height: 311px;
+    background:url(../images/bank-card.png) no-repeat left top;
+    background-size:cover
+}
+.card_input{
+    border:0px;
+    background: transparent;
+    color:#ffffff
+    }
+.bank_name_card{
+    position: relative;
+padding: 15px;
+}
+.bank_name_card input{
+    font-size: 29px;
+    font-weight: 600;
+    text-align: right;
+}
+.account_card{
+    padding: 50px 20px 10px 20px
+}
+.account_card input{
+    font-size: 31px;
+    letter-spacing: 6px;
+}
+.account_spec{
+    position: relative;
+padding-left: 26px;
+}
+
+.card_expiry{
+    font-size: 20px;
+    padding-right: 9px;
+}
+.card_holder_name{
+    padding: 9px 20px 0px 20px;
+}
+.card_holder_name input{
+    font-size: 24px;
+}
+.my_video_cont{
+    white-space: nowrap;
+}
+.my_fav_video .my_video_row{
+    margin: 0 15px 0px 0px;
+    width: 130px;
+}
+.my_fav_video .video_desc h6{
+font-size:12px;
+}
+.my_fav_video .my_video_row .all_video_row,
+.my_fav_video .my_video_row{
+    height: 130px;
+}
+.my_fav_video .my_video_row .video_play{
+    bottom: 0;
+    right: 0;
+    top: 0;
+    left: 0;
+}
+.my_fav_video .my_video_row .video_desc{
+    right: 0;
+}
+.zind_100{
+    z-index:100;
+}
+.comments_video{
+    border-radius:25px 25px 0px 0px;
+    background: rgba(255,255,255,0.95);
+}
+.comments_video .chat_pro{
+height: 450px;
+overflow: auto;
+}
+.comments_video .video_like i{
+    font-size: 14px;
+color: #ffbf1f;
+}
+/* Video end */
+
+.bank_card_row ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff;
+    opacity: 1; /* Firefox */
+  }
+  
+  .bank_card_row :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ffffff;
+  }
+  
+  .bank_card_row ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ffffff;
+  }
+  .aside_row_1 i{
+    color: #C8171D;
+    position: absolute;
+    bottom: -6px;
+    left: 11px;
+    font-size: 15px;
+    background: #fff;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+  .close_comments_video i{
+      font-size:24px
+  }
+  .hrs_coment{
+color:rgba(0,0,0,0.5);
+font-size:11px;
+  }
+  .comment_rply{
+      font-size:13px;
+      color: rgba(0,0,0,0.7);
+  }
+  .comment_send_prof{
+    width: 34px;
+    height: 34px;
+   
+    border-radius: 50%;
+  }
+  .mer_action_prod{
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    top: 69px;
+  }
+  .mer_action_prod i{
+    font-size: 25px;
+  }
+  .close_merc{
+    color: #c8171d;
+  }
+  .tick_merc{
+    color: #0bb536
+}
+.tble_merchant th {
+    color: #c8171d; 
+}
+.aside_video span span{
+color:#ffffff
+}
+.aside_video i, .close_video{
+    color:#ffbf1f !important
+    }
+.video_action_img{
+    width:25px;
+}
+.add_video_com{
+    position: absolute;
+bottom: 30px;
+left: 20px;
+background: #ffbf1f;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+font-size: 31px;
+cursor: pointer;
+}
+.video_main_h{
+    width:40px;
+    height: 40px;
+    border-radius:50%;
+}
+.account_spec .card_input{
+    font-size: 19px;
+}

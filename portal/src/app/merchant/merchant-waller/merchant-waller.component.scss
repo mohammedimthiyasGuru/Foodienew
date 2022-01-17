@@ -1,0 +1,31 @@
+.table td, .table th {
+    padding: .15rem !important;
+    vertical-align: top;
+}
+
+#chart {
+    width:'10%';
+    height : 50;
+  }
+  
+  // #chart {
+  //   max-width: 650px;
+  // }
+
+
+  .apexcharts-canvas * {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.yellow_panel {
+  background: none !important;
+  padding: 10px !important;
+  height: 250px;
+  border: 3px solid #f8c333;
+}
+
+
+
+
+

@@ -1,0 +1,14 @@
+<footer class="main_footer">
+  <div class="wrapper">
+      <div class="row footer_nav pt-3 pb-3 align-items-center justify-content-between">
+          <a href="/dashboard" class="col text-center footer_1" [ngClass]="{'footer_active': ((subMenuName$ | async) == 'Dashboard')}"> </a>
+          <a href="/chat-user-list" class="col text-center footer_2" [ngClass]="{'footer_active': ((subMenuName$ | async) == 'Chat')}"> </a>
+        
+          <a href="/notifications" class="notification col text-center footer_3" [ngClass]="{'footer_active': ((subMenuName$ | async) == 'Notifications')}">
+            <span class="badge" *ngIf="notification_detail !== 0">{{notification_detail}}</span>
+          </a>       
+
+          <a href="/video-list" class="col text-center footer_4" [ngClass]="{'footer_active': ((subMenuName$ | async) == 'Videos')}"></a>
+      </div>
+  </div>
+</footer>

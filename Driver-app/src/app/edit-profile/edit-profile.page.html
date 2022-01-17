@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="edit_profile_wrapper">
+      <div class="wrapper">
+          <div class="top_arrow pb-1 pt-2">
+              <div class="d-flex">
+                  <a class="flx_0 pr-2" href="user_profile">
+                      <i class="fa fa-arrow-left back_arrow color-2"></i>
+                  </a>
+                  <div class="flx_1 text-center">
+                      <h5 class="txt_semi color_3"> User Profile</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="edit_profile mb-5">
+              <div class="profile_img_upload pt-5 pb-3 text-center">
+                  <div class="dp_img user_prof text-center m-auto">
+                      <img class="w-100 h-100 rounded" src="{{user_details.profile_img}}" onerror="this.src='../../assets/profile_user.jpg'" alt="">
+                  </div>
+                  <div class="file_upload_btn position-relative d-inline-block">
+                      <label class="fp_btn">
+                  <i class="fa fa-camera"></i> <input type="file" hidden>
+              </label>
+
+                  </div>
+              </div>
+
+              <div class="p-3">
+                  <div class="d-flex">
+                      <div class="flx_0 text-left pr-2 color_1">
+                          Username
+                      </div>
+
+                      <div class="flx_1 text-right">
+                          <h6 class="color_3 txt_normal">{{user_details.user_name}}</h6>
+                      </div>
+                  </div>
+                  <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+                  <div class="d-flex">
+                      <div class="flx_0 text-left pr-2 color_1">
+                          Email
+                      </div>
+
+                      <div class="flx_1 text-right">
+                          <h6 class="color_3 txt_normal">{{user_details.user_email}} </h6>
+                      </div>
+                  </div>
+                  <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+                  <div class="d-flex">
+                      <div class="flx_0 text-left pr-2 color_1">
+                          Phone
+                      </div>
+
+                      <div class="flx_1 text-right">
+                          <h6 class="color_3 txt_normal">{{user_details.user_mobile}} </h6>
+                      </div>
+                  </div>
+                  <div class="bs_row w-100 d-block mt-2 mb-3"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ion-content>

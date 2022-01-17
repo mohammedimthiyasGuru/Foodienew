@@ -1,0 +1,799 @@
+<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+
+    <div class="box_shadow mb-2">
+      <div class="wrapper pt-3 pb-2">
+            <div class="ch_row_1">
+                            <div class="row">
+                                <div class="col-9 d-flex align-items-start" >
+                                    <div class="flx_0 pr-3" (click)="back_action()" >
+                                        <i class="fa fa-arrow-left icon_1 color_3" aria-hidden="true"></i>
+                                    </div>
+                                    <div (click)="change_location()">
+                                        <h6 class="color_3 mb-0">Office</h6>
+                                        <p class="color_1 ts_1 mb-0">{{location_text}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex align-items-center flex-row justify-content-end">
+                                    <div class="noti_icon position-relative" (click)="move_notification()">
+                                      <i class="fa fa-bell-o icon_1 color_3"></i>
+                                      <span class="noti_count" *ngIf="notification_count !== 0">{{notification_count}}</span>
+                                  </div>
+                    <div class="pl-3 shop_cart_icon" (click)="move_cart()">
+                      <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+      </div>
+
+    <div class="rider_order_list scroll_hide white-nowrap" *ngIf="show_order_visible" >
+      <ng-container *ngFor="let item of tracking_list">
+      <div class="bg-white rider_box d-inline-flex ellips_txt flex-column position-relative" *ngIf="item.order_status == 'PICKED'">
+				<div class="position-relative bg_map p-2" >
+					<span class="po_mes_1"> <i class="fa fa-user txt_black"></i>
+               {{item.driver_info.profile_first_name}}<i class="fa fa-envelope"></i></span>
+					<div class="bg_yellow place_order_box  ellips_txt">
+            <b>Order Id : {{item.order_id}}</b>  |	<b>View Tracking Details -></b>
+				<div class="d-flex ellips_txt pt-1 align-items-center" (click)="move_to_livetracking(item)">
+					<div class="flx_0 pr-2 d-flex align-items-center" >
+            <span class="badge badge-primary" *ngIf="item.order_status == 'BOOKED'">1</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'ACCEPTED'">2</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'PICKED'">3</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'DELIVERED'">4</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'CANCELLED'">5</span>
+             <span class="pl-1">Status</span>
+					</div>
+					<div class="flx_0 rb_2">
+						<span class="badge bg-white blink_txt"> {{item.order_status}}</span>
+					</div>
+				</div>
+				<span (click)="move_to_livetracking(item)" class="d-block ellips_txt pt-2 pb-1"><i class="fa fa-cutlery"></i> {{item.merchant_info.profile_biz_name}}</span>
+				<div class="d-flex align-items-center">
+					<div class="flx_1" (click)="move_to_livetracking(item)">
+						<b class="rm_po ml-3"> RM {{item.order_trans_amount}}</b>
+					</div>
+					<div class="flx_0 pl-2" (click)="move_to_support(item)">
+					<span class="po_mes_2 d-inline-flex align-items-center">Support <img src="../../assets/customer-service.png"></span>
+					</div>
+				</div>
+
+					</div>
+			  </div>
+      </div>
+      <div class="bg-white rider_box d-inline-flex ellips_txt flex-column position-relative" *ngIf="item.order_status == 'BOOKED' || item.order_status == 'ACCEPTED'">
+        <div class="position-relative" >
+					<span class="po_mes_1"> <i class="fa fa-user txt_black"></i>
+            {{item.driver_info.profile_first_name}}<i class="fa fa-envelope"></i></span>
+					<div class="bg_yellow place_order_box  ellips_txt">
+           <b>Order Id : {{item.order_id}}</b>  |	<b>View Tracking Details -></b>
+				<div class="d-flex ellips_txt pt-1 align-items-center" (click)="move_to_livetracking(item)">
+					<div class="flx_0 pr-2 d-flex align-items-center" >
+						<span class="badge badge-primary" *ngIf="item.order_status == 'BOOKED'">1</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'ACCEPTED'">2</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'PICKED'">3</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'DELIVERED'">4</span>
+            <span class="badge badge-primary" *ngIf="item.order_status == 'CANCELLED'">5</span>
+             <span class="pl-1">Status</span>
+					</div>
+					<div class="flx_0 rb_2">
+						<span class="badge bg-white blink_txt"> {{item.order_status}}</span>
+					</div>
+				</div>
+				<span (click)="move_to_livetracking(item)" class="d-block ellips_txt pt-2 pb-1"><i class="fa fa-cutlery"></i> {{item.merchant_info.profile_biz_name}}</span>
+				<div class="d-flex align-items-center">
+					<div class="flx_1" (click)="move_to_livetracking(item)">
+						<b class="rm_po ml-3"> RM {{item.order_trans_amount}}</b>
+					</div>
+					<div class="flx_0 pl-2" (click)="move_to_support(item)">
+					<span class="po_mes_2 d-inline-flex align-items-center">Support <img src="../../assets/customer-service.png"></span>
+					</div>
+				</div>
+
+					</div>
+				</div>
+			</div>
+    </ng-container>
+
+
+		</div>
+
+
+
+		<div class="Home_new_1">
+
+
+        <div class="wrapper pt-2 pb-3">
+
+
+          <div class="position-relative">
+            <div class="top_search">
+                  <i class="fa fa-search"></i>
+                  <input type="text" [(ngModel)]="search_text" name="search_text" (keyup)="searchInterest()" placeholder="Search for shops & restaurants" class="w-100">
+            </div>
+            <div class="search_result" *ngIf="search_visible && search_text.length !== 0">
+              <ul class="list-group">
+              <ng-container *ngFor="let rest of search_list">
+               <li class="list-group-item list-group-item-action" (click)="move_next_page(rest)">{{rest.profile_biz_type}} -> {{rest.profile_biz_name}}</li>
+               </ng-container>
+      </ul>
+            </div>
+
+              </div>
+
+      <!-- <div class="">
+        <div class="flx_1 pt-2">
+          <a  style="float: right;" class="brad_1 text_black btn btn_1"><b class="txt_semi">Show all</b></a>
+      </div>
+      </div> -->
+
+
+    </div>
+
+
+        <div class="hn_1 pb-3">
+            <header class="pb-1 pt-4 pl-3 pr-3">
+                <h4 class="color_3 txt_semi mb-0">{{cat_text}}</h4>
+            </header>
+            <div class="position-relative pd1_wrapper pb-4 row flex-row flex-nowrap pl-3 h-100 scroll_hide w-100 m-auto" *ngIf="selected == 'Restaurant' || selected == 'Home Kitchen' || selected == 'Caterers'">
+              <div (click)="show_all()" class="panel_design_1 pd1_theme_1 position-relative mr-3 col-7">
+                <div class="pd1_col_1 pb-3 text-center">
+                    <img src="../../assets/img-new-1.png" alt="" />
+                </div>
+                <div class="pd1_col_2">
+                    <h4 style="font-size: 30px;
+    text-align: center;" class="pd_h1 txt_semi">Show all</h4>
+                </div>
+          </div>
+
+
+              <ng-container *ngFor="let cusi of cuisine_cat; let i = index">
+              <div *ngIf="i % 2 === 0" class="panel_design_1 pd1_theme_1 position-relative mr-3 col-7">
+                    <div class="pd1_col_1 pb-3 text-center">
+                        <img src="../../assets/img-new-1.png" alt="" />
+                    </div>
+                    <div class="pd1_col_2">
+                        <h4 class="pd_h1 txt_semi">{{cusi.name}}</h4>
+                        <div class="d-flex align-items-center pb-2">
+                            <span class="btn_style_1 mr-2"><i class="fa fa-star star_i"></i> 4.5</span>
+                            <span class="btn_style_1">easy</span>
+                        </div>
+                        <p class="pd_para">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
+                        <div class="prod_prof_img pl-2 d-flex align-items-center">
+                            <figure class="pr-2 pb-0 mb-0">
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                        </figure>
+                        <span class="txt_size_1">
+                            15+ saves
+                        </span>
+                        </div>
+
+                    </div>
+                    <a (click)="Filter(cusi.name,i,'show_all')" *ngIf="cusi.select_status" class="go_btn"> Go <i class="fa fa-arrow-down pl-2"></i>
+                    </a>
+                    <a (click)="Filter(cusi.name,i,'hide')" *ngIf="!cusi.select_status" class="go_btn"> Go <i class="fa fa-arrow-up pl-2"></i>
+                    </a>
+              </div>
+              <div *ngIf="i % 2 !== 0" class="panel_design_1 pd1_theme_2 position-relative mr-3 col-7">
+                <div class="pd1_col_1 pb-3 text-center">
+                    <img src="../../assets/img-new-1.png" alt="" />
+                </div>
+                <div class="pd1_col_2">
+                    <h4 class="pd_h1 txt_semi">{{cusi.name}}</h4>
+                    <div class="d-flex align-items-center pb-2">
+                        <span class="btn_style_1 mr-2"><i class="fa fa-star star_i"></i> 4.5</span>
+                        <span class="btn_style_1">easy</span>
+                    </div>
+                    <p class="pd_para">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                    <div class="prod_prof_img pl-2 d-flex align-items-center">
+                        <figure class="pr-2 pb-0 mb-0">
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                    </figure>
+                    <span class="txt_size_1">
+                        15+ saves
+                    </span>
+                    </div>
+
+                </div>
+                <a (click)="Filter(cusi.name,i,'show_all')" *ngIf="cusi.select_status" class="go_btn"> Go <i class="fa fa-arrow-down pl-2"></i>
+                </a>
+                <a (click)="Filter(cusi.name,i,'hide')" *ngIf="!cusi.select_status" class="go_btn"> Go <i class="fa fa-arrow-up pl-2"></i>
+                </a>
+              </div>
+              </ng-container>
+
+            </div>
+
+
+            <div class="position-relative pd1_wrapper pb-4 row flex-row flex-nowrap pl-3 h-100 scroll_hide w-100 m-auto" *ngIf="selected == 'Shop' || selected == 'Others'">
+
+              <div (click)="show_all()" class="panel_design_1 pd1_theme_1 position-relative mr-3 col-7">
+                <div class="pd1_col_1 pb-3 text-center">
+                    <img src="../../assets/img-new-1.png" alt="" />
+                </div>
+                <div class="pd1_col_2">
+                    <h4 style="font-size: 30px;
+                    text-align: center;" class="pd_h1 txt_semi">Show all</h4>
+                </div>
+          </div>
+              <ng-container *ngFor="let cats of category; let i = index">
+              <div *ngIf="i % 2 === 0" class="panel_design_1 pd1_theme_1 position-relative mr-3 col-7">
+                    <div class="pd1_col_1 pb-3 text-center">
+                        <img src="../../assets/img-new-1.png" alt="" />
+                    </div>
+                    <div class="pd1_col_2">
+                        <h4 class="pd_h1 txt_semi">{{cats.name}}</h4>
+                        <div class="d-flex align-items-center pb-2">
+                            <span class="btn_style_1 mr-2"><i class="fa fa-star star_i"></i> 4.5</span>
+                            <span class="btn_style_1">easy</span>
+                        </div>
+                        <p class="pd_para">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
+                        <div class="prod_prof_img pl-2 d-flex align-items-center">
+                            <figure class="pr-2 pb-0 mb-0">
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                        </figure>
+                        <span class="txt_size_1">
+                            15+ saves
+                        </span>
+                        </div>
+
+                    </div>
+                    <a (click)="Filter(cats.name,i,'show_all')" *ngIf="cats.select_status" class="go_btn"> Go <i class="fa fa-arrow-down pl-2"></i>
+                    </a>
+                    <a (click)="Filter(cats.name,i,'hide')" *ngIf="!cats.select_status" class="go_btn"> Go <i class="fa fa-arrow-up pl-2"></i>
+                    </a>
+              </div>
+              <div *ngIf="i % 2 !== 0" class="panel_design_1 pd1_theme_2 position-relative mr-3 col-7">
+                <div class="pd1_col_1 pb-3 text-center">
+                    <img src="../../assets/img-new-1.png" alt="" />
+                </div>
+                <div class="pd1_col_2">
+                    <h4 class="pd_h1 txt_semi">{{cats.name}}</h4>
+                    <div class="d-flex align-items-center pb-2">
+                        <span class="btn_style_1 mr-2"><i class="fa fa-star star_i"></i> 4.5</span>
+                        <span class="btn_style_1">easy</span>
+                    </div>
+                    <p class="pd_para">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                    <div class="prod_prof_img pl-2 d-flex align-items-center">
+                        <figure class="pr-2 pb-0 mb-0">
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                    </figure>
+                    <span class="txt_size_1">
+                        15+ saves
+                    </span>
+                    </div>
+
+                </div>
+                <a (click)="Filter(cats.name,i,'show_all')" *ngIf="cats.select_status" class="go_btn"> Go <i class="fa fa-arrow-down pl-2"></i>
+                </a>
+                <a (click)="Filter(cats.name,i,'hide')" *ngIf="!cats.select_status" class="go_btn"> Go <i class="fa fa-arrow-up pl-2"></i>
+                </a>
+          </div>
+              </ng-container>
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="hn_2" *ngIf="user_status == false && top_trending_list.length !== 0">
+            <header class="pb-1 pl-3 pr-3">
+                <h4 class="color_3 txt_semi mb-0">Top Trending</h4>
+            </header>
+            <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+              <ng-container *ngFor="let fav_rest of top_trending_list; let i = index">
+              <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+                    <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                        <div class="col-7">
+                            <article>
+                                <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                                <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                                <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                                <div class="d-flex align-items-center pb-2">
+                                    <span class="btn_style_1">10 receips</span>
+                                </div>
+                                <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                    <figure class="pr-2 pb-0 mb-0">
+                                    <img src="../../assets/profile_user.jpg" alt=""/>
+                                    <img src="../../assets/logo.jpg" alt=""/>
+                                    <img src="../../assets/profile_user.jpg" alt=""/>
+                                    <img src="../../assets/logo.jpg" alt=""/>
+                                </figure>
+                                <span class="txt_size_1">
+                                    6+ members
+                                </span>
+                                </div>
+                            </article>
+
+                        </div>
+                        <div class="col-5 h-100 d-flex align-items-center">
+                            <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                        </div>
+                    </a>
+              </div>
+              <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+                <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                    <div class="col-7">
+                        <article>
+                            <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                            <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                            <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+
+                            <div class="d-flex align-items-center pb-2">
+                                <span class="btn_style_1">10 receips</span>
+                            </div>
+                            <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                <figure class="pr-2 pb-0 mb-0">
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                            </figure>
+                            <span class="txt_size_1">
+                                6+ members
+                            </span>
+                            </div>
+                        </article>
+
+                    </div>
+                    <div class="col-5 h-100 d-flex align-items-center">
+                        <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                    </div>
+                </a>
+          </div>
+              </ng-container>
+            </div>
+        </div>
+
+
+        <div class="hn_2" *ngIf="user_status == false && top_recommend_list.length !== 0">
+          <header class="pb-1 pl-3 pr-3">
+              <h4 class="color_3 txt_semi mb-0">Top Recommendations</h4>
+          </header>
+          <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+            <ng-container *ngFor="let fav_rest of top_recommend_list; let i = index">
+            <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+                  <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                      <div class="col-7">
+                          <article>
+                              <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                              <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                              <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                              <div class="d-flex align-items-center pb-2">
+                                  <span class="btn_style_1">10 receips</span>
+                              </div>
+                              <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                  <figure class="pr-2 pb-0 mb-0">
+                                  <img src="../../assets/profile_user.jpg" alt=""/>
+                                  <img src="../../assets/logo.jpg" alt=""/>
+                                  <img src="../../assets/profile_user.jpg" alt=""/>
+                                  <img src="../../assets/logo.jpg" alt=""/>
+                              </figure>
+                              <span class="txt_size_1">
+                                  6+ members
+                              </span>
+                              </div>
+                          </article>
+
+                      </div>
+                      <div class="col-5 h-100 d-flex align-items-center">
+                          <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                      </div>
+                  </a>
+            </div>
+            <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+              <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                  <div class="col-7">
+                      <article>
+                          <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                          <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                          <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                          <div class="d-flex align-items-center pb-2">
+                              <span class="btn_style_1">10 receips</span>
+                          </div>
+                          <div class="prod_prof_img pl-2 d-flex align-items-center">
+                              <figure class="pr-2 pb-0 mb-0">
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                          </figure>
+                          <span class="txt_size_1">
+                              6+ members
+                          </span>
+                          </div>
+                      </article>
+
+                  </div>
+                  <div class="col-5 h-100 d-flex align-items-center">
+                      <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                  </div>
+              </a>
+        </div>
+            </ng-container>
+          </div>
+      </div>
+
+
+      <div class="hn_2" *ngIf="user_status == false  && your_restaurant_list.length !== 0">
+        <header class="pb-1 pl-3 pr-3">
+            <h4 class="color_3 txt_semi mb-0">Your {{rest_text}}</h4>
+        </header>
+        <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+          <ng-container *ngFor="let fav_rest of your_restaurant_list; let i = index">
+          <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+                <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                    <div class="col-7">
+                        <article>
+                            <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                            <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                            <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                            <div class="d-flex align-items-center pb-2">
+                                <span class="btn_style_1">10 receips</span>
+                            </div>
+                            <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                <figure class="pr-2 pb-0 mb-0">
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                            </figure>
+                            <span class="txt_size_1">
+                                6+ members
+                            </span>
+                            </div>
+                        </article>
+
+                    </div>
+                    <div class="col-5 h-100 d-flex align-items-center">
+                        <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                    </div>
+                </a>
+          </div>
+          <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+            <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                <div class="col-7">
+                    <article>
+                        <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                        <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                        <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                        <div class="d-flex align-items-center pb-2">
+                            <span class="btn_style_1">10 receips</span>
+                        </div>
+                        <div class="prod_prof_img pl-2 d-flex align-items-center">
+                            <figure class="pr-2 pb-0 mb-0">
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                        </figure>
+                        <span class="txt_size_1">
+                            6+ members
+                        </span>
+                        </div>
+                    </article>
+
+                </div>
+                <div class="col-5 h-100 d-flex align-items-center">
+                    <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                </div>
+            </a>
+      </div>
+          </ng-container>
+        </div>
+      </div>
+
+
+      <div class="hn_2" *ngIf="user_status == true">
+        <header class="pb-1 pl-3 pr-3">
+            <h4 class="color_3 txt_semi mb-0">Your Restaurants/shops</h4>
+        </header>
+        <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+          <ng-container *ngFor="let fav_rest of restarent_list; let i = index">
+          <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+                <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                    <div class="col-7">
+                        <article>
+                            <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                            <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                            <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                            <div class="d-flex align-items-center pb-2">
+                                <span class="btn_style_1">10 receips</span>
+                            </div>
+                            <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                <figure class="pr-2 pb-0 mb-0">
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                                <img src="../../assets/profile_user.jpg" alt=""/>
+                                <img src="../../assets/logo.jpg" alt=""/>
+                            </figure>
+                            <span class="txt_size_1">
+                                6+ members
+                            </span>
+                            </div>
+                        </article>
+
+                    </div>
+                    <div class="col-5 h-100 d-flex align-items-center">
+                        <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                    </div>
+                </a>
+          </div>
+          <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+            <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                <div class="col-7">
+                    <article>
+                        <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                        <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                        <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                        <div class="d-flex align-items-center pb-2">
+                            <span class="btn_style_1">10 receips</span>
+                        </div>
+                        <div class="prod_prof_img pl-2 d-flex align-items-center">
+                            <figure class="pr-2 pb-0 mb-0">
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                        </figure>
+                        <span class="txt_size_1">
+                            6+ members
+                        </span>
+                        </div>
+                    </article>
+
+                </div>
+                <div class="col-5 h-100 d-flex align-items-center">
+                    <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                </div>
+            </a>
+      </div>
+          </ng-container>
+        </div>
+    </div>
+
+
+    <div class="hn_2" *ngIf="user_status == true">
+      <header class="pb-1 pl-3 pr-3">
+          <h4 class="color_3 txt_semi mb-0">Your favorites</h4>
+      </header>
+      <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+        <ng-container *ngFor="let fav_rest of fav_restarent_list; let i = index">
+        <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+              <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                  <div class="col-7">
+                      <article>
+                          <h5 class="txt_semi pr-2">{{fav_rest.merchant_info.profile_biz_name}}</h5>
+                          <h6 class="txt_semi pr-2">{{fav_rest.merchant_info.cuisine}}</h6>
+                          <h6 class="txt_semi pr-2">{{fav_rest.merchant_info.categorys}}</h6>
+                          <div class="d-flex align-items-center pb-2">
+                              <span class="btn_style_1">10 receips</span>
+                          </div>
+                          <div class="prod_prof_img pl-2 d-flex align-items-center">
+                              <figure class="pr-2 pb-0 mb-0">
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                          </figure>
+                          <span class="txt_size_1">
+                              6+ members
+                          </span>
+                          </div>
+                      </article>
+
+                  </div>
+                  <div class="col-5 h-100 d-flex align-items-center">
+                      <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                  </div>
+              </a>
+        </div>
+        <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+          <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+              <div class="col-7">
+                  <article>
+                      <h5 class="txt_semi pr-2">{{fav_rest.merchant_info.profile_biz_name}}</h5>
+                      <h6 class="txt_semi pr-2">{{fav_rest.merchant_info.cuisine}}</h6>
+                      <h6 class="txt_semi pr-2">{{fav_rest.merchant_info.categorys}}</h6>
+                      <div class="d-flex align-items-center pb-2">
+                          <span class="btn_style_1">10 receips</span>
+                      </div>
+                      <div class="prod_prof_img pl-2 d-flex align-items-center">
+                          <figure class="pr-2 pb-0 mb-0">
+                          <img src="../../assets/profile_user.jpg" alt=""/>
+                          <img src="../../assets/logo.jpg" alt=""/>
+                          <img src="../../assets/profile_user.jpg" alt=""/>
+                          <img src="../../assets/logo.jpg" alt=""/>
+                      </figure>
+                      <span class="txt_size_1">
+                          6+ members
+                      </span>
+                      </div>
+                  </article>
+
+              </div>
+              <div class="col-5 h-100 d-flex align-items-center">
+                  <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+              </div>
+          </a>
+    </div>
+        </ng-container>
+      </div>
+  </div>
+
+
+  <div class="hn_2" *ngIf="user_status == true">
+    <header class="pb-1 pl-3 pr-3">
+        <h4 class="color_3 txt_semi mb-0">Your Followings</h4>
+    </header>
+    <div class="position-relative pd2_wrapper pt-2 pb-2 scroll_hide white-nowrap pl-3">
+      <ng-container *ngFor="let fav_rest of restarent_list; let i = index">
+      <div *ngIf="i % 2 === 0" class="panel_design_2 bg_color_1 position-relative d-inline-flex mr-3 flex-column">
+            <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+                <div class="col-7">
+                    <article>
+                        <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                        <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                        <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                        <div class="d-flex align-items-center pb-2">
+                            <span class="btn_style_1">10 receips</span>
+                        </div>
+                        <div class="prod_prof_img pl-2 d-flex align-items-center">
+                            <figure class="pr-2 pb-0 mb-0">
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                            <img src="../../assets/profile_user.jpg" alt=""/>
+                            <img src="../../assets/logo.jpg" alt=""/>
+                        </figure>
+                        <span class="txt_size_1">
+                            6+ members
+                        </span>
+                        </div>
+                    </article>
+
+                </div>
+                <div class="col-5 h-100 d-flex align-items-center">
+                    <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+                </div>
+            </a>
+      </div>
+      <div *ngIf="i % 2 !== 0" class="panel_design_2 bg_color_2 position-relative d-inline-flex mr-3 flex-column">
+        <a (click)="move_next_page(fav_rest)" class="row no-gutters align-items-center h-100">
+            <div class="col-7">
+                <article>
+                    <h5 class="txt_semi pr-2">{{fav_rest.profile_biz_name}}</h5>
+                    <h6 class="txt_semi pr-2">{{fav_rest.cuisine}}</h6>
+                    <h6 class="txt_semi pr-2">{{fav_rest.categorys}}</h6>
+                    <div class="d-flex align-items-center pb-2">
+                        <span class="btn_style_1">10 receips</span>
+                    </div>
+                    <div class="prod_prof_img pl-2 d-flex align-items-center">
+                        <figure class="pr-2 pb-0 mb-0">
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                        <img src="../../assets/profile_user.jpg" alt=""/>
+                        <img src="../../assets/logo.jpg" alt=""/>
+                    </figure>
+                    <span class="txt_size_1">
+                        6+ members
+                    </span>
+                    </div>
+                </article>
+
+            </div>
+            <div class="col-5 h-100 d-flex align-items-center">
+                <img src="../../assets/img-new-2.png" class="m-auto" alt="" />
+            </div>
+        </a>
+  </div>
+      </ng-container>
+    </div>
+</div>
+
+
+
+
+
+
+
+        <div class="hn_2">
+            <header class="pb-1 pt-4 pl-3 pr-3">
+                <h4 class="color_3 txt_semi mb-0">{{rest_text}}</h4>
+            </header>
+            <div class="position-relative pd3_wrapper p-3">
+              <ng-container *ngFor="let rest of restarent_list; let i = index">
+              <div class="pd_shadow position-relative cus_mb_1">
+				<div *ngIf="i % 2 === 0" class="panel_design_3 mr-0 pd3_right bg_color_1 position-relative w-100 mb-4">
+                  <a (click)="move_next_page(rest)"  class="row no-gutters align-items-center h-100">
+                        <div class="col-7">
+                            <article>
+                                <h4 class="txt_semi pr-2">{{rest.profile_biz_name}}</h4>
+                                <h6 class="txt_semi pr-2">{{rest.cuisine}}</h6>
+                                <h6 class="txt_semi pr-2">{{rest.categorys}}</h6>
+                                <div class="d-flex align-items-center pb-2">
+                                    <span class="btn_style_1">10 receips</span>
+                                </div>
+                                <div class="prod_prof_img pl-2 d-flex align-items-center">
+                                    <figure class="pr-2 pb-0 mb-0">
+                                    <img src="../../assets/profile_user.jpg" alt=""/>
+                                    <img src="../../assets/logo.jpg" alt=""/>
+                                    <img src="../../assets/profile_user.jpg" alt=""/>
+                                    <img src="../../assets/logo.jpg" alt=""/>
+                                </figure>
+                                <span class="txt_size_1">
+                                    1000+mvc rates
+                                </span>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-5 h-100 d-flex align-items-center">
+                            <img src="../../assets/img-new-2.png" class="m-auto"  alt="" />
+                        </div>
+                    </a>
+					</div>
+          <div *ngIf="i % 2 !== 0" class="panel_design_3 mr-0 pd3_right bg_color_2 position-relative w-100 mb-4">
+            <a (click)="move_next_page(rest)"  class="row no-gutters align-items-center h-100">
+              <div class="col-5 h-100 d-flex align-items-center">
+                <img src="../../assets/img-new-2.png" class="m-auto"  alt="" />
+              </div>
+                  <div class="col-7 text-right">
+                      <article>
+                          <h4 class="txt_semi pl-2">{{rest.profile_biz_name}}</h4>
+                          <h6 class="txt_semi pl-2">{{rest.cuisine}}</h6>
+                          <h6 class="txt_semi pl-2">{{rest.categorys}}</h6>
+                          <div class="d-flex align-items-center justify-content-end pb-2">
+                            <span class="btn_style_1">10 receips</span>
+                          </div>
+                          <div class="prod_prof_img pl-2 d-flex align-items-center justify-content-end">
+                            <span class="txt_size_1">
+                              1000+mvc rates
+                            </span>
+                              <figure class="pr-2 pb-0 mb-0">
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                              <img src="../../assets/profile_user.jpg" alt=""/>
+                              <img src="../../assets/logo.jpg" alt=""/>
+                          </figure>
+
+                          </div>
+                      </article>
+                  </div>
+              </a>
+        </div>
+        </div>
+              </ng-container>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+	</div>
+
+</div>

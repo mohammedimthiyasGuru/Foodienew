@@ -1,0 +1,114 @@
+
+<app-loader *ngIf="loader"></app-loader>
+<ion-content *ngIf="page_visible">
+  <div class="my_order_empty h-100" *ngIf="empty_basket_visible">
+    <div class="d-flex h-100 align-items-center justify-content-center flex-column w-100">
+      <div class="flx_0 w-100">
+        <div class="top_arrow wrapper pb-3 pt-3">
+          <div class="d-flex">
+              <div class="flx_0 pr-2">
+                  <i class="fa fa-arrow-left back_arrow color-2"></i>
+              </div>
+              <div class="flx_1 text-center">
+                <h5 class="txt_semi color_3"> My Order</h5>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="flx_1">
+        <div class="wrapper">
+          <img class="d-block w-100" src="../../assets/slider-2.jpg" alt="Second slide">
+          <div class="slider_info pt-4 wrapper text-center">
+              <h3 class="text_2"> Your basket is empty</h3>
+            <p class="color_1">
+              Make your basket happy and add foods to it
+            </p>
+          </div>
+          <a  style="width: 100%;" href="/client-home"  class="btn_1 d-block text-center box-shadow p-2 text-white">Back to shop</a>
+      </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    <div class="wrapper" *ngIf="history_list_visible">
+      <div class="prod_list_2 pt-3">
+          <div class="prod_list_row pb-3" *ngFor="let orders of order_bucket_list">
+              <div class="d-flex">
+                  <div class="flx_0 pr-2">
+                      <div class="pl_img_2 position-relative">
+                          <img class="w-100 h-100 rounded" src="../../assets/product_img_2.jpg" onerror="this.src='../../assets/product_img_2.jpg'">
+                      </div>
+                  </div>
+                  <div class="flx_1">
+                      <div class="d-flex">
+                          <div class="flx_1 pr-2">
+                              <h5 style="font-size: 15px;font-weight: 900;" class="color_3 text_size_3 tw_none txt_semi mb-0">Order Id : {{orders.order_no}}</h5>
+                              <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                                  <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                                      <li>Location : {{orders.order_location}}</li>
+                                      <li>Date     : {{orders.order_date}}</li>
+                                      <li *ngIf="orders.order_status == 'B'" >Status   : Booked</li>
+                                      <li *ngIf="orders.order_status == 'A'" >Status   : Accept</li>
+                                      <li *ngIf="orders.order_status == 'D'" >Status   : Delivered</li>
+
+                                  </ul>
+                              </div>
+                              <div class="pi_2 d-flex align-items-center">
+                                  <div>
+                                      <i class="fa fa-star text_5 color_2"></i>
+                                  </div>
+                                  <div class="pl-2">
+                                      <span class="color_3 text_5">4.0</span>
+                                      <span class="color_1 text_5">(250 ratings)</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="flx_0">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- <div class="prod_list_row pb-3">
+              <div class="d-flex">
+                  <div class="flx_0 pr-2">
+                      <div class="pl_img_2 position-relative">
+                          <img class="w-100 h-100 rounded" src="../../assets//product_img_2.jpg" alt="">
+                      </div>
+                  </div>
+                  <div class="flx_1">
+                      <div class="d-flex">
+                          <div class="flx_1 pr-2">
+                              <h5 class="color_3 text_size_3 tw_none txt_semi mb-0">Harvestro</h5>
+                              <div class="prod_views li_list_1 color_1 text_5 pt-1">
+                                  <ul class="d-flex align-items-center flex-wrap mb-0 pb-0">
+                                      <li>Sandwich </li>
+                                      <li>Fast Food</li>
+                                      <li>Beverages</li>
+                                  </ul>
+                              </div>
+                              <div class="pi_2 d-flex align-items-center">
+                                  <div>
+                                      <i class="fa fa-star text_5 color_2"></i>
+                                  </div>
+                                  <div class="pl-2">
+                                      <span class="color_3 text_5">4.0</span>
+                                      <span class="color_1 text_5">(250 ratings)</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="flx_0">
+                              <i class="fa fa-location-arrow color_2 pr-2"></i> <span class="color_3 text_5 txt_semi">200m</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+      </div>
+  </div>
+
+
+</ion-content>

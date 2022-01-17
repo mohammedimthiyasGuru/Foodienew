@@ -1,0 +1,148 @@
+<body>
+  <div class="chat_wrapper w-100 h-100 position-relative overflow_auto">
+
+      <div class="po_head mb-2 yellow_bg p-3">
+          <div class="d-flex align-items-center">
+              <div class="flx_0 pr-2" (click)="back_action()">
+                  <i class="fa fa-arrow-left"></i>
+              </div>
+              <div class="flx_1 txt_semi text-center">
+                  Sell my product
+              </div>
+          </div>
+      </div>
+
+         <div class="p-3" style="margin-bottom: 75px;">
+
+          <div class="" *ngIf="!view_otp">
+
+          <div class="pb-3">
+              <button class="btn_1 btn-ripple w-100  text-center box-shadow p-2 mr-3 txt_black_2"  (click)="change_location()">Tab to Identity your location</button>
+          </div>
+          <div class="pb-4">
+              <div class="d-flex">
+                  <div class="flx_0 pr-2">
+                      <input type="checkbox" [(ngModel)]="location_check" name="pay" aria-label="Check button for following text input">
+                  </div>
+                  <div class="flx_1">
+                      {{location_text}}
+                  </div>
+              </div>
+          </div>
+
+          <div class="pb-4">
+              <div class="camera_img d-flex align-itens-cneter justify-content-center p-2">
+                  <img src="{{clickedImage}}" alt="">
+              </div>
+              <div class="text-center pt-3 d-flex">
+                  <button class="btn_1 btn-ripple flx_1  text-center box-shadow p-2 mr-3 txt_black_2" (click)="captureImage()">Camera</button>
+                  <button class="btn_1 btn-ripple flx_1 text-center box-shadow p-2 mr-3 txt_black_2" (click)="captureImage()">Capture</button>
+                  <button class="btn_1  btn-ripple flx_1 text-center box-shadow p-2  txt_black_2" (click)="captureImage()">Retake</button>
+              </div>
+          </div>
+
+          <!-- <div class="pb-3">
+            <label>Pic Name <small class="text-danger">*</small></label>
+            <textarea type="text" [(ngModel)]="clickedImage" name="clickedImage" class="input_1 cus_input_1 w-100"></textarea>
+             <p>{{check_status}}</p>
+          </div> -->
+
+          <div class="pb-3">
+              <label>Name <small class="text-danger">*</small></label>
+              <input type="text" [(ngModel)]="name" name="name" class="input_1 cus_input_1 w-100" />
+          </div>
+
+          <div class="pb-3">
+              <label>Email Id <small class="text-danger">*</small></label>
+              <input type="text" [(ngModel)]="email_id" name="email_id"  class="input_1 cus_input_1 w-100" />
+          </div>
+
+             <div class="pb-3">
+              <label>Phone Number <small class="text-danger">*</small></label>
+              <input type="number" [(ngModel)]="phone_no" name="phone_no"  class="input_1 cus_input_1 w-100" />
+          </div>
+
+          <div class="pb-3">
+              <label>IC/NRIC Passport <small class="text-danger">*</small></label>
+              <input type="text" [(ngModel)]="passport" name="passport"  class="input_1 cus_input_1 w-100" />
+          </div>
+
+          <div class="pb-3">
+
+              <div class="d-flex">
+                  <div class="flx_1">
+                      <label>Certificate of Registration or ssm <small class="text-danger">*</small></label>
+                  </div>
+                  <div class="flx_0">
+                          <span data-toggle="modal" data-target="#ReferenceImg" class="cursor-pointer">If no Certificate</span>
+                  </div>
+              </div>
+              <input type="file" accept="image/*, .pdf"  (change)="selectImgidprofileone($event)" class="input_1 cus_input_1 w-100" />
+          </div>
+          <div class="pb-3">
+              <label>Category <small class="text-danger">*</small></label>
+
+              <select name="" (change)="cat_onChange($event)" [(ngModel)]="cat_name" id="cat_name" class="input_1 cus_input_1 w-100" >
+                <option value="">Select</option>
+                <ng-container *ngFor="let item of cat_list">
+                  <option value="{{item.cat_name}}">{{item.cat_name}}</option>
+                </ng-container>
+              </select>
+
+          </div>
+          <div class="pb-3">
+              <label>Sub Category <small class="text-danger">*</small></label>
+              <select name="" [(ngModel)]="sub_cat" id="" class="input_1 cus_input_1 w-100" >
+                <option value="">Select</option>
+                <ng-container *ngFor="let item of final_sub_cat">
+                  <option value="{{item.sub_cat_name}}">{{item.sub_cat_name}}</option>
+                </ng-container>
+              </select>
+          </div>
+          <div class="pb-3">
+              <button class="btn_1 btn-ripple w-100  text-center box-shadow p-2 mr-3 txt_black_2" (click)="submit_data()">Porcced OTP</button>
+          </div>
+          </div>
+
+          <div class="" *ngIf="view_otp">
+          <div class="pb-3">
+              <label>Enter  OTP (Check Email)  <small class="text-danger">*</small></label>
+              <input type="text" [(ngModel)]="temp_otp" name="temp_otp"  class="input_1 cus_input_1 w-100" />
+          </div>
+
+          <div class="pb-3">
+              <button class="btn_1 btn-ripple w-100  text-center box-shadow p-2 mr-3 txt_black_2" (click)="submit_otp()">Submit</button>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <div class="popup_box_1 d-flex align-items-center jusitify-content-center" *ngIf="show_alert">
+      <div class="popup_info bg-white text-center p-3 pt-5 pb-5">
+          <img width="160" src="../../assets/thank-you.jpg" class="img-fluid" alt="">
+          <h3 class="text_2 txt_semi pt-3 pb-3">Thank you for</h3>
+    <p>
+    some text here
+    </p>
+    <input type="button" class="btn_1 btn-ripple text-center box-shadow pl-4 pr-4 pt-2 pb-2 mr-3 txt_black_2" value="Ok"/>
+      </div>
+  </div>
+
+  <!-- Product Mobile View -->
+  <div class="modal fade" id="ReferenceImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal_mobile" role="document">
+      <div class="modal-content bg-white">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Reference Image</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="txt_black_2">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+             <img src="../../assets/profile_user.jpg" class="img-fluid" alt="">
+          </div>
+      </div>
+  </div>
+</div>
+</body>

@@ -1,0 +1,41 @@
+<div class="horizontal-container h-100" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="stretch" fxFlex="auto" *ngIf="!loader">
+  <div class="vertical-container h-100" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+    <div class="content-container h-100" fxLayout="column" fxLayoutAlign="stretch" fxFlex="auto">
+      <swiper *ngIf="type == 'component' && show" class="swiper-container" fxFlex="auto" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent('transitionStart')" (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
+        <div *ngFor="let slide of slides; let i = index" class="swiper-slide">
+          <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+            <div class="video_view w-100 h-100 position-relative overflow_auto">
+              <div class="w-100 h-100 position-relative">
+                <div class="carousel-item h-100 active">
+                  <img class="d-block w-75 m-auto" src="{{slide.image}}" alt="First slide">
+                  <div class="slider_info pt-4 wrapper">
+                    <p class="color_1">
+                      {{slide.text}}
+                    </p>
+                    <a (click)="getting()" class="btn_1 txt_black2"  *ngIf="status == 2">Get Started</a>
+                  </div>
+                  <div class="pt-2 pb-5 home_slide_dot" style="margin-left: 10px;" *ngIf="status == 0">
+                      <span class="active"></span>
+                      <span ></span>
+                      <span ></span>
+                  </div>
+                  <div class="pt-2 pb-5 home_slide_dot" style="margin-left: 10px;" *ngIf="status == 1">
+
+                    <span ></span>
+                    <span class="active"></span>
+                    <span ></span>
+                </div>
+                <div class="pt-2 pb-5 home_slide_dot" style="margin-left: 10px;" *ngIf="status == 2">
+                  <span ></span>
+                  <span ></span>
+                  <span class="active"></span>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </swiper>
+    </div>
+  </div>
+</div>

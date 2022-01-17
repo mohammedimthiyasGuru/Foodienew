@@ -1,0 +1,47 @@
+<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+		<div class="offer_page h-100 overoverflow_auto">
+    <div class="p-3">
+        <div class="d-flex align-items-center">
+            <div class="flx_0 pr-2">
+				<a class="txt_black2" (click)="back_to_Cart()"><i class="fa fa-arrow-left back_arrow"></i></a>
+            </div>
+            <div class="flx_1 txt_semi text-center">
+              Promocode
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="wrapper pt-2">
+        <div class="row no-gutters">
+            <div class="col-6 text-center">
+                <a href="#" class="bg_yellow btn_5 txt_normal d-block text_black brad_3">Available Promo</a>
+            </div>
+            <div class="col-6 text-center">
+                <a href="#" class="btn_5 d-block text_black brad_4">Create Promo</a>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="wrapper avial_promo pt-3">
+
+      <ng-container *ngFor="let promocode of promocode_list; let i = index" >
+      <div class="offer_col offer_1 d-flex text-center align-items-center">
+            <div class="flx_0 offer_left d-flex flex-column">
+                <figure class="d-inline-flex align-items-center justify-content-center">
+                  <img src="{{promocode.promocode_img}}" alt="">
+                </figure>
+                <span class="offer_collect bg-white d-inline-block m-auto" (click)="collect_promo(promocode)" >Collect</span>
+            </div>
+            <div class="flx_1 offer_right">
+              <h6>{{promocode.merchant_info.profile_biz_name}}</h6>
+              <h1 *ngIf="promocode.promocode_type == 'percentage' ">RM {{promocode.promocode_value}}% Off</h1>
+                            <h1 *ngIf="promocode.promocode_type == 'amount' ">RM {{promocode.promocode_value}} Off</h1>
+                            <p>Valid until {{promocode.promocode_until | date}}</p>
+            </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+	</div>
+</div>

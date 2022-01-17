@@ -1,0 +1,83 @@
+<ion-content>
+  <!-- Header starts -->
+  <div class="video_home">
+      <span class="video_left_corner"></span>
+      <span class="video_right_corner"></span>
+      <video autoplay [muted]="'muted'" loop id="myVideo">
+          <source src="assets/video/home_video.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+      </video>
+  </div>
+  <div class="home_main">
+
+
+
+
+      <section class="home_wrapper">
+          <div class="home_form_row pt-5 pb-4">
+              <div class="container pt-5">
+                  <div class="row">
+
+
+                      <div class="col-md-6">
+
+                          <div class="logo_home pt-4">
+                              <img style="height:180px;" src="assets/images/logo_new.png" />
+                          </div>
+                          <div class="hf_left pt-5">
+                              <h2 class="text-white shadow_none"><b> PARTNER WITH US</b></h2>
+                              <p class="text-white">
+                                  We're hungry for the best things in life: delicious food, exploring the city and
+                                  bringing
+                                  the first bite of food to our customers.
+                                  foodie is multi-national, fast-growing business that maintains its appeal as
+                                  localised
+                                  service with community ambition.
+                              </p>
+                          </div>
+
+
+
+                      </div>
+                      <div class="col-md-6">
+                          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                          <div class="hr_right home_form_list cus_pt_1">
+                              <h4 class="text-white shadow_none pb-2">
+                                  Sign In to Access Foodie Control Panel
+                              </h4>
+                              <div class="form-group">
+                                  <label class="control-label text-white">Username</label>
+                                  <input type="email" formControlName="email" class="form-control input_2" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" />
+                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                      <div *ngIf="f.email.errors.required">Email is required</div>
+                                      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                      <div *ngIf="f.email.errors.pattern">Email must be a valid email address</div>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="control-label text-white">Password</label>
+                                  <input type="password" formControlName="password" class="form-control input_2" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password">
+                                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                      <div *ngIf="f.password.errors.required">Password is required</div>
+                                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                  </div>
+                              </div>
+
+                              <div>
+                                  <button type="submit" class="btn btn-info w-100">Submit</button>
+                              </div>
+                              <div class="text-right pt-3">
+                                  <a class="text-white" href="account/forgot-password">Forget Password?</a>
+                              </div>
+
+                          </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+      </section>
+  </div>
+</ion-content>

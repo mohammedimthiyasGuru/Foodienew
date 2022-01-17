@@ -1,0 +1,80 @@
+<div class="add_new_category">
+  <div class="pt-5">
+      <div class="panel panel-red">
+          <div class="panel-heading mb-0 pb-0">
+              <h3 class="text-left text-blue">Product List</h3>
+          </div>
+          <div class="panel-body pb-0 table-responsive product_table td_center">
+              <table class="table no-margin">
+                  <thead>
+                      <tr>
+                          <th>Category</th>
+                          <th>Product</th>
+                          <th>Product des</th>
+                          <th>Product img</th>
+                          <th>Product price</th>
+                          <th>Product Timing</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let category of Product_list">
+                          <td>
+                              <div class="text-left cart_col">
+                                  <h5 class="mb-0">{{category.category.cat_name}}</h5>
+                              </div>
+                          </td>
+
+                          <td>
+                            <div class="text-left cart_col">
+                                <h5 class="mb-0">{{category.prod_name}}</h5>
+                            </div>
+                         </td>
+
+                         <td>
+                          <div class="text-left cart_col">
+                              <h5 class="mb-0">{{category.prod_desc}}</h5>
+                          </div>
+                       </td>
+
+                       <td>
+                        <div class="text-left cart_col">
+                            <img src="{{category.prod_img}}" style="width: 35%;">
+                            <!-- <h5 class="mb-0"></h5> -->
+                        </div>
+                     </td>
+
+                     <td>
+                      <div class="text-left cart_col">
+                          <h5 class="mb-0">{{category.prod_price}}</h5>
+                      </div>
+                   </td>
+
+                   <td>
+                    <div class="text-left cart_col">
+                        <h5 class="mb-0">{{category.prod_avail_time}}</h5>
+                    </div>
+                 </td>
+
+                          <td>
+                              <div class="text-center">
+                                  <h5 class="mb-0">{{category.prod_status == 'A' ? 'Active' : 'Inactive'}}</h5>
+                              </div>
+                          </td>
+                          <td>                            
+                            <button style="margin: 5px; background-color: #a9bd7a;" type="submit" class="btn btn-info" (click)="statusupdate('A',category.prod_id)" *ngIf="category.prod_status == 'B'">Enable</button>
+                            <button style="margin: 5px; background-color: #bf7a6a;" type="submit" class="btn btn-info" (click)="statusupdate('B',category.prod_id)" *ngIf="category.prod_status == 'A'">Disable</button>
+                            <button style="margin: 5px;" type="submit" (click)="edit(category)" class="btn btn-info">Edit</button>
+                            <button style="margin: 5px; background-color: #bf7a6a;" (click)="cat_delete(category.prod_id)" type="submit" class="btn btn-info">Delete</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+     
+      
+      
+  </div>
+</div>

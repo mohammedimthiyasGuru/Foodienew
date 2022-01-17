@@ -1,0 +1,430 @@
+<div class="d-flex w-100 h-100 flex-column">
+	<div class="flx_1 overflow_auto">
+		<div class="chat_wrapper w-100 h-100 position-relative overflow_auto">
+
+        <div class="po_head mb-2 yellow_bg p-3">
+            <div class="d-flex align-items-center">
+                <div class="flx_0 pr-2">
+					 <a class="txt_black2" (click)="back_action()"><i class="fa fa-arrow-left"></i></a>
+                </div>
+                <div class="flx_1 txt_semi text-center">
+                    Payment Option
+                </div>
+            </div>
+        </div>
+
+        <div class="p-3">
+
+            <div class="pt-1">
+
+                <div class="d-flex bb_1 mb-3 align-items-center pb-3" *ngIf="yummy_status == 'false'">
+                    <div class="flx_0 pr-3">
+                        <input type="radio" (change)="modelChanged('Cash on delivery')" name="pay" aria-label="Radio button for following text input">
+                    </div>
+                    <div class="flx_1">
+                        <h5 class="mb-0 txt_semi"> Cash on Delivery </h5>
+                    </div>
+                </div>
+
+
+
+
+                <div class="pb-3 bb_1 mb-1" *ngIf="show_yummysaver">
+                    <div class="d-flex">
+                        <div class="flx_1 pl-2">
+                            <h5 class="txt_semi mb-0 pb-1 pl-4">Yummy's Saver</h5>
+                        </div>
+                        <div class="flx_0 text-right">
+                            <span class="badge badge-danger">Premium User</span>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex align-items-center pt-3">
+                        <div class="flx_0 pr-3">
+                            <input type="radio" (change)='modelChanged("Yummy saver")' name="pay" aria-label="Radio button for following text input">
+                        </div>
+
+                        <div class="flx_1 d-flex align-items-center pay_col">
+
+                            <div class="flx_1 br_1 pay_col_1 p-1">
+                                <label>Available</label>
+                                <h5> <b>RM : </b>{{yummy_saver_amount}}</h5>
+                            </div>
+                            <div class="flx_0 pay_col_2 text-center p-1">
+                                <img style="width: 25%;" src="../../assets/yummy-logo-black.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 pl-4 ml-2 pb-2" *ngIf="yummy_saver_trans_list.length !== 0">
+                        <div class="d-flex w-100 align-items-center">
+                            <div class="flx_0"><span class="badge badge-danger">{{yummy_saver_expire_date}}</span></div>
+                            <div class="flx_1 text-right" *ngIf="yummy_saver_renew"> <input type="button" (click)="renew_yummy()" class="btn_1" value="Renew"></div>
+
+                            <div class="flx_1 text-right" *ngIf="!yummy_saver_renew"> <input type="button" class="btn_2" value="Renew"></div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="pl-2">
+                        <div class="y_saver pt-3 pl-4">
+                            <div class="d-flex no-gutters tab_action">
+                                <div class="col-6 text-center">
+                                    <button (click)="show_list('yummy_refund_list')" rel="Refund" class="btn_5 bg_yellow w-100 tab_button txt_semi d-block txt_black_2 btn-ripple">Refund </button>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <button (click)="show_list('yummy_trans_list')" rel="Transaction" class="btn_5 w-100 tab_button txt_semi d-block txt_black btn-ripple">Transaction</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" *ngIf="yummysaver == 'yummy_refund_list'">
+					          <div class="tab_info">
+                    <div class="refund_row Refund tab_info_panel pt-3" >
+                        <h4 class="txt_semi">Refund</h4>
+                        <div class="p-2 b_1">
+                            <div class="d-flex">
+                                <div class="flx_1">
+                                    <label>Reason</label>
+                                </div>
+                                <div class="flx_0 text-danger">
+                                    Max:80
+                                </div>
+                            </div>
+                            <textarea class="area_h2 input_1 cus_input_1 w-100" [(ngModel)]="yummysave_refund_reason"> </textarea>
+                            <div class="d-flex pt-2 align-items-center">
+                                <div class="flx_1">
+                                    <div class="d-flex">
+                                        <div class="flx_0 pr-2">
+                                            <input type="checkbox" >
+                                        </div>
+                                        <div class="flx_1">
+                                            Agree Terms & Conditions
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flx_0">
+                                    <input type="button" class="btn_1" value="Submit" (click)="refund_submmit()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rf_2">
+                            <div class="b_1 mb-1 mt-1 yellow_bg">
+                                <div class="row align-items-center">
+                                    <div class="col-7">
+                                       <span class="pl-2">Premium Pay</span>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <b class="txt_semi bg_dark_2 p-2 d-block  txt_white">RM : {{yummy_saver_data.amount}}</b>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b_1 mb-1 mt-1 yellow_bg">
+                                <div class="row align-items-center">
+                                    <div class="col-7">
+                                       <span class="pl-2">Your Earned</span>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <b class="txt_semi bg_dark_2 p-2 d-block  txt_white">RM : {{yummysave_amount}}</b>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="b_1 mb-1 mt-1 yellow_bg">
+                                <div class="row align-items-center">
+                                    <div class="col-7">
+                                       <span class="pl-2">Your Get</span>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <b class="txt_semi bg_dark_2 p-2 d-block  txt_white">RM : {{yummysave_amount}}</b>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="pt-2 pb-2" *ngIf="yummysave_refund_button">
+                            <button class="btn_1 w-100 text-center" (click)="refund_yummysave()">Refund</button>
+                        </div>
+                    </div>
+				           	</div>
+                     </div>
+
+                    <div class="" *ngIf="yummysaver == 'yummy_trans_list'">
+					          <div class="tab_info">
+                    <div class="y_saver_tran Transaction tab_info_panel">
+                        <div class="row pt-3 align-items-center">
+                            <div class="col-12">
+                                <h5 class="txt_normal d-block">Transactions Details</h5>
+                            </div>
+                        </div>
+                        <div class="row pt-2 align-items-center">
+                            <div class="col-8">
+                                <b class="txt_semi d-block">Today</b>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a (click)="move_to_payment_history()" class="txt_semi  d-block txt_black2">All
+                                    History</a>
+                            </div>
+                        </div>
+
+                        <div class="trac_list pt-3">
+
+                          <ng-container *ngFor="let item of yummy_saver_trans_list; let i = index">
+                            <div class="mb-3 bb_1 pb-3" *ngIf="i < 3">
+                                <div class="d-flex flex-row btn-ripple btn-ripple-2 align-items-center">
+                                    <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                                        <div class="flx_0 prof_img_3">
+                                            <img   src="{{item.img}}" alt="">
+                                        </div>
+                                        <div class="flx_1 ellips_txt pl-2">
+                                            <b class="mo_txt_1 d-block ellips_txt">{{item.title}}</b>
+                                            <span class="d-block ellips_txt">{{item.date}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flx_0 text-right">
+                                        <b class="d-block text-success" *ngIf="item.amount_type == 'Add'">+ {{item.amount}}</b>
+                                        <b class="d-block text-danger" *ngIf="item.amount_type == 'Sub'">- {{item.amount}}</b>
+                                        <b class="d-block text-danger" *ngIf="item.amount_type == 'Paid'">- {{item.amount}}</b>
+                                        <span class="sml_txt_2 d-block txt_black2 ViewMoreAction txt_normal" (click)="clear_trans_staust_2(i)">View More </span>
+                                    </div>
+                                </div>
+
+                                <div class="ViewMoreInfo" *ngIf="item.view_status && item.type !== 'Add Fund'">
+                                    <div class="trc_more border_1 mt-2 p-1">
+                                        <div class="row">
+                                            <div class="col-6 br_1">
+                                                <b class="d-block txt_semi">Order id</b>
+                                                <span>{{item.order_id}}</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <b class="d-block txt_semi"> Status</b>
+                                                <span>{{item.status}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                    </div>
+				           	</div>
+                     </div>
+
+
+
+                </div>
+
+
+
+                <div class="pb-4 pt-2 bb_1 mb-3">
+                    <h5 class="txt_semi pl-4 ml-2">Yummy's pay</h5>
+                    <div class="d-flex align-items-center pt-3">
+                        <div class="flx_0 pr-3">
+                            <input type="radio" (change)="modelChanged('Yummy Pay')" name="pay" aria-label="Radio button for following text input">
+                        </div>
+                        <div class="flx_1 d-flex align-items-center pay_col">
+                            <div class="flx_1 br_1 pay_col_1 p-1">
+                                <label>Available</label>
+                                <h5> <b>RM:</b> {{yummy_pay_amount}} </h5>
+                            </div>
+                            <div class="flx_0 pay_col_2 text-center p-1">
+                                <img style="width: 25%;" src="../../assets/yummy-logo-black.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pl-2">
+                        <div class="y_saver pt-3 pl-4">
+                           <div class="d-flex no-gutters tab_action_2">
+						    <div class="col-6 text-center">
+                                    <button rel="AddFund_2" (click)="show_add_fund()" class="btn_5 w-100 tab_button txt_semi d-block txt_black btn-ripple bg_yellow">Add Fund</button>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <button rel="Transaction_2" (click)="show_transc_fund()" class="btn_5 w-100 tab_button txt_semi d-block txt_black_2 btn-ripple">Transaction  </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+					<div class="tab_info_2">
+
+					<div class="AddFund_2 pl-2 tab_info_panel" *ngIf="add_fund_show">
+                   <div class="yumm_topup pl-4">
+                        <div class="pt-3">
+                            <div class="d-flex ">
+                                <div class="flx_1">
+                                    <input type="number" [(ngModel)]="fund_amount"  class="w-100 input_1 cus_input_1">
+                                </div>
+                                <div class="flx_0">
+                                    <button (click)="add_fund()" class="btn btn_1 cus_btn_6">Pay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+
+          <div class="yumm_pay_trans Transaction_2 tab_info_panel " *ngIf="show_transc_list">
+              <div class="row pt-3 align-items-center">
+                  <div class="col-12">
+                      <h5 class="txt_normal d-block">Transactions Details</h5>
+                  </div>
+              </div>
+              <div class="row pt-2 align-items-center">
+                  <div class="col-8">
+                      <b class="txt_semi d-block"></b>
+                  </div>
+                  <div class="col-4 text-right">
+                      <a (click)="yummypay_payment_history()" class="txt_semi  d-block txt_black2">All
+                          History</a>
+                  </div>
+              </div>
+              <ng-container  *ngFor="let item of transction_list; let i = index" >
+              <div class="trac_list pt-3">
+                  <div class="mb-3 bb_1 pb-3">
+                      <div class="d-flex flex-row btn-ripple btn-ripple-2 align-items-center">
+                          <div class="flx_1 ellips_txt d-flex flex-row align-items-center">
+                              <div class="flx_0 prof_img_3">
+                                  <img  src="{{item.trans_img}}" alt="">
+                              </div>
+                              <div class="flx_1 ellips_txt pl-2">
+                                  <b class="mo_txt_1 d-block ellips_txt">{{item.trans_id}}</b>
+                                  <span class="d-block ellips_txt">{{item.createdAt | date:'medium' }}</span>
+                              </div>
+                          </div>
+                          <div class="flx_0 text-right">
+                              <b class="d-block text-success" *ngIf="item.trans_type == 'Add Fund'">+ RM {{item.amount}}</b>
+                              <b class="d-block text-danger" *ngIf="item.trans_type == 'Order'">- RM {{item.amount}}</b>
+                              <span (click)="show_trans_detail(i)" class="sml_txt_2 d-block txt_black2 ViewMoreAction_2 txt_normal">View More </span>
+                          </div>
+                      </div>
+
+                      <div class="ViewMoreInfo_2 " *ngIf="item.show_status">
+                          <div class="trc_more border_1 mt-2 p-1" *ngIf="item.trans_type == 'Add Fund'">
+                              <div class="row">
+                                  <div class="col-6 br_1">
+                                      <b class="d-block txt_semi"> Trans id</b>
+                                      <span>{{item.trans_id}}</span>
+                                  </div>
+                                  <div class="col-6">
+                                      <b class="d-block txt_semi"> Status</b>
+                                      <span>Completed</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="trc_more border_1 mt-2 p-1" *ngIf="item.trans_type == 'Order'">
+                            <div class="row">
+                                <div class="col-6 br_1">
+                                    <b class="d-block txt_semi"> Order id</b>
+                                    <span>{{item.order_id}}</span>
+                                </div>
+                                <div class="col-6">
+                                    <b class="d-block txt_semi"> Status</b>
+                                    <span>Completed</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                      </div>
+                  </div>
+              </div>
+            </ng-container>
+
+          </div>
+
+					</div>
+                </div>
+
+
+                <div class="pb-4">
+                    <div class="pt-2">
+                        <div class="d-flex align-items-center">
+                            <div class="flx_0 pr-3">
+                                <h6 class="txt_semi mb-0">Today Deals</h6>
+                            </div>
+                            <div class="flx_0">
+                                <span class="badge badge-danger">Make YourSelf Premium User</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="pt-4 pb-4">
+
+                        <div class="position-relative pt-2 pb-2 scroll_hide white-nowrap">
+
+                        <ng-container  *ngFor="let item of Today_Deals; let i = index" >
+                        <div class="d-inline-block deals_col deals_col_1  text-center">
+                                <div class="dc_head">
+                                    {{item.title}}
+                                </div>
+                                <div class="dc_col_2">
+                                    <div class="dc_info_1 pb-2">
+                                      {{item.desc}}
+                                    </div>
+                                    <div class="dc_info_2 pb-3">
+                                        <h3 class="mb-0">RM {{item.amount}}</h3>
+                                    </div>
+                                    <div class="ref_row text-center">
+                                        <select name="" [(ngModel)]="item.refer_status" id="ReferalDrop" class="input_1 cus_input_1 bg-transparent w-100">
+                                            <option value="Select">Select Referal</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                        <div class="ref_input  pt-2" *ngIf="item.refer_status == 'Yes'">
+                                            <input type="text" [(ngModel)]="item.refer_id" class="input_1 cus_input_1 bg-transparent w-100">
+                                        </div>
+                                    </div>
+                                   <div class="dc_info_3 pr-3 pt-2">
+                                                                        <div class="d-flex">
+                                                                            <div class="col-8 text-right">
+                                                                                <button class="btn-ripple btn_offer" (click)="buy_perium_user(i,item)">BUY</button>
+                                                                            </div>
+                                                                            <div class="col-4 BenefitsBtn cursor-pointer text-right" (click)="show_benefit_visible(item)">
+                                                                                Benefits
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                </div>
+                        </div>
+                        </ng-container>
+
+
+
+                        </div>
+                    </div>
+                    <section class="popup_box BenefitsPop" *ngIf="benefit_visible">
+                      <div class="popup_info d-flex align-items-center justify-content-center w-100 h-100">
+                          <div class="pop_wrapper w-80 position-relative" style="width: 90%;height: 250px;">
+                              <span class='popup_close CloseBenefits' (click)="hide_benefit_visible()">x</span>
+                              <div class="form-group">
+                                  <h4>Benefits</h4>
+                                  <p>
+                                    {{benefit_text}}
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+</div>
+
+
+	<!-- Benefits Poup End -->
+
+
+
+
+<!-- Benefits  Poup End -->

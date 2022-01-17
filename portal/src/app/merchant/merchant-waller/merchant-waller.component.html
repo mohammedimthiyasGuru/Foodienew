@@ -1,0 +1,319 @@
+<div *ngIf="visible">
+
+<div class="top-bar clearfix">
+  <div class="row gutter">
+      <div class="col-lg-12">
+          <div class="page-title">
+              <h3>Wallet Point</h3>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+
+
+<div class="row" style="margin-bottom: 40px;">
+     
+  <div class="col-lg-3 col md-6">
+      <div class="panel yellow_panel">
+          <div class="sessions">
+              <h2 class="left" style="color: black;">{{today_count_credit}} <i class="icon-direction up"></i></h2>
+              <div  class="graph w-100 invoice" style="width: 100%;"></div>
+          </div>
+
+          <div id="chart">
+            <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [xaxis]="chartOptions.xaxis"
+              [stroke]="chartOptions.stroke"
+              [tooltip]="chartOptions.tooltip"
+              [dataLabels]="chartOptions.dataLabels"
+            ></apx-chart>
+          </div>
+
+          <h5 class="info">Today Credit</h5>
+      </div>
+  </div>
+  <div class="col-lg-3 col md-6">
+    <div class="panel yellow_panel">
+        <div class="sessions">
+            <h2 class="left" style="color: black;">{{today_count_debit}} <i class="icon-direction up"></i></h2>
+            <div  class="graph w-100 invoice" style="width: 100%;"></div>
+        </div>
+
+        <div id="chart">
+            <apx-chart
+              [series]="chartOptions1.series"
+              [chart]="chartOptions1.chart"
+              [xaxis]="chartOptions1.xaxis"
+              [stroke]="chartOptions1.stroke"
+              [tooltip]="chartOptions1.tooltip"
+              [dataLabels]="chartOptions1.dataLabels"
+            ></apx-chart>
+          </div>
+
+
+        <h5 class="info">Today Debit</h5>
+    </div>
+</div>
+  <div class="col-lg-3 col md-6">
+      <div class="panel yellow_panel">
+          <div class="sessions">
+              <h2 class="left"  style="color: black;" >{{total_count_credit}} <i class="icon-direction up"></i></h2>
+              <div  class="graph w-100 invoice" style="width: 100%;"></div>
+          </div>
+          <div id="chart">
+            <apx-chart
+              [series]="chartOptions2.series"
+              [chart]="chartOptions2.chart"
+              [xaxis]="chartOptions2.xaxis"
+              [stroke]="chartOptions2.stroke"
+              [tooltip]="chartOptions2.tooltip"
+              [dataLabels]="chartOptions2.dataLabels"
+            ></apx-chart>
+          </div>
+          <h5 class="info">Total Credit</h5>
+      </div>
+  </div>
+  <div class="col-lg-3 col md-6">
+      <div class="panel yellow_panel">
+          <div class="sessions">
+              <h2 class="left" style="color: black;">{{total_count_debit}} <i class="icon-direction up"></i></h2>
+              <div class="graph w-100 invoice" style="width: 100%;"></div>
+          </div>
+          <div id="chart">
+            <apx-chart
+              [series]="chartOptions3.series"
+              [chart]="chartOptions3.chart"
+              [xaxis]="chartOptions3.xaxis"
+              [stroke]="chartOptions3.stroke"
+              [tooltip]="chartOptions3.tooltip"
+              [dataLabels]="chartOptions3.dataLabels"
+            ></apx-chart>
+          </div>
+          <h5 class="info">Total Debit</h5>
+      </div>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-md-6">
+      <div class="panel" style="background: #ffffff !important;" >
+          <h3 class="text-left txt_bold" style="color: black;">Monthly Report</h3>
+        
+          <div id="chart1">
+            <apx-chart
+              [series]="chartOptions4.series"
+              [chart]="chartOptions4.chart"
+              [xaxis]="chartOptions4.xaxis"
+              [stroke]="chartOptions4.stroke"
+              [tooltip]="chartOptions4.tooltip"
+              [dataLabels]="chartOptions4.dataLabels"
+            ></apx-chart>
+          </div>
+          
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel" style="background: #ffffff !important;" >
+        <h3 class="text-left txt_bold"  style="font-weight: 800;color: black;">Total Report</h3>
+      
+        <div id="chart">
+          <apx-chart
+            [series]="chartOptions5.series"
+            [chart]="chartOptions5.chart"
+            [xaxis]="chartOptions5.xaxis"
+            [stroke]="chartOptions5.stroke"
+            [tooltip]="chartOptions5.tooltip"
+            [dataLabels]="chartOptions5.dataLabels"
+          ></apx-chart>
+        </div>
+        
+    </div>
+</div>
+</div>  
+
+
+  
+
+
+
+
+<div class="row form_bg_1">
+    <div class="col-md-2">
+        <label>Country</label>
+        <select disabled  class="form-control yellow-bg2" [(ngModel)]="country_name" (ngModelChange)="find_state_list()">
+            <option value="INDIA">INDIA</option>
+            <option value="MALAYSIA">MALAYSIA</option>
+            <option value="SINGAAPORE">SINGAAPORE</option>
+        </select>
+
+    </div>
+    <div class="col-md-2">
+        <label>State</label>
+        <select disabled class="form-control yellow-bg2"  [(ngModel)]="state_name">
+          <option *ngFor="let y of state_list" [value]="y.state_name">{{y.state_name}}</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+      <label>Commission</label>
+      <select disabled  class="form-control yellow-bg2" disabled>
+          <option value="">25%</option>
+      </select>
+
+  </div>
+  <div class="col-md-2">
+    <label>Role</label>
+    <select  disabled class="form-control yellow-bg2" [(ngModel)]="role">
+        <option value="1">Admin</option>
+        <option value="2">Merchant</option>
+        <option value="3">Vendor</option>
+    </select>
+</div>
+<div class="col-md-2">
+  <label>Sort by</label>
+  <select  class="form-control"  [(ngModel)]="sort_by">
+      <option value="Y">Year</option>
+      <option value="M">Month</option>
+      <!-- <option value="W">Weekly</option> -->
+      <option value="D">Date</option>
+  </select>
+
+</div>
+<div class="col-md-2">
+  <label>Choose date</label>
+  <select class="form-control" [(ngModel)]="date" *ngIf="sort_by ==  'Y'">
+    <option value="" disabled selected>Year</option>
+    <option *ngFor="let y of yearsUnique" [value]="y">{{y}}</option>
+  </select>
+  <input type="date" [(ngModel)]="date" class="form-control" *ngIf="sort_by ==  'D'">
+  <input type ="month" [(ngModel)]="date" class="form-control" *ngIf="sort_by ==  'M'"> 
+  <input type="week" [(ngModel)]="date" class="form-control" *ngIf="sort_by ==  'W'">
+</div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-2" style="float:right;padding: 10px 0px;width: 15%;">
+    <button class="btn btn-success form-control" (click)="fetch()" type="button">Filter</button>
+    </div>
+   </div>
+</div>
+
+<div class="pt-2">
+  <div class="panel panel-red">
+      <div class="panel-heading mb-0 pb-0">
+          <h4 class="text-left">Credit Details</h4>
+          <h4 class="text-left" style="float: right;">
+               </h4>
+      </div>
+      <div class="panel-body table-responsive pb-0">
+          <table class="table no-margin text-center">
+              <thead>
+                  <tr>      <th>Select</th>
+                            <th>S.No</th>
+                            <th>Date & Time</th>
+                            <th>Bussiness Id and Name</th>
+                            <th>Order Details</th>
+                            <th>Order Price</th>
+                            <th>Commission</th>
+                            <th>Net Price</th>
+                            <th>Order Status</th>
+                            <th>Payment Status</th>
+                            <th>User ID</th>
+                            <th>Order ID</th>
+                            <th>Quantity</th>
+                            <th>Note If any</th>
+                            <th>Rider Details</th>
+                  </tr>
+              </thead>
+              <tbody>
+               <ng-container  *ngFor="let order of corderslist; index as sno">
+                <tr *ngIf="corderslist.length !== 0">
+                  <td> <input type="checkbox"> </td>
+                  <td> {{sno + 1}} </td>
+                  <td> {{order.order_date}} </td>
+                  <td> <b>Bussiness ID</b>  : {{merchant_id}}, <b>Name</b>  : {{rest_name}}</td>
+                  <td> 
+                       <table class="table no-margin text-center">
+                        <thead>
+                           <tr>
+                             <th>S.no</th>
+                             <th>Order details</th>
+                             <th>Quantity</th>
+                             <th>Price</th>
+                             <th>Total Price</th>
+                           </tr>
+                        </thead>
+                           <tr *ngFor="let prod of order.order_prods; index as line">
+                             <td>{{line + 1}}</td>
+                             <td>{{prod.prod_name}}</td>
+                             <td>{{prod.prod_qty}}</td>
+                             <td>{{prod.prod_price}}</td>
+                             <td>{{prod.prod_total_price}}</td>
+                           </tr>
+                       </table>
+                  </td>
+                  <td>{{order.prod_total_price}}</td>
+                  <td>{{order.discount_price}}</td>
+                  <td>{{order.net_price}}</td>
+                  <td>
+                    <p *ngIf="order.order_status == 'B' ">Booked</p>
+                    <p *ngIf="order.order_status == 'A' ">Accepted</p>
+                    <p *ngIf="order.order_status == 'C' ">Cancelled</p>
+                    <p *ngIf="order.order_status == 'P' ">Pickup</p>
+                    <p *ngIf="order.order_status == 'D' ">Delivered</p>
+                  </td>
+                  <td>unpaid</td>
+                  <td>{{order.customer}}</td>
+                  <td>{{order.order_no}}</td>
+                  <td>{{order.prod_qty}}</td>
+                  <td>PLEASE PLACE MY ORDER IN DOOR STEP</td>
+                  <td>JOHN, Delivered on 22/07/2021: 09:23:22</td>
+                </tr>  
+                  </ng-container>
+                  <tr style="background: #f9c332;
+                  font-weight: bold;" *ngIf="corderslist.length !== 0">  
+                    <td colspan="7">SUB TOTAL</td>
+                    <td colspan="1">{{total_subtoal}}</td>
+                    <td colspan="1"></td>
+                    <td colspan="1"></td>
+                 </tr>
+                 <tr style="background: #f9c332;
+                  font-weight: bold;" *ngIf="corderslist.length !== 0">
+                  <td colspan="7"> <span><i class="fa fa-chevron-down"></i></span>  REFUND</td>
+                  <td colspan="1">0</td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
+               </tr>
+               <tr style="background: #f9c332;
+               font-weight: bold;" *ngIf="corderslist.length !== 0">
+                <td colspan="7"> <i class="fa fa-chevron-down"></i>  OTHERS</td>
+                <td colspan="1">0</td>
+                <td colspan="1"></td>
+                <td colspan="1"></td>
+             </tr>
+             <tr style="background: #28a745;
+             font-weight: bold;" *ngIf="corderslist.length !== 0">
+              <td colspan="7"> GRAND TOTAL</td>
+              <td colspan="1">{{grand_total}}</td>
+              <td colspan="1"></td>
+              <td colspan="1">UNPAID</td>
+              </tr>
+                  <tr *ngIf="corderslist.length == 0">
+                      <td colspan="15">No Record Found</td>
+                   </tr>
+                                         
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+</div>
